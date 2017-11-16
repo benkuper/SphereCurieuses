@@ -163,10 +163,12 @@ public class ViveControllerObject : TrackableObject {
             menuBT = nextMenuBT;
 
             //special handling
+            /*
             CalibrateAutoVive[] cav = FindObjectsOfType<CalibrateAutoVive>();
             if (cav.Length > 0) cav[0].trackable = transform;
             cav[0].calibrate();
-
+            cav[0].saveConfig();
+            */
             buttonPressInternal(MENU_BT, menuBT);
         }
 

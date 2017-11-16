@@ -8,6 +8,7 @@ using System;
 
 public class MrTrackerClient : MonoBehaviour
 {
+    public static MrTrackerClient instance;
 
     public enum SourceType {ALL=0, AUGMENTA =1, VIVE=2};
     public enum ViveTypeFilter { ALL, HMD, CONTROLLER, LIGHTHOUSE, TRACKER };
@@ -22,6 +23,7 @@ public class MrTrackerClient : MonoBehaviour
     const byte AXIS_ID = 0x42;
    
     public int localPort = 9000;
+    public int remotePort = 11500;
     public float trackableLifeThreshold = .1f;
 
     Dictionary<int,Trackable> trackables;
@@ -29,6 +31,7 @@ public class MrTrackerClient : MonoBehaviour
     List<Trackable> trackablesToAdd;
     List<Trackable> trackablesToRemove;
     UdpClient client;
+    UdpClient server;
 
     public bool invertX;
     public float offsetYaw;
@@ -44,9 +47,15 @@ public class MrTrackerClient : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        instance = this;
+
         IsConnected = false;
         localPort = PlayerPrefs.GetInt("MrTracker_Port", 9000);
         Connect();
+
+        server = new UdpClient();
+        server.Connect(new IPEndPoint(IPAddress.Loopback, remotePort));
+
         trackablesToAdd = new List<Trackable>();
         trackables = new Dictionary<int, Trackable>();
         trackablesToRemove = new List<Trackable>();
@@ -136,7 +145,7 @@ public class MrTrackerClient : MonoBehaviour
 
         if(!trackables.TryGetValue(trackableID,out t))
         {
-            Debug.Log("New tracker");
+            //Debug.Log("New tracker");
             t = new Trackable();
             t.sourceType = sourceType;
             t.type = trackableType;
@@ -220,6 +229,17 @@ public class MrTrackerClient : MonoBehaviour
         }
         client.BeginReceive(new AsyncCallback(udpReceiveHandler), null);
     }
+
+    public void sendVibrate(int controllerID, float strength, float time)
+    {
+        List<byte> msg = new List<byte>() { (byte)'v', (byte)controllerID };
+        msg.AddRange(BitConverter.GetBytes(strength));
+        msg.AddRange(BitConverter.GetBytes(time));
+        msg.Add(255);
+        server.Send(msg.ToArray(), msg.Count);
+
+    }
+
 
     void OnApplicationQuit()
     {

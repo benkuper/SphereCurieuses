@@ -1,8 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class SwarmMaster : MonoBehaviour {
 
     public static SwarmMaster instance;
@@ -10,14 +10,28 @@ public class SwarmMaster : MonoBehaviour {
     public SwarmScenario currentScenario;
     public List<SwarmScenario> scenarios;
 
+    //Helper to know which controller is over which drone
+    public Dictionary<DroneController, Drone> overDrones;
+
     void Awake()
     {
+        overDrones = new Dictionary<DroneController, Drone>();
         instance = this;
     }
 
-	void Start () {
-        if(GetComponents<SwarmScenario>().Length != scenarios.Count) scenarios = new List<SwarmScenario>(GetComponents<SwarmScenario>());
+    private void droneSetupCallback()
+    {
+        
+        setCurrentScenario(null);
         if (currentScenario == null && scenarios.Count > 0) setCurrentScenario(scenarios[0]);
+        
+    }
+
+    void Start () {
+        DroneManager.instance.droneSetup += droneSetupCallback;
+        scenarios = new List<SwarmScenario>(GetComponents<SwarmScenario>());
+        setCurrentScenario(null);
+       // setCurrentScenario(scenarios[0]);
     }
 
     void Update () {
@@ -37,8 +51,13 @@ public class SwarmMaster : MonoBehaviour {
         if (currentScenario != null)
         {
             currentScenario.setCurrent(true);
+        }else
+        {
+            foreach (Drone d in DroneManager.instance.drones) d.colorTo(Color.black, 0);
         }
     }
+
+
 
     public void nextScenario()
     {
@@ -56,10 +75,6 @@ public class SwarmMaster : MonoBehaviour {
 
 
     //Global functions
-    public void launchAllDrones()
-    {
-
-    }
 
     public List<Drone> getAvailableDrones(bool includeFlying, bool includeOnGround) {
         return getAvailableDrones(includeFlying, includeOnGround, DroneManager.instance.drones.Count);
@@ -82,11 +97,52 @@ public class SwarmMaster : MonoBehaviour {
 
     public void stopAllDrones()
     {
-
+        foreach (Drone d in DroneManager.instance.drones) d.stop();
     }
 
     public void homeAllDrones()
     {
-        foreach (Drone d in DroneManager.instance.drones) d.stop();
+        foreach (Drone d in DroneManager.instance.drones) d.goHome();
     }
+
+
+    //Interaction
+
+    public void setOverDrone(DroneController dc, Drone d)
+    {
+        if (overDrones.ContainsKey(dc))
+        {
+            if (overDrones[dc] == d) return;
+            overDrones[dc].isOver = false;
+            if (currentScenario != null) currentScenario.overDroneUpdate(dc, overDrones[dc]);
+            overDrones.Remove(dc);
+        }
+
+        if (d != null)
+        {
+            //Debug.Log("Set over drone " + dc.id + " > " + d);
+
+            d.isOver = true;
+            overDrones.Add(dc, d);
+            if (currentScenario != null) currentScenario.overDroneUpdate(dc, d);
+        }        
+    }
+
+
+    public void buttonStateUpdate(DroneController controller, int buttonID, bool value)
+    {
+        if (currentScenario != null) currentScenario.buttonStateUpdate(controller, buttonID, value);
+
+    }
+
+    public void triggerShortPress(DroneController controller, int buttonID)
+    {
+        if (currentScenario != null) currentScenario.triggerShortPress(controller, buttonID);
+    }
+
+    public void triggerLongPress(DroneController controller, int buttonID)
+    {
+        if (currentScenario != null) currentScenario.triggerLongPress(controller, buttonID);
+    }
+
 }

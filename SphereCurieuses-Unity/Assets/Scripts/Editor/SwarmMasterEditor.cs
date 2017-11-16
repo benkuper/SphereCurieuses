@@ -23,6 +23,13 @@ public class SwarmMasterEditor : Editor {
             scenarioMenu.ShowAsContext();
         }
 
+        if (GUILayout.Button("Stop Scenario"))  m.setCurrentScenario(null);
+        if (GUILayout.Button("Restart Scenario"))
+        {
+            SwarmScenario s = m.currentScenario;
+            m.setCurrentScenario(null);
+            m.setCurrentScenario(s);
+        }
     }
 
     void scenarioMenuSelected(object data)

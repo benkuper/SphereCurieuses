@@ -6,9 +6,13 @@ public class DroneManager : OSCControllable {
 
     public static DroneManager instance;
 
-
     public delegate void DroneSetupEvent();
     public event DroneSetupEvent droneSetup;
+
+    public delegate void DroneStateUpdate(Drone d);
+    public event DroneStateUpdate droneStateUpdate;
+
+   
 
     public List<Drone> drones;
 
@@ -48,7 +52,10 @@ public class DroneManager : OSCControllable {
         if (droneSetup != null) droneSetup();
     }
 
-    
+    public void resetAllKalman()
+    {
+        foreach (Drone d in drones) d.resetKalman();
+    }
 
     public void stopAll()
     {
@@ -72,8 +79,15 @@ public class DroneManager : OSCControllable {
         Drone d = Instantiate(dronePrefab).GetComponent<Drone>();
         d.setName(droneName);
         d.transform.SetParent(transform, true);
-        d.transform.position = Vector3.right * drones.Count * .2f;
+        if (testMode) d.transform.position = new Vector3(Random.Range(2.0f, 5.0f), 0, Random.Range(2.0f, 4.0f));
+        else d.transform.position = Vector3.right * drones.Count * .2f;
         drones.Add(d);
+        d.stateUpdate += stateUpdateHandler;
         d.testMode = testMode;
+    }
+
+    public void stateUpdateHandler(Drone d)
+    {
+        if (droneStateUpdate != null) droneStateUpdate(d);
     }
 }

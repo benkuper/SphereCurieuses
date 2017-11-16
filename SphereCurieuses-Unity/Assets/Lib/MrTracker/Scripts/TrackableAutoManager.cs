@@ -13,10 +13,12 @@ public class TrackableAutoManager : MonoBehaviour
     public List<TrackableObject> trackableObjects;
 
 
+    public bool dynamicTrackerMode;
+
     // Use this for initialization
     void Start()
     {
-        trackableObjects = new List<TrackableObject>();
+        if(dynamicTrackerMode) trackableObjects = new List<TrackableObject>();
 
         client.trackableAdded += trackableAdded;
         client.trackableRemoved += trackableRemoved;
@@ -30,7 +32,7 @@ public class TrackableAutoManager : MonoBehaviour
 
     void trackableAdded(Trackable t)
     {
-        //Debug.Log("Trackable added ! currentTrackIndex = "+currentTrackIndex+" / Type " + t.type);
+        //Debug.Log("Trackable added ! currentTrackIndex = "+t.id+" / Type " + t.type);
 
         //if (trackableObjects.Length <= currentTrackIndex) return;
         
@@ -61,11 +63,20 @@ public class TrackableAutoManager : MonoBehaviour
         TrackableObject o = getObjectForTrackable(t.id);
         if(o == null)
         {
-            o = Instantiate(trackableObjectPrefab).GetComponent<TrackableObject>();
+            if (dynamicTrackerMode)
+            {
+                o = Instantiate(trackableObjectPrefab).GetComponent<TrackableObject>();
+                o.transform.parent = transform;
+                trackableObjects.Add(o);
+            }
+            else
+            {
+                return;
+            }
         }
-        o.transform.parent = transform;
+
+        if(!dynamicTrackerMode) Debug.Log("Set Trackable "+t.id);
         o.setTrackable(t);
-        trackableObjects.Add(o);
 
         //currentTrackIndex++;
         //objects.Add(t, o);
@@ -73,15 +84,17 @@ public class TrackableAutoManager : MonoBehaviour
 
     void trackableRemoved(Trackable t)
     {
+        if (!dynamicTrackerMode) return;
+        
         TrackableObject to = getObjectForTrackable(t.id);
         if (to != null)
         {
             trackableObjects.Remove(to);
             Destroy(to.gameObject);
-            Debug.Log("Remove trackable object " + t.id);
+           // Debug.Log("Remove trackable object " + t.id);
         }else
         {
-            Debug.Log("Remove trackable not found : " + t.id);
+          //  Debug.Log("Remove trackable not found : " + t.id);
         }
         
         /*
@@ -96,11 +109,13 @@ public class TrackableAutoManager : MonoBehaviour
 
     TrackableObject getObjectForTrackable(int id)
     {
-        foreach(TrackableObject to in trackableObjects)
+        //Debug.Log("****** Get for id " + id);
+        foreach (TrackableObject to in trackableObjects)
         {
-            if (to.trackable.id == id) return to;
+            if (to.trackableID == id) return to;
         }
 
+        //Debug.Log("Not found for id " + id);
         return null;
     }
 }

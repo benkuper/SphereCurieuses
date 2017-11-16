@@ -12,7 +12,7 @@ public class SwarmEmergencyScenario : SwarmScenario
 
     public override void startScenario()
     {
-        
+        SwarmMaster.instance.homeAllDrones();
     }
 
     override public void updateScenario()

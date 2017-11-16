@@ -24,6 +24,7 @@ public class SwarmShapeScenario : SwarmScenario {
     {
         drones = SwarmMaster.instance.getAvailableDrones(true, true, positions.Length);
         updateDronesPositions(2);
+        foreach(Drone d in drones) lockDrone(d);
     }
 
     override public void updateScenario()
@@ -33,7 +34,7 @@ public class SwarmShapeScenario : SwarmScenario {
 
     public override void endScenario()
     {
-        
+        foreach (Drone d in drones) releaseDrone(d);
     }
 
     public void updateDronesPositions(float time)

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4948974994003160}
   - component: {fileID: 114550660230990436}
+  - component: {fileID: 114843136119559318}
   m_Layer: 0
   m_Name: SCController
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1a7ee73bce94c499e575c3e89ab0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trackableID: 0
   menuBT: 0
   sideBT: 0
   triggerTouch: 0
@@ -62,4 +64,19 @@ MonoBehaviour:
   rollTriggerRelative: 0
   touchPosRelative: {x: 0, y: 0}
   deltaTouch: {x: 0, y: 0}
+  dc: {fileID: 0}
   specktr: {fileID: 0}
+--- !u!114 &114843136119559318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961784215769654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b30ebd14cf126a40b1ef5cc3a443a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  buttonStates: 
+  aimDirection: {x: 0, y: 0, z: 0}

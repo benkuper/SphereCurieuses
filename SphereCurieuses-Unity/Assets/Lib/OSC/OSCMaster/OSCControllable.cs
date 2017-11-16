@@ -68,7 +68,7 @@ public class OSCControllable : MonoBehaviour {
             return;
         }
 
-        Debug.LogWarning("Property or method not found : " + property);
+        //Debug.LogWarning("Property or method not found : " + property);
     }
 
 

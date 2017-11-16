@@ -15,5 +15,6 @@ public class DroneEditor : Editor {
         if (GUILayout.Button("Launch")) ((Drone)target).launch();
         if (GUILayout.Button("Stop")) ((Drone)target).stop();
         if (GUILayout.Button("Home")) ((Drone)target).goHome();
+        if (GUILayout.Button("Resync position")) ((Drone)target).resyncPosition();
     }
 }

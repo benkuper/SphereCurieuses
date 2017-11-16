@@ -9,6 +9,11 @@ using System;
 using UnityEditor;
 #endif
 
+public interface IDroneLocker
+{
+    void releaseDrone(Drone d);
+}
+
 public class Drone : OSCControllable {
 
     public string droneName;
@@ -16,6 +21,8 @@ public class Drone : OSCControllable {
     public enum DroneState { Disconnected, Connecting, Stabilizing, Ready, Error };
     public enum LightMode { Off, WhiteSpinner, ColorSpinner, TiltEffect, Brightness, ColorSpinner2, DoubleSpinner, SolidColor, FactoryTest, BatteryStatus, BoatLights, Alert, Gravity };
 
+    public delegate void DroneStateUpdate(Drone d);
+    public event DroneStateUpdate stateUpdate;
 
     [OSCProperty("state")]
     public DroneState state;
@@ -31,15 +38,16 @@ public class Drone : OSCControllable {
     public bool lowBattery;
 
     [Header("Lighting")]
-    [OSCProperty("lightMode")]
+    //[OSCProperty("headlight")]
+    public bool headLight;
+   // [OSCProperty("lightMode")]
     public LightMode lightMode;
-    [OSCProperty("lightColor")]
+    //[OSCProperty("lightColor")]
     public Color color;
+   
 
     [Header("Testing")]
     public bool testMode;
-
-
 
     //home position
     Vector3 homePosition;
@@ -49,24 +57,43 @@ public class Drone : OSCControllable {
     Vector3 lastPosition;
     bool lastLowBattery;
 
+    bool lastHeadlight;
+    LightMode lastLightMode;
+    Color lastColor;
 
+    public float yaw;
+    float lastYaw;
+
+    public IDroneLocker locker;
+
+    public bool isOver;
+
+    
 
     void Start () {
+        locker = null;
         lastState = DroneState.Disconnected;
-        
+
+        lastHeadlight = headLight;
+        lastLightMode = lightMode;
+        lastColor = color;
 	}
-	
-	void Update () {
+
+    void Update () {
 
         if(lastState != state)
         {
             if (state == DroneState.Ready && (lastState == DroneState.Stabilizing ||lastState == DroneState.Disconnected))
             {
+                color = Color.black;
+
                 lastState = state;
                 transform.position = new Vector3(realPosition.x, 0, realPosition.z);
                 homePosition = transform.position;
             }
+
             lastState = state;
+            if (stateUpdate != null) stateUpdate(this);
         }
 
         if (state == DroneState.Ready)
@@ -87,6 +114,51 @@ public class Drone : OSCControllable {
             lastLowBattery = lowBattery;
             if (lowBattery) goHome();
         }
+
+        if(headLight != lastHeadlight)
+        {
+            lastHeadlight = headLight;
+            OSCMessage m = getDroneMessage("headlight");
+            m.Append(headLight?1:0);
+            MoucheManager.sendMessage(m);
+        }
+
+        if(lightMode != lastLightMode)
+        {
+            lastLightMode = lightMode;
+            OSCMessage m = getDroneMessage("lightMode");
+            m.Append((int)lightMode);
+            MoucheManager.sendMessage(m);
+        }
+
+        if (color != lastColor)
+        {
+            lastColor = color;
+            OSCMessage m = getDroneMessage("lightColor");
+            m.Append(color.r);
+            m.Append(color.g);
+            m.Append(color.b);
+            MoucheManager.sendMessage(m);
+        }
+
+
+        //Yaw handling
+        Vector3 lookAtDrone = DroneLookAt.instance.transform.position;
+        transform.LookAt(new Vector3(lookAtDrone.x, transform.position.y, lookAtDrone.z)); //Adjust y to not have pitch/roll changes
+        transform.Rotate(0, -90, 0);
+
+        yaw = (-(transform.rotation.eulerAngles.y%360) + 360) % 360;
+        if(lastYaw != yaw)
+        {
+            lastYaw = yaw;
+            OSCMessage m = getDroneMessage("yaw");
+            m.Append(yaw);
+            MoucheManager.sendMessage(m);
+        }
+
+
+        GetComponent<SphereCollider>().radius = DroneManager.instance.selectionRadius;
+        if (!testMode) GetComponent<SphereCollider>().center = Vector3.Lerp(Vector3.zero, transform.InverseTransformPoint(realPosition), .2f);
 	}
 
     public void setName(string n)
@@ -97,7 +169,6 @@ public class Drone : OSCControllable {
 
         MoucheManager.sendMessage(getDroneMessage("setup"));
     }
-
    
     public void OnSceneGUI()
     {
@@ -114,8 +185,6 @@ public class Drone : OSCControllable {
         stop();
     }
 
-
-
     public void launch()
     {
         moveToPosition(realPosition + Vector3.up,2);
@@ -123,28 +192,60 @@ public class Drone : OSCControllable {
 
     public void goHome()
     {
-        moveToPosition(homePosition, 3, true);
+        if (isLocked()) locker.releaseDrone(this);
+        List<KeyValuePair<Vector3, float>> pList = new List<KeyValuePair<Vector3, float>>();
+        pList.Add(new KeyValuePair<Vector3, float>(homePosition + Vector3.up * .5f,3));
+        pList.Add(new KeyValuePair<Vector3, float>(homePosition,2));
+        moveToPositions(pList, true);
     }
 
     public void stop()
     {
+        if (isLocked()) locker.releaseDrone(this);
         moveToPosition(new Vector3(realPosition.x, 0, realPosition.z), 3,true);
     }
 
-    
+    public void resyncPosition()
+    {
+        transform.position = new Vector3(realPosition.x, 0, realPosition.z);
+    }
+
+    public void colorTo(Color target,float time)
+    {
+        if (target == color) return;
+        DOTween.Kill(this);
+        DOTween.To(() => color, x => color = x, target, time);
+    }
+
     public void moveToPosition(Vector3 pos, float time = 0)
     {
         moveToPosition(pos, time, false);
     }
 
+    public void moveToPositions(List<KeyValuePair<Vector3,float>> posAndTimes)
+    {
+        moveToPositions(posAndTimes, false);
+    }
+
     void moveToPosition(Vector3 pos, float time, bool ignoreLowBattery)
     {
-        if (!testMode && (lowBattery && !ignoreLowBattery)) return;
+        if (!canFly(!ignoreLowBattery)) return;
         transform.DOKill();
         transform.DOMove(pos, time).SetEase(Ease.InOutSine);
     }
 
-
+    void moveToPositions(List<KeyValuePair<Vector3, float>> posAndTimes, bool ignoreLowBattery)
+    {
+        if (!canFly(!ignoreLowBattery)) return;
+        transform.DOKill();
+        float curDelay = 0;
+        for(int i=0;i<posAndTimes.Count;i++)
+        {
+            transform.DOMove(posAndTimes[i].Key, posAndTimes[i].Value).SetEase(Ease.InOutSine).SetDelay(curDelay);
+            curDelay += posAndTimes[i].Value;
+        }
+    }
+    
 
     public void resetKalman()
     {
@@ -167,14 +268,31 @@ public class Drone : OSCControllable {
         if (isCharging) return false;
         if (!testMode && state != DroneState.Ready) return false;
         if (includeLowBatteryInCheck && lowBattery) return false;
+
         return true;
     }
 
     public bool isFlying()
     {
+        if (transform == null) return false;
         return transform.position.y > 0;
     }
 
+    //Locking
+    public bool setLocker(IDroneLocker _locker)
+    {
+        if (locker == _locker) return true;
+        if (isLocked()) return false;
+        locker = _locker;
+        return true;
+    }
+
+
+    public bool isLocked() {
+        return locker != null;
+    }
+
+    //Helpers
 
     OSCMessage getDroneMessage(string addressRest)
     {
@@ -196,26 +314,34 @@ public class Drone : OSCControllable {
        
     }
 
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
+        float radius = DroneManager.instance.selectionRadius;
         Color c = getColorForCurrentState();
 
         GUIStyle style = new GUIStyle();
-        style.normal.textColor = c;
+        style.normal.textColor = headLight?Color.white:c;
         style.alignment = TextAnchor.MiddleCenter;
         
-        Vector3 position = transform.position + Vector3.up * .08f;
+        Vector3 position = transform.position + Vector3.up * (radius + .2f);
 
         
         Handles.Label(position, droneName, style);
 
         Gizmos.color = c;
-        Gizmos.DrawWireSphere(transform.position,DroneManager.instance.selectionRadius);
-
+        Gizmos.DrawWireSphere(transform.position, radius);
+        
         Gizmos.color = new Color(1, 1, 1, .4f);
         Handles.DrawLine(transform.position, realPosition);
         Gizmos.DrawWireSphere(realPosition, .1f);
+
+        Gizmos.color = color;
+        Gizmos.DrawCube(transform.position+Vector3.down* radius, new Vector3(radius,.1f, radius));
+
+        Gizmos.color = Color.gray;
+        Gizmos.DrawLine(transform.position, transform.TransformPoint(Vector3.right));
     }
 
 #endif
