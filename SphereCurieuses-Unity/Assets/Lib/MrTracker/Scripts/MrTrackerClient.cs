@@ -169,7 +169,11 @@ public class MrTrackerClient : MonoBehaviour
                     break;
 
                 case ROTATION_PACKET_ID:
-                    t.rotation = Quaternion.Euler(BitConverter.ToSingle(data, curIndex + 2), BitConverter.ToSingle(data, curIndex + 6)+offsetYaw, BitConverter.ToSingle(data, curIndex + 10));
+                    float x = BitConverter.ToSingle(data, curIndex + 2);
+                    float y = BitConverter.ToSingle(data, curIndex + 6) + offsetYaw;
+                    float z = BitConverter.ToSingle(data, curIndex + 10);
+                    if (float.IsNaN(x) || float.IsInfinity(x) || float.IsNaN(y) || float.IsInfinity(y) || float.IsNaN(z) || float.IsInfinity(z)) break;
+                    t.rotation = Quaternion.Euler(x, y, z);
                     break;
 
                 case CENTROID_PACKET_ID:

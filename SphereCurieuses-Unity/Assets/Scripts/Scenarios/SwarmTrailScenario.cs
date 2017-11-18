@@ -23,6 +23,7 @@ public class SwarmTrailScenario : SwarmScenario
     public Color selectedColor;
     public Color movingColor;
     public Color trailColor;
+    public Color trailHeadColor;
     public Color loopingRecordingColor;
     public Color loopingColor;
 
@@ -39,6 +40,7 @@ public class SwarmTrailScenario : SwarmScenario
     Dictionary<DroneController,List<Drone>> droneSelection;
     Dictionary<DroneController, Dictionary<Drone, Vector3>> droneManipulationOffsets; //Rigid constraint when manipulating drones
     Dictionary<DroneController, bool> isMovingDrones;
+    Dictionary<DroneController, bool> isRecordingDroneLoop;
     Dictionary<DroneController,Trail> trails;
     Dictionary<DroneController, List<float>> trailsDronesDistances;
 
@@ -58,6 +60,7 @@ public class SwarmTrailScenario : SwarmScenario
         droneSelection = new Dictionary<DroneController, List<Drone>>();
         droneManipulationOffsets = new Dictionary<DroneController, Dictionary<Drone, Vector3>>();
         isMovingDrones = new Dictionary<DroneController, bool>();
+        isRecordingDroneLoop = new Dictionary<DroneController, bool>();
         trails = new Dictionary<DroneController, Trail>();
         trailsDronesDistances = new Dictionary<DroneController, List<float>>();
 
@@ -67,6 +70,7 @@ public class SwarmTrailScenario : SwarmScenario
             droneSelection.Add(dc,new List<Drone>());
             droneManipulationOffsets.Add(dc, new Dictionary<Drone, Vector3>());
             isMovingDrones.Add(dc, false);
+            isRecordingDroneLoop.Add(dc, false);
             trails.Add(dc, null);
             trailsDronesDistances.Add(dc, new List<float>());
         }
@@ -84,6 +88,8 @@ public class SwarmTrailScenario : SwarmScenario
         {
             DroneController dc = ds.Key;
             if (dc == null) return;
+
+            if (!isMovingDrones.ContainsKey(dc)) isMovingDrones.Add(dc, false);
             if(isMovingDrones[dc])
             {
                 List<Drone> drones = ds.Value;
@@ -105,12 +111,12 @@ public class SwarmTrailScenario : SwarmScenario
                     headDrone.moveToPosition(target);
                     trail.samples.Add(target);
 
-                    Debug.Log("Distances count : " +trailsDronesDistances[dc].Count);
+                    //Debug.Log("Distances count : " +trailsDronesDistances[dc].Count);
                     for (int i = 0; i < drones.Count -1; i++)
                     {
                         float targetDist = autoDistance ? trailsDronesDistances[dc][i] : trailDroneDistance * (drones.Count-(i+1));
                         Vector3 targetPos = trail.getPosAtDistanceFromEnd(targetDist);
-                        Debug.Log("Drone move with dist " + drones[i].droneName + " : " + targetDist);
+                        //Debug.Log("Drone move with dist " + drones[i].droneName + " : " + targetDist);
                         drones[i].moveToPosition(targetPos,0);
                     }
                 }
@@ -131,7 +137,7 @@ public class SwarmTrailScenario : SwarmScenario
     {
         clearLoops();
         clearSelection();
-        isMovingDrones.Clear();
+        //foreach (DroneController dc in controllers) setMovingDrones(dc, false);
     }
 
 
@@ -149,7 +155,9 @@ public class SwarmTrailScenario : SwarmScenario
                 break;
 
             case CLEAR:
+                //setMovingDrones(dc, false);
                 clearLoops();
+                clearSelection();
                 break;
         }
     }
@@ -159,16 +167,15 @@ public class SwarmTrailScenario : SwarmScenario
         switch (buttonID)
         {
             case CLEAR: // Moving
-
-                isMovingDrones.Clear();
-                clearSelection();
+                //foreach (DroneController dc in controllers) setMovingDrones(dc, false);
                 clearLoops();
-
+                clearSelection();
+                
                 List<Drone> drones = SwarmMaster.instance.getAvailableDrones(true, true);
                 foreach (Drone d in drones)
                 {
-                    updateDroneLight(d);
-                    d.goHome();
+                    //updateColorForDrone(d);
+                    d.stop();
                 }
                 break;
         }
@@ -188,9 +195,11 @@ public class SwarmTrailScenario : SwarmScenario
                     case SelectionMode.Touch:
                         if (value) selectOverDrone(dc);
                         break;
+
                     case SelectionMode.Paint:
                         if (value)
                         {
+                            Debug.Log("Selection Touch paint, clearSelection");
                             clearSelection(dc);
                         }
                         break;
@@ -200,37 +209,43 @@ public class SwarmTrailScenario : SwarmScenario
            
 
             case LOOP: //Loop 
-                if (value)
+                
+                if(value)
                 {
-                    if (isMovingDrones[dc])
+                    if (!isRecordingDroneLoop[dc])
                     {
-                        foreach (var d in droneSelection[dc])
+                        if (isMovingDrones[dc])
                         {
-                            if (loops.ContainsKey(d)) Destroy(loops[d]);
+                            isRecordingDroneLoop[dc] = true;
+                            foreach (var d in droneSelection[dc])
+                            {
+                                if (loops.ContainsKey(d)) Destroy(loops[d]);
 
-                            DroneLoop l = gameObject.AddComponent<DroneLoop>();
-                            l.setup(d);
-                            loops.Add(d, l);
-                            l.startRecord();
-                            updateDroneLight(d);
+                                DroneLoop l = gameObject.AddComponent<DroneLoop>();
+                                l.setup(d);
+                                loops.Add(d, l);
+                                l.startRecord();
+                                updateColorForDrone(d);
+                            }
                         }
                     }
-                }
-                else
-                {
-                    setMovingDrones(dc, false);
-                    if (droneSelection.ContainsKey(dc))
+                    else
                     {
-                        foreach (var d in droneSelection[dc])
+                        isRecordingDroneLoop[dc] = false;
+                        //setMovingDrones(dc, false);
+                        if (droneSelection.ContainsKey(dc))
                         {
-                            loops[d].stopRecord();
-                            loops[d].play();
-                            updateDroneLight(d);
+                            foreach (var d in droneSelection[dc])
+                            {
+                                loops[d].stopRecord();
+                                loops[d].play();
+                                //updateColorForDrone(d);
+                            }
                         }
+
+                        clearSelection();
                     }
                     
-                    clearSelection();
-                   
                 }
                 break;
 
@@ -240,39 +255,15 @@ public class SwarmTrailScenario : SwarmScenario
 
     public override void overDroneUpdate(DroneController dc, Drone d)
     {
-
-        if (d.isOver && d.canFly(true))
+        Debug.Log("Over Drone Update ! " +dc.id);
+        if (d.isOver)
         {
             MrTrackerClient.instance.sendVibrate(dc.id, .5f, .03f);
         }
         
-        updateDroneLight(d);
         updateColorForDrone(d);
     }
 
-    private void updateDroneLight(Drone d)
-    {
-        bool result = false;
-        if (d.isOver)
-        {
-           result = true;
-        }
-        else
-        {
-            /*
-            foreach (var ds in droneSelection)
-            {
-                if (ds.Value.Contains(d))
-                {
-                    result = true;
-                    break;
-                }
-            }
-            */
-        }
-
-        d.headLight = result;
-    }
 
     //SELECTION
     void clearSelection()
@@ -287,19 +278,34 @@ public class SwarmTrailScenario : SwarmScenario
 
     void clearSelection(DroneController dc)
     {
+        Debug.Log("Clear Selection for controller : " + dc.name);
         setMovingDrones(dc, false);
-        foreach (var d in droneSelection[dc])
+
+        Drone[] drones = droneSelection[dc].ToArray(); //Keep a list before clearing the selection, then update the color
+        droneSelection[dc].Clear();
+
+        Debug.Log("Deselected " + drones.Length + " drones");
+        foreach (var d in drones)
         {
-            d.headLight = false;
+            
             updateColorForDrone(d);
         }
-        droneSelection[dc].Clear();
     }
 
     void clearLoops()
     {
-        if (loops != null) foreach (var dl in loops) Destroy(dl.Value);
+        List<Drone> drones = new List<Drone>();
+        if (loops != null)
+        {
+            foreach (var dl in loops)
+            {
+                drones.Add(dl.Key);
+                Destroy(dl.Value);
+                
+            }
+        }
         loops.Clear();
+        foreach (Drone d in drones) updateColorForDrone(d);
     }
 
     void clearMovingDrones()
@@ -328,7 +334,10 @@ public class SwarmTrailScenario : SwarmScenario
 
     void setMovingDrones(DroneController dc, bool value, bool trailMode = false)
     {
-        if (isMovingDrones[dc] == value) return;
+        if (!isMovingDrones.ContainsKey(dc)) isMovingDrones.Add(dc, false);
+        if(isMovingDrones[dc] == value) return;
+        isRecordingDroneLoop[dc] = false;
+        trails[dc] = null;
 
         if (droneSelection[dc].Count == 0)
         {
@@ -369,7 +378,7 @@ public class SwarmTrailScenario : SwarmScenario
         trails[dc] = new Trail();
         List<Drone> drones = droneSelection[dc];
         Drone headDrone = drones[drones.Count - 1];
-        Debug.Log("Setup trail " + drones.Count);
+        trails[dc].headDrone = headDrone;
         float[] distances = new float[drones.Count];
         
 
@@ -390,7 +399,8 @@ public class SwarmTrailScenario : SwarmScenario
                 curDist += Mathf.Max(dist, minAutoDroneDistance);
                 distances[i] = curDist;
             }
-            Debug.Log("Dist for drone " + drones[i].droneName + " = " + curDist);
+
+            updateColorForDrone(drones[i]);
         }
 
         trailsDronesDistances[dc] = new List<float>(distances);
@@ -428,7 +438,7 @@ public class SwarmTrailScenario : SwarmScenario
             {
                 if (isMovingDrones[ds.Key])
                 {
-                    if (trails[ds.Key] != null) c = trailColor;
+                    if (trails[ds.Key] != null) c = trails[ds.Key].headDrone == d?trailHeadColor:trailColor;
                     else c = movingColor;
                 }
                 else
@@ -444,13 +454,16 @@ public class SwarmTrailScenario : SwarmScenario
         {
             if(l.Key == d)
             {
+                mode = idleLightMode;
                 if (l.Value.isRecording) c = loopingRecordingColor;
                 else c = loopingColor;
                 break;
             }
         }
 
-        Debug.Log("update color for drone : " + c);
+        
+        d.headLight = d.isOver;
+        d.lightMode = mode;
         d.colorTo(c, .1f);
     }
 }

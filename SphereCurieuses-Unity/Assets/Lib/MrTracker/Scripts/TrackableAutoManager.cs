@@ -112,7 +112,7 @@ public class TrackableAutoManager : MonoBehaviour
         //Debug.Log("****** Get for id " + id);
         foreach (TrackableObject to in trackableObjects)
         {
-            if (to.trackableID == id) return to;
+            if (to.trackableID == id || to.trackableID == -1) return to; //-1 is "Free trackable"
         }
 
         //Debug.Log("Not found for id " + id);

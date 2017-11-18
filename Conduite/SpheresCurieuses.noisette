@@ -204,7 +204,7 @@
               "removable": true
             },
             {
-              "value": 3,
+              "value": 127,
               "controlMode": 0,
               "minValue": 0,
               "maxValue": 127,
@@ -353,7 +353,7 @@
         "uid": "8edfe8fa3afa4581838eab6e6fcdb056",
         "parameters": [
           {
-            "value": true,
+            "value": false,
             "controlMode": 0,
             "controlAddress": "/enabled"
           },
@@ -400,7 +400,7 @@
           },
           {
             "value": [
-              "DSKR IN",
+              "",
               ""
             ],
             "controlMode": 0,
@@ -1655,7 +1655,7 @@
                             "controlAddress": "/upDown_0=Up,1=Side,2=Down_"
                           },
                           {
-                            "value": 0,
+                            "value": false,
                             "controlMode": 0,
                             "controlAddress": "/touched"
                           }
@@ -1820,7 +1820,7 @@
                             "controlAddress": "/upDown_0=Up,1=Side,2=Down_"
                           },
                           {
-                            "value": false,
+                            "value": 0,
                             "controlMode": 0,
                             "controlAddress": "/touched"
                           }
@@ -5275,7 +5275,7 @@
                             "controlAddress": "/side_0=Left,1=Right_"
                           },
                           {
-                            "value": 3,
+                            "value": 127,
                             "controlMode": 0,
                             "controlAddress": "/value"
                           }
@@ -5504,7 +5504,7 @@
                             "controlAddress": "/upDown_0=Up,1=Side,2=Down_"
                           },
                           {
-                            "value": 0,
+                            "value": false,
                             "controlMode": 0,
                             "controlAddress": "/touched"
                           }

@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1a7ee73bce94c499e575c3e89ab0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackableID: 1
+  trackableID: -1
   menuBT: 0
   sideBT: 0
   triggerTouch: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1a7ee73bce94c499e575c3e89ab0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackableID: 3
+  trackableID: -1
   menuBT: 0
   sideBT: 0
   triggerTouch: 0

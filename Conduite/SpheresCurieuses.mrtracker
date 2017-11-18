@@ -1,0 +1,103 @@
+{
+  "metaData": {
+    "version": "1.0.0",
+    "versionNumber": 65536
+  },
+  "presetManager": {
+    "presets": null
+  },
+  "sources": {
+    "uid": "4dec0705acd842b4bded78f1339bde07",
+    "parameters": null,
+    "items": [
+      {
+        "uid": "c9f90ed49a7049f383eef53b50800972",
+        "parameters": [
+          {
+            "value": true,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "Vive",
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlAddress": "/logIncoming"
+          },
+          {
+            "value": [
+              0,
+              0,
+              0
+            ],
+            "controlAddress": "/origin"
+          },
+          {
+            "value": [
+              20,
+              20,
+              20
+            ],
+            "controlAddress": "/scale"
+          },
+          {
+            "value": [
+              0,
+              0,
+              0
+            ],
+            "controlAddress": "/rotation"
+          },
+          {
+            "value": true,
+            "controlAddress": "/defaultAlternateOrientation"
+          }
+        ],
+        "niceName": "Vive",
+        "type": "Vive"
+      }
+    ]
+  },
+  "outputs": {
+    "uid": "9f5c313784c448a8bb982634438a74a1",
+    "parameters": null,
+    "items": [
+      {
+        "uid": "c8f6e7bf32144523b7c616d99719555c",
+        "parameters": [
+          {
+            "value": true,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "Standard",
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlAddress": "/logOutgoing"
+          },
+          {
+            "value": true,
+            "controlAddress": "/local"
+          },
+          {
+            "value": "127.0.0.1",
+            "controlAddress": "/remoteHost"
+          },
+          {
+            "value": 9000,
+            "controlAddress": "/remotePort"
+          },
+          {
+            "value": 11500,
+            "controlAddress": "/localPort"
+          }
+        ],
+        "niceName": "Standard",
+        "type": "Standard"
+      }
+    ]
+  }
+}

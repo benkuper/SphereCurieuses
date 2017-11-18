@@ -104,7 +104,7 @@ public class Drone : OSCControllable {
                 lastPosition = transform.position;
             }
         }
-        else if(state == DroneState.Stabilizing)
+        else if(state == DroneState.Stabilizing || state == DroneState.Connecting)
         {
             transform.position = new Vector3(realPosition.x, 0, realPosition.z);
         }
@@ -158,7 +158,7 @@ public class Drone : OSCControllable {
 
 
         GetComponent<SphereCollider>().radius = DroneManager.instance.selectionRadius;
-        if (!testMode) GetComponent<SphereCollider>().center = Vector3.Lerp(Vector3.zero, transform.InverseTransformPoint(realPosition), .2f);
+        if (!testMode) GetComponent<SphereCollider>().center = Vector3.Lerp(Vector3.zero, transform.InverseTransformPoint(realPosition), .4f);
 	}
 
     public void setName(string n)
@@ -193,6 +193,7 @@ public class Drone : OSCControllable {
     public void goHome()
     {
         if (isLocked()) locker.releaseDrone(this);
+        if (transform.position.y <= 0) return;
         List<KeyValuePair<Vector3, float>> pList = new List<KeyValuePair<Vector3, float>>();
         pList.Add(new KeyValuePair<Vector3, float>(homePosition + Vector3.up * .5f,3));
         pList.Add(new KeyValuePair<Vector3, float>(homePosition,2));
@@ -202,6 +203,7 @@ public class Drone : OSCControllable {
     public void stop()
     {
         if (isLocked()) locker.releaseDrone(this);
+        if (transform.position.y <= 0) return;
         moveToPosition(new Vector3(realPosition.x, 0, realPosition.z), 3,true);
     }
 
@@ -213,8 +215,9 @@ public class Drone : OSCControllable {
     public void colorTo(Color target,float time)
     {
         if (target == color) return;
-        DOTween.Kill(this);
-        DOTween.To(() => color, x => color = x, target, time);
+        DOTween.Kill(droneName+"-color",false);
+        if (time == 0) color = target;
+        else DOTween.To(() => color, x => color = x, target, time).SetId(droneName+"-color");
     }
 
     public void moveToPosition(Vector3 pos, float time = 0)

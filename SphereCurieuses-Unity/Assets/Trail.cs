@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Trail
 {
     public List<Vector3> samples;
+    public Drone headDrone;
     
     public Trail()
     {

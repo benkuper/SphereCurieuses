@@ -15,13 +15,18 @@ public class SCController : ViveControllerObject {
 	// Use this for initialization
 	void Start () {
         dc = GetComponent<DroneController>();
-        dc.id = trackableID;
 
         SpecktrOSC.buttonUpdate += specktrButtonUpdate;
         touchStates = new SpecktrOSC.ButtonState[8];
         for (int i = 0; i < touchStates.Length; i++) touchStates[i] = SpecktrOSC.ButtonState.Off;
 	}
 
+    public override void Update()
+    {
+        base.Update();
+        dc.id = trackableID;
+        //disableViveButtons = specktrHand == SpecktrOSC.Hand.Left;
+    }
 
     // Events
     private void specktrButtonUpdate(SpecktrOSC.Hand hand, int buttonID, SpecktrOSC.ButtonState buttonState)
@@ -47,7 +52,26 @@ public class SCController : ViveControllerObject {
 
     public override void buttonPressInternal(int buttonID, bool value)
     {
-        if (disableViveButtons) return;
+        if (disableViveButtons)
+        {
+            switch (buttonID)
+            {
+                case MENU_BT:
+                    CalibrateAutoVive[] cav = FindObjectsOfType<CalibrateAutoVive>();
+                    if (cav.Length > 0) cav[0].trackable = transform;
+                    cav[0].calibrate();
+                    cav[0].saveConfig();
+                    break;
+
+                case SIDE_BT:
+                    SCController[] controllers = FindObjectsOfType<SCController>();
+                    foreach (SCController c in controllers) c.specktrHand = c == this ? SpecktrOSC.Hand.Right : SpecktrOSC.Hand.Left;
+                    break;
+                    
+            }
+
+            return;
+        }
 
         switch(buttonID)
         {

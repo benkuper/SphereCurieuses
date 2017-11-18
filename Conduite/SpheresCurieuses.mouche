@@ -1,0 +1,1737 @@
+{
+  "metaData": {
+    "version": "1.0.0",
+    "versionNumber": 65536
+  },
+  "presetManager": {
+    "presets": null
+  },
+  "dashboardManager": {
+    "uid": "f7e2c7fcfa50407c89d12c4af665f54e",
+    "parameters": null,
+    "items": null
+  },
+  "droneManager": {
+    "uid": "6156a257748d46f4a6865caccacaaf2f",
+    "parameters": null,
+    "items": [
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "A1 (Anaelle)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 100,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7A1",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              0.011764706112444400787,
+              0.011764706112444400787,
+              0.011764706112444400787,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "A1 (Anaelle)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "A2 (Anisette)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 100,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7A2",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              0.011764706112444400787,
+              0.011764706112444400787,
+              0.011764706112444400787,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "A2 (Anisette)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "A3 (Articule)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 100,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7A3",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              0.011764706112444400787,
+              0.011764706112444400787,
+              0.011764706112444400787,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "A3 (Articule)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "B1 (Balayette)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 1,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 110,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7B1",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              0.011764706112444400787,
+              0.011764706112444400787,
+              0.011764706112444400787,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "B1 (Balayette)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "B2 (Bidule)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 1,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 110,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7B2",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              0.011764706112444400787,
+              0.011764706112444400787,
+              0.011764706112444400787,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "B2 (Bidule)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "B3 (Bouclette)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 1,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 110,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7B3",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              0.011764706112444400787,
+              0.011764706112444400787,
+              0.011764706112444400787,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "B3 (Bouclette)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "C1 (Chopinette)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 2,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 120,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7C1",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "C1 (Chopinette)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "C2 (Claquette)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 2,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 120,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7C2",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              0.011764706112444400787,
+              0.011764706112444400787,
+              0.011764706112444400787,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "C2 (Claquette)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "C3 (Clavicule)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 2,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 120,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7C3",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              0.011764706112444400787,
+              0.011764706112444400787,
+              0.011764706112444400787,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "C3 (Clavicule)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "D1 (Dardielle)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 3,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 10,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7D1",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              0.011764706112444400787,
+              0.011764706112444400787,
+              0.011764706112444400787,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "D1 (Dardielle)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "D2 (Darwin)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 3,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 10,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7D2",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "D2 (Darwin)",
+        "type": "Drone"
+      },
+      {
+        "uid": "c6760ce3d12f4530a2639c32f31e8d6a",
+        "parameters": [
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "D3 (Denis)",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 3,
+            "controlMode": 0,
+            "controlAddress": "/radio"
+          },
+          {
+            "value": 10,
+            "controlMode": 0,
+            "controlAddress": "/channel"
+          },
+          {
+            "value": "2M",
+            "controlMode": 0,
+            "controlAddress": "/baudrate"
+          },
+          {
+            "value": "E7E7E7E7D3",
+            "controlMode": 0,
+            "controlAddress": "/address"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/absoluteMode"
+          },
+          {
+            "value": [
+              0.011764706112444400787,
+              0.011764706112444400787,
+              0.011764706112444400787,
+              1
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lightColor"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/headlight"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/autoReconnect"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogConsole"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/enableLogParams"
+          }
+        ],
+        "niceName": "D3 (Denis)",
+        "type": "Drone"
+      }
+    ]
+  },
+  "controllerManager": {
+    "uid": "3b6ab0cf01644c119d76e1a357ec33e6",
+    "parameters": null,
+    "items": [
+      {
+        "uid": "876decdddc1f439d8648dc782ad6abd0",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "Unity",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/logIncoming"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/logOutgoing"
+          },
+          {
+            "value": 13000,
+            "controlMode": 0,
+            "controlAddress": "/localPort"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/local"
+          },
+          {
+            "value": "127.0.0.1",
+            "controlMode": 0,
+            "controlAddress": "/remoteHost"
+          },
+          {
+            "value": 13001,
+            "controlMode": 0,
+            "controlAddress": "/remotePort"
+          }
+        ],
+        "niceName": "Unity",
+        "type": "OSC"
+      }
+    ]
+  },
+  "nodeManager": {
+    "uid": "aff3ab11e42644f596287e53585851f4",
+    "parameters": null,
+    "items": [
+      {
+        "uid": "2500b7ed99744545b8a53c51add861b4",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "node 0",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/nodeid"
+          },
+          {
+            "value": [
+              0,
+              0.15000000596046447754,
+              5
+            ],
+            "controlMode": 0,
+            "controlAddress": "/position"
+          }
+        ],
+        "niceName": "node 0",
+        "type": "Node"
+      },
+      {
+        "uid": "3e0e75b4c41a42b69bb76662b6aa9d0f",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "node 1",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 1,
+            "controlMode": 0,
+            "controlAddress": "/nodeid"
+          },
+          {
+            "value": [
+              7.9000000953674316406,
+              5.1300001144409179688,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/position"
+          }
+        ],
+        "niceName": "node 1",
+        "type": "Node"
+      },
+      {
+        "uid": "3e0e75b4c41a42b69bb76662b6aa9d0f",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "node 2",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 2,
+            "controlMode": 0,
+            "controlAddress": "/nodeid"
+          },
+          {
+            "value": [
+              0,
+              0.15000000596046447754,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/position"
+          }
+        ],
+        "niceName": "node 2",
+        "type": "Node"
+      },
+      {
+        "uid": "3e0e75b4c41a42b69bb76662b6aa9d0f",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "node 3",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 3,
+            "controlMode": 0,
+            "controlAddress": "/nodeid"
+          },
+          {
+            "value": [
+              7.8499999046325683594,
+              5.1300001144409179688,
+              5
+            ],
+            "controlMode": 0,
+            "controlAddress": "/position"
+          }
+        ],
+        "niceName": "node 3",
+        "type": "Node"
+      },
+      {
+        "uid": "3e0e75b4c41a42b69bb76662b6aa9d0f",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "node 4",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 4,
+            "controlMode": 0,
+            "controlAddress": "/nodeid"
+          },
+          {
+            "value": [
+              7.8499999046325683594,
+              0.15000000596046447754,
+              5
+            ],
+            "controlMode": 0,
+            "controlAddress": "/position"
+          }
+        ],
+        "niceName": "node 4",
+        "type": "Node"
+      },
+      {
+        "uid": "3e0e75b4c41a42b69bb76662b6aa9d0f",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "node 5",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 5,
+            "controlMode": 0,
+            "controlAddress": "/nodeid"
+          },
+          {
+            "value": [
+              0,
+              5.1300001144409179688,
+              5
+            ],
+            "controlMode": 0,
+            "controlAddress": "/position"
+          }
+        ],
+        "niceName": "node 5",
+        "type": "Node"
+      },
+      {
+        "uid": "3e0e75b4c41a42b69bb76662b6aa9d0f",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "node 6",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 6,
+            "controlMode": 0,
+            "controlAddress": "/nodeid"
+          },
+          {
+            "value": [
+              7.9000000953674316406,
+              0.15000000596046447754,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/position"
+          }
+        ],
+        "niceName": "node 6",
+        "type": "Node"
+      },
+      {
+        "uid": "3e0e75b4c41a42b69bb76662b6aa9d0f",
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": "node 7",
+            "controlMode": 0,
+            "controlAddress": "/name"
+          },
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/miniMode"
+          },
+          {
+            "value": 0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": [
+              0,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              200,
+              200
+            ],
+            "controlMode": 0,
+            "controlAddress": "/size"
+          },
+          {
+            "value": 7,
+            "controlMode": 0,
+            "controlAddress": "/nodeid"
+          },
+          {
+            "value": [
+              0,
+              5.1300001144409179688,
+              0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/position"
+          }
+        ],
+        "niceName": "node 7",
+        "type": "Node"
+      }
+    ]
+  }
+}

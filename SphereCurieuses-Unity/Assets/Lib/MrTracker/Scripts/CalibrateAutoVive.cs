@@ -30,6 +30,12 @@ public class CalibrateAutoVive : OSCControllable {
     [OSCMethod("calibrate")]
     public void calibrate()
     {
+        if(trackable == null)
+        {
+            Debug.LogWarning("Trackable null, not calibrating");
+            return;
+        }
+
         transform.position = Vector3.up * transform.position.y;
         transform.rotation = Quaternion.identity;
 
