@@ -12,5 +12,8 @@ public class DroneManagerEditor : Editor {
         base.DrawDefaultInspector();
 
         if (GUILayout.Button("Reset All Kalman")) ((DroneManager)target).resetAllKalman();
+        if (GUILayout.Button("Launch All")) ((DroneManager)target).launchAll();
+        if (GUILayout.Button("Launch Differed")) ((DroneManager)target).launchAll();
+        if (GUILayout.Button("Stop All")) ((DroneManager)target).stopAll();
     }
 }

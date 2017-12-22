@@ -26,6 +26,8 @@ public class Drone : OSCControllable {
 
     [OSCProperty("state")]
     public DroneState state;
+
+
     [OSCProperty("realPosition")]
     public Vector3 realPosition;
 
@@ -49,6 +51,9 @@ public class Drone : OSCControllable {
     [Header("Testing")]
     public bool testMode;
 
+    [Header("Selection")]
+    public float colliderRealPosLerp;
+
     //home position
     Vector3 homePosition;
 
@@ -68,7 +73,8 @@ public class Drone : OSCControllable {
 
     public bool isOver;
 
-    
+    //for transition between transition to ground lowBattery lock 
+    bool stoppingLowBattery;
 
     void Start () {
         locker = null;
@@ -86,11 +92,13 @@ public class Drone : OSCControllable {
             if (state == DroneState.Ready && (lastState == DroneState.Stabilizing ||lastState == DroneState.Disconnected))
             {
                 color = Color.black;
-
+                
                 lastState = state;
-                transform.position = new Vector3(realPosition.x, 0, realPosition.z);
-                homePosition = transform.position;
+                resyncPosition();
+                
             }
+
+            updateColliderEnable();
 
             lastState = state;
             if (stateUpdate != null) stateUpdate(this);
@@ -103,63 +111,86 @@ public class Drone : OSCControllable {
                 sendTargetPosition();
                 lastPosition = transform.position;
             }
+
+            if (transform.position.y <= 0) resyncPosition();
         }
         else if(state == DroneState.Stabilizing || state == DroneState.Connecting)
         {
-            transform.position = new Vector3(realPosition.x, 0, realPosition.z);
+            resyncPosition();
         }
 
-        if(lowBattery != lastLowBattery)
+
+        if(state == DroneState.Ready)
         {
-            lastLowBattery = lowBattery;
-            if (lowBattery) goHome();
+            if (lowBattery != lastLowBattery)
+            {
+                lastLowBattery = lowBattery;
+                if (lowBattery)
+                {
+                    stoppingLowBattery = true;
+
+                    stop();
+                }
+
+                updateColliderEnable();
+            }
+
+            if (lowBattery)
+            {
+                headLight = Time.time % 1.0f > .5f; //blink
+            }
+
+            if (headLight != lastHeadlight)
+            {
+                lastHeadlight = headLight;
+                OSCMessage m = getDroneMessage("headlight");
+                m.Append(headLight ? 1 : 0);
+                MoucheManager.sendMessage(m);
+            }
+
+            if (lightMode != lastLightMode)
+            {
+                lastLightMode = lightMode;
+                OSCMessage m = getDroneMessage("lightMode");
+                m.Append((int)lightMode);
+                MoucheManager.sendMessage(m);
+            }
+
+            if (color != lastColor)
+            {
+                lastColor = color;
+                OSCMessage m = getDroneMessage("lightColor");
+                m.Append(color.r);
+                m.Append(color.g);
+                m.Append(color.b);
+                MoucheManager.sendMessage(m);
+            }
+
+            //Yaw handling
+            Vector3 lookAtDrone = DroneLookAt.instance.transform.position;
+            transform.LookAt(new Vector3(lookAtDrone.x, transform.position.y, lookAtDrone.z)); //Adjust y to not have pitch/roll changes
+            transform.Rotate(0, -90, 0);
+
+            yaw = (-(transform.rotation.eulerAngles.y % 360) + 360) % 360;
+
+
+            if (lastYaw != yaw)
+            {
+                lastYaw = yaw;
+                OSCMessage m = getDroneMessage("yaw");
+                m.Append(yaw);
+                MoucheManager.sendMessage(m);
+            }
         }
-
-        if(headLight != lastHeadlight)
-        {
-            lastHeadlight = headLight;
-            OSCMessage m = getDroneMessage("headlight");
-            m.Append(headLight?1:0);
-            MoucheManager.sendMessage(m);
-        }
-
-        if(lightMode != lastLightMode)
-        {
-            lastLightMode = lightMode;
-            OSCMessage m = getDroneMessage("lightMode");
-            m.Append((int)lightMode);
-            MoucheManager.sendMessage(m);
-        }
-
-        if (color != lastColor)
-        {
-            lastColor = color;
-            OSCMessage m = getDroneMessage("lightColor");
-            m.Append(color.r);
-            m.Append(color.g);
-            m.Append(color.b);
-            MoucheManager.sendMessage(m);
-        }
-
-
-        //Yaw handling
-        Vector3 lookAtDrone = DroneLookAt.instance.transform.position;
-        transform.LookAt(new Vector3(lookAtDrone.x, transform.position.y, lookAtDrone.z)); //Adjust y to not have pitch/roll changes
-        transform.Rotate(0, -90, 0);
-
-        yaw = (-(transform.rotation.eulerAngles.y%360) + 360) % 360;
-        if(lastYaw != yaw)
-        {
-            lastYaw = yaw;
-            OSCMessage m = getDroneMessage("yaw");
-            m.Append(yaw);
-            MoucheManager.sendMessage(m);
-        }
-
-
+        
         GetComponent<SphereCollider>().radius = DroneManager.instance.selectionRadius;
-        if (!testMode) GetComponent<SphereCollider>().center = Vector3.Lerp(Vector3.zero, transform.InverseTransformPoint(realPosition), .4f);
+        if (!testMode) GetComponent<SphereCollider>().center = Vector3.Lerp(Vector3.zero, transform.InverseTransformPoint(realPosition), colliderRealPosLerp);
 	}
+
+    public void updateColliderEnable()
+    {
+        GetComponent<Collider>().enabled = (state == DroneState.Ready && !lowBattery);
+    }
 
     public void setName(string n)
     {
@@ -195,7 +226,7 @@ public class Drone : OSCControllable {
         if (isLocked()) locker.releaseDrone(this);
         if (transform.position.y <= 0) return;
         List<KeyValuePair<Vector3, float>> pList = new List<KeyValuePair<Vector3, float>>();
-        pList.Add(new KeyValuePair<Vector3, float>(homePosition + Vector3.up * .5f,3));
+        pList.Add(new KeyValuePair<Vector3, float>(homePosition + Vector3.up * .3f,3));
         pList.Add(new KeyValuePair<Vector3, float>(homePosition,2));
         moveToPositions(pList, true);
     }
@@ -204,12 +235,22 @@ public class Drone : OSCControllable {
     {
         if (isLocked()) locker.releaseDrone(this);
         if (transform.position.y <= 0) return;
-        moveToPosition(new Vector3(realPosition.x, 0, realPosition.z), 3,true);
+        List<KeyValuePair<Vector3, float>> pList = new List<KeyValuePair<Vector3, float>>();
+        pList.Add(new KeyValuePair<Vector3, float>(new Vector3(realPosition.x, .3f, realPosition.z), 3));
+        pList.Add(new KeyValuePair<Vector3, float>(new Vector3(realPosition.x, 0, realPosition.z), 2));
+        moveToPositions(pList, true);
+        Invoke("releaseStoppingLock", 5);
+    }
+    
+    public void releaseStoppingLock()
+    {
+        stoppingLowBattery = false;
     }
 
     public void resyncPosition()
     {
         transform.position = new Vector3(realPosition.x, 0, realPosition.z);
+        homePosition = transform.position;
     }
 
     public void colorTo(Color target,float time)
@@ -259,6 +300,8 @@ public class Drone : OSCControllable {
     public void sendTargetPosition()
     {
         if (!canFly(false)) return;
+        if (lowBattery && !stoppingLowBattery) return;
+
         OSCMessage m = getDroneMessage("target");
         m.Append(transform.position.x);
         m.Append(transform.position.y);

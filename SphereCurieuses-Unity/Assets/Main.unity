@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -123,6 +124,7 @@ GameObject:
   - component: {fileID: 67448824}
   - component: {fileID: 67448829}
   - component: {fileID: 67448828}
+  - component: {fileID: 67448830}
   - component: {fileID: 67448827}
   - component: {fileID: 67448826}
   m_Layer: 0
@@ -147,7 +149,8 @@ MonoBehaviour:
   scenarios:
   - {fileID: 67448829}
   - {fileID: 67448828}
-  - {fileID: 67448827}
+  - {fileID: 67448829}
+  - {fileID: 67448826}
   - {fileID: 67448826}
 --- !u!4 &67448825
 Transform:
@@ -197,9 +200,11 @@ MonoBehaviour:
   target: {fileID: 1376978558}
   showGizmo: 0
   positions:
-  - {x: -1.5, y: 0, z: 0}
+  - {x: -2, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 1.5, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
   drones: []
 --- !u!114 &67448828
 MonoBehaviour:
@@ -237,16 +242,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenarioName: Trail
-  isCurrent: 0
+  isCurrent: 1
   startTime: 0
   endTime: 0
   selectionMode: 1
-  idleGroundColor: {r: 0.011764706, g: 0.011764706, b: 0.011764706, a: 1}
-  idleFlyingColor: {r: 0.27205884, g: 0.27205884, b: 0.27205884, a: 1}
+  clearSelectionOnTouch: 0
+  idleGroundColor: {r: 0.08823532, g: 0.08823532, b: 0.08823532, a: 1}
+  idleFlyingColor: {r: 0.25735295, g: 0.25735295, b: 0.25735295, a: 1}
   selectedColor: {r: 0, g: 0.53676474, b: 0.20360044, a: 1}
   movingColor: {r: 0.6643001, g: 0, b: 0.7352941, a: 1}
-  trailColor: {r: 0.86764705, g: 0.8505757, b: 0.24881053, a: 1}
-  trailHeadColor: {r: 1, g: 1, b: 1, a: 1}
+  trailColor: {r: 0.5147059, g: 0.50437003, b: 0.1400303, a: 1}
+  trailHeadColor: {r: 0.5735294, g: 0.5735294, b: 0.5735294, a: 1}
   loopingRecordingColor: {r: 0.6985294, g: 0, b: 0, a: 1}
   loopingColor: {r: 1, g: 0.520791, b: 0.007352948, a: 1}
   idleLightMode: 7
@@ -254,6 +260,34 @@ MonoBehaviour:
   autoDistance: 1
   trailDroneDistance: 1
   minAutoDroneDistance: 0
+  zoomSpeed: 0.3
+--- !u!114 &67448830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67448823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca4de5833ea9dc46808ec760cde5c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenarioName: Cube
+  isCurrent: 0
+  startTime: 2
+  endTime: 0
+  target: {fileID: 1376978558}
+  showGizmo: 1
+  positions:
+  - {x: -0.5, y: -0.5, z: -0.5}
+  - {x: 0.5, y: -0.5, z: -0.5}
+  - {x: -0.5, y: -0.5, z: 0.5}
+  - {x: 0.5, y: -0.5, z: 0.5}
+  - {x: -0.5, y: 0.5, z: -0.5}
+  - {x: 0.5, y: 0.5, z: -0.5}
+  - {x: -0.5, y: 0.5, z: 0.5}
+  - {x: 0.5, y: 0.5, z: 0.5}
+  drones: []
 --- !u!1 &85097639
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +408,7 @@ GameObject:
   - component: {fileID: 204060424}
   - component: {fileID: 204060423}
   - component: {fileID: 204060422}
+  - component: {fileID: 204060426}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -426,6 +461,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -443,6 +479,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &204060426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 204060421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9931d3a6617c8cd469f96606c1d4b5b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeepSceneViewActive: 1
 --- !u!1001 &501453864
 Prefab:
   m_ObjectHideFlags: 0
@@ -482,20 +530,31 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114861342807078390, guid: 5c6d18f090c621d42ba0d700ba0aa5b5,
-        type: 2}
-      propertyPath: filter
-      value: 2
+    - target: {fileID: 4643363446455384, guid: 5c6d18f090c621d42ba0d700ba0aa5b5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.02
       objectReference: {fileID: 0}
-    - target: {fileID: 114950160661893714, guid: 5c6d18f090c621d42ba0d700ba0aa5b5,
+    - target: {fileID: 4643363446455384, guid: 5c6d18f090c621d42ba0d700ba0aa5b5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2.347
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750422844441852, guid: 5c6d18f090c621d42ba0d700ba0aa5b5,
         type: 2}
-      propertyPath: aimDirection.z
+      propertyPath: specktrHand
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114623489950036302, guid: 5c6d18f090c621d42ba0d700ba0aa5b5,
+        type: 2}
+      propertyPath: specktrHand
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114464273117153862, guid: 5c6d18f090c621d42ba0d700ba0aa5b5,
-        type: 2}
-      propertyPath: aimDirection.z
-      value: 0
+    - target: {fileID: 1502584756277642, guid: 5c6d18f090c621d42ba0d700ba0aa5b5, type: 2}
+      propertyPath: m_Name
+      value: Controller1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1089806302512072, guid: 5c6d18f090c621d42ba0d700ba0aa5b5, type: 2}
+      propertyPath: m_Name
+      value: Controller2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c6d18f090c621d42ba0d700ba0aa5b5, type: 2}
@@ -544,7 +603,7 @@ MonoBehaviour:
   drones: []
   dronePrefab: {fileID: 1147422357553932, guid: 733e4dc558d59f5459fe56116672cc13,
     type: 2}
-  selectionRadius: 0.4
+  selectionRadius: 0.45
   testMode: 0
 --- !u!1 &1008762102
 GameObject:
@@ -555,7 +614,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1008762106}
   - component: {fileID: 1008762105}
-  - component: {fileID: 1008762104}
   - component: {fileID: 1008762103}
   m_Layer: 0
   m_Name: Helper
@@ -598,20 +656,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1008762104
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1008762102}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1008762105
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -696,13 +740,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1376978557}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.67, y: 2, z: 3.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.7215218, z: -0, w: 0.6923917}
+  m_LocalPosition: {x: 2.2, y: 1.53, z: 2.59}
+  m_LocalScale: {x: 0.644342, y: 0.644342, z: 0.644342}
   m_Children: []
   m_Father: {fileID: 67448825}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 92.36101, z: 0}
 --- !u!1 &1398854132
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oscName: specktr
+  doubleTouchParasiteThreshold: 0.1
   debug: 0
 --- !u!4 &1761494309
 Transform:

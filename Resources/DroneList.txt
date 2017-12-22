@@ -1,0 +1,31 @@
+Radio A (0) :
+
+	Anaelle (A1)
+	Anisette (A2)
+	Articule (A3)
+
+Radio B (1) :
+
+	Balayette (B1)
+	Bidule	   (B2)
+	Bouclette  (B3)
+
+Radio C (2) :
+
+	Chopinette	(C1)
+	Claquette	(C2)
+	Clavicule	(C3)
+
+Radio D (3) :
+
+	Darwin		(D1)
+	Degonflette	(D2)
+	Denis		(D3)
+
+Radio E (4) :
+
+	Ecrasette	(E1)
+	Egoinne		(E2)
+	Einstein	(E3)
+
+

@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1561499315304840}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.899, y: 0, z: 2.407}
+  m_LocalPosition: {x: 4.119, y: 0, z: 2.353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4829917464716378}
@@ -191,7 +191,7 @@ MonoBehaviour:
   id: 0
   numButtons: 8
   buttonStates: 
-  aimDirection: {x: 0, y: 1, z: 0.3}
+  aimDirection: {x: 0, y: 1, z: 0}
 --- !u!114 &114623489950036302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   client: {fileID: 114648078980405608}
-  filter: 0
+  filter: 2
   trackableObjectPrefab: {fileID: 1961784215769654, guid: a5ac4f8a5ee6e0640a45b63dd2c5a18f,
     type: 2}
   trackableObjects:
@@ -297,4 +297,4 @@ MonoBehaviour:
   id: 0
   numButtons: 8
   buttonStates: 
-  aimDirection: {x: 0, y: 1, z: -0.3}
+  aimDirection: {x: 0, y: 1, z: 0}

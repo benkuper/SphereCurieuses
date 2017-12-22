@@ -10621,9 +10621,13 @@ MonoBehaviour:
   voltage: 0
   isCharging: 0
   lowBattery: 0
+  headLight: 0
   lightMode: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   testMode: 0
+  colliderRealPosLerp: 0
+  yaw: 0
+  isOver: 0
 --- !u!135 &135856840741392764
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -12,7 +12,7 @@ public class DroneController : MonoBehaviour
     public Vector3 aimDirection;
 
     float[] buttonTouchTimes;
-    const float longPressTime = 1.5f;
+    const float longPressTime = .7f;
     Coroutine[] longPressChecks;
 
     void Start()
@@ -38,6 +38,7 @@ public class DroneController : MonoBehaviour
         if (Physics.Raycast(r, out hit, 100f))
         {
             Drone d = hit.collider.GetComponent<Drone>();
+            //Debug.Log("Hit ! " + (d != null ? d.droneName : hit.collider.gameObject.name));
             if (d != null)
             {
                 SwarmMaster.instance.setOverDrone(this, d);

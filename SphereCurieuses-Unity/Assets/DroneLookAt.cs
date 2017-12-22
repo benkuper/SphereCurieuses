@@ -16,13 +16,16 @@ public class DroneLookAt : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Vector3 target = Vector3.zero;
+        int goodTargets = 0;
         foreach (SCController sc in controllers)
         {
+            if (sc.trackableID == -1) continue;
             target += sc.transform.position;
+            goodTargets++;
             Debug.DrawLine(transform.position, sc.transform.position, Color.grey);
         }
 
-        target /= controllers.Length;
+        if(goodTargets > 0) target /= goodTargets;
         transform.position = target;
 	}
 

@@ -1,7 +1,7 @@
 {
   "metaData": {
-    "version": "1.1.2",
-    "versionNumber": 65794
+    "version": "1.1.5",
+    "versionNumber": 65797
   },
   "presetManager": {
     "presets": null
@@ -44,7 +44,7 @@
               0
             ],
             "controlMode": 0,
-            "controlAddress": "/position"
+            "controlAddress": "/viewUIPosition"
           },
           {
             "value": [
@@ -55,7 +55,7 @@
             "controlAddress": "/size"
           },
           {
-            "value": true,
+            "value": false,
             "controlMode": 0,
             "controlAddress": "/logIncoming"
           },
@@ -66,7 +66,7 @@
           },
           {
             "value": [
-              "GSKR IN",
+              "GSKR (Bluetooth MIDI IN)",
               ""
             ],
             "controlMode": 0,
@@ -204,7 +204,7 @@
               "removable": true
             },
             {
-              "value": 127,
+              "value": 42,
               "controlMode": 0,
               "minValue": 0,
               "maxValue": 127,
@@ -270,7 +270,7 @@
               "removable": true
             },
             {
-              "value": 127,
+              "value": 0,
               "controlMode": 0,
               "minValue": 0,
               "maxValue": 127,
@@ -353,7 +353,7 @@
         "uid": "8edfe8fa3afa4581838eab6e6fcdb056",
         "parameters": [
           {
-            "value": false,
+            "value": true,
             "controlMode": 0,
             "controlAddress": "/enabled"
           },
@@ -378,7 +378,7 @@
               0
             ],
             "controlMode": 0,
-            "controlAddress": "/position"
+            "controlAddress": "/viewUIPosition"
           },
           {
             "value": [
@@ -400,7 +400,7 @@
           },
           {
             "value": [
-              "",
+              "DSKR (Bluetooth MIDI IN)",
               ""
             ],
             "controlMode": 0,
@@ -560,7 +560,7 @@
               "removable": true
             },
             {
-              "value": 82,
+              "value": 55,
               "controlMode": 0,
               "minValue": 0,
               "maxValue": 127,
@@ -767,7 +767,7 @@
               0
             ],
             "controlMode": 0,
-            "controlAddress": "/position"
+            "controlAddress": "/viewUIPosition"
           },
           {
             "value": [
@@ -798,7 +798,7 @@
             "controlAddress": "/local"
           },
           {
-            "value": "127.0.0.1",
+            "value": "192.168.10.46",
             "controlMode": 0,
             "controlAddress": "/remoteHost"
           },
@@ -858,7 +858,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -921,7 +921,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -972,7 +972,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -1042,7 +1042,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -1112,7 +1112,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -1182,7 +1182,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -1255,7 +1255,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -1306,7 +1306,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -1376,7 +1376,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -1465,11 +1465,11 @@
           },
           {
             "value": [
-              -380,
-              -436
+              18,
+              -308
             ],
             "controlMode": 0,
-            "controlAddress": "/position"
+            "controlAddress": "/viewUIPosition"
           },
           {
             "value": [
@@ -1487,16 +1487,6 @@
         ],
         "niceName": "Left",
         "type": "BaseItem",
-        "scripts": {
-          "uid": "18d7eea1a6de4af9a949b1fdeea29eef",
-          "parameters": null,
-          "items": null
-        },
-        "params": {
-          "uid": "13f4ca85ff1c40ef9211d04d110b5d9e",
-          "parameters": null,
-          "items": null
-        },
         "processors": {
           "uid": "463ee01f01184fb49009f2396a0fe5da",
           "parameters": null,
@@ -1530,7 +1520,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -1617,7 +1607,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -1695,7 +1685,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -1782,7 +1772,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -1860,7 +1850,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -1947,7 +1937,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -2025,7 +2015,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -2112,7 +2102,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -2190,7 +2180,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -2277,7 +2267,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -2355,7 +2345,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -2442,7 +2432,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -2520,7 +2510,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -2607,7 +2597,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -2645,7 +2635,7 @@
                             "controlAddress": "/upDown_0=Up,1=Side,2=Down_"
                           },
                           {
-                            "value": 127,
+                            "value": false,
                             "controlMode": 0,
                             "controlAddress": "/touched"
                           }
@@ -2685,7 +2675,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -2772,7 +2762,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -2850,7 +2840,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -2937,7 +2927,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -3015,7 +3005,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -3102,7 +3092,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -3180,7 +3170,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -3267,7 +3257,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -3345,7 +3335,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -3432,7 +3422,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -3510,7 +3500,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -3597,7 +3587,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -3675,7 +3665,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -3762,7 +3752,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -3840,7 +3830,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -3927,7 +3917,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -4005,7 +3995,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -4092,7 +4082,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -4170,7 +4160,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -4257,7 +4247,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -4335,7 +4325,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -4422,7 +4412,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -4500,7 +4490,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -4587,7 +4577,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -4665,7 +4655,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -4752,7 +4742,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -4830,7 +4820,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -4917,7 +4907,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -4995,7 +4985,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -5082,7 +5072,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -5135,7 +5125,7 @@
               "uid": "5fad335a40c94031922b2624c8fdf790",
               "parameters": [
                 {
-                  "value": true,
+                  "value": false,
                   "controlMode": 0,
                   "controlAddress": "/enabled"
                 },
@@ -5160,7 +5150,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -5247,7 +5237,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -5275,7 +5265,7 @@
                             "controlAddress": "/side_0=Left,1=Right_"
                           },
                           {
-                            "value": 127,
+                            "value": 42,
                             "controlMode": 0,
                             "controlAddress": "/value"
                           }
@@ -5314,11 +5304,11 @@
           },
           {
             "value": [
-              5,
-              -432
+              -316,
+              -320
             ],
             "controlMode": 0,
-            "controlAddress": "/position"
+            "controlAddress": "/viewUIPosition"
           },
           {
             "value": [
@@ -5336,16 +5326,6 @@
         ],
         "niceName": "Right",
         "type": "BaseItem",
-        "scripts": {
-          "uid": "18d7eea1a6de4af9a949b1fdeea29eef",
-          "parameters": null,
-          "items": null
-        },
-        "params": {
-          "uid": "13f4ca85ff1c40ef9211d04d110b5d9e",
-          "parameters": null,
-          "items": null
-        },
         "processors": {
           "uid": "463ee01f01184fb49009f2396a0fe5da",
           "parameters": null,
@@ -5379,7 +5359,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -5466,7 +5446,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -5544,7 +5524,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -5631,7 +5611,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -5709,7 +5689,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -5796,7 +5776,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -5874,7 +5854,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -5961,7 +5941,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -6039,7 +6019,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -6126,7 +6106,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -6204,7 +6184,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -6291,7 +6271,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -6369,7 +6349,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -6456,7 +6436,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -6534,7 +6514,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -6621,7 +6601,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -6699,7 +6679,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -6786,7 +6766,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -6864,7 +6844,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -6951,7 +6931,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -7029,7 +7009,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -7116,7 +7096,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -7194,7 +7174,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -7281,7 +7261,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -7359,7 +7339,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -7446,7 +7426,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -7524,7 +7504,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -7611,7 +7591,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -7689,7 +7669,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -7776,7 +7756,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -7854,7 +7834,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -7941,7 +7921,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -8019,7 +7999,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -8106,7 +8086,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -8184,7 +8164,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -8271,7 +8251,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -8349,7 +8329,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -8436,7 +8416,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -8514,7 +8494,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -8601,7 +8581,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -8679,7 +8659,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -8766,7 +8746,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -8844,7 +8824,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -8931,7 +8911,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -8984,7 +8964,7 @@
               "uid": "5fad335a40c94031922b2624c8fdf790",
               "parameters": [
                 {
-                  "value": true,
+                  "value": false,
                   "controlMode": 0,
                   "controlAddress": "/enabled"
                 },
@@ -9009,7 +8989,7 @@
                     0
                   ],
                   "controlMode": 0,
-                  "controlAddress": "/position"
+                  "controlAddress": "/viewUIPosition"
                 },
                 {
                   "value": [
@@ -9096,7 +9076,7 @@
                           0
                         ],
                         "controlMode": 0,
-                        "controlAddress": "/position"
+                        "controlAddress": "/viewUIPosition"
                       },
                       {
                         "value": [
@@ -9124,7 +9104,7 @@
                             "controlAddress": "/side_0=Left,1=Right_"
                           },
                           {
-                            "value": 82,
+                            "value": 55,
                             "controlMode": 0,
                             "controlAddress": "/value"
                           }

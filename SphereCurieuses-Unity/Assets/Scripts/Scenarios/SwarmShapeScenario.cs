@@ -14,7 +14,6 @@ public class SwarmShapeScenario : SwarmScenario {
     public List<Drone> drones;
 
 
-
     override public void Start()
     {
         
@@ -22,7 +21,8 @@ public class SwarmShapeScenario : SwarmScenario {
 
     public override void startScenario()
     {
-        drones = SwarmMaster.instance.getAvailableDrones(true, true, positions.Length);
+        drones = SwarmMaster.instance.getAvailableDrones(true, false, positions.Length);
+        if(drones.Count < positions.Length) drones = SwarmMaster.instance.getAvailableDrones(true, true, positions.Length);
         updateDronesPositions(2);
         foreach(Drone d in drones) lockDrone(d);
     }
