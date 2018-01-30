@@ -29,8 +29,15 @@ public class NodeManager : OSCControllable
         _hullMesh.uv = hullMesh.uv;
         _hullMesh.normals = hullMesh.normals;
 
-        vIndices = new int[][] { new int[] { 1, 14, 16 }, new int[] { 4, 10, 21 }, new int[] { 7, 15, 19 }, new int[] { 2, 8, 22 },
-                                 new int[] { 0, 13, 23 }, new int[] { 3, 9, 17 }, new int[] { 6, 12, 20 }, new int[] { 5, 11, 18 } };
+        vIndices = new int[][] { new int[] { 1, 14, 16 },
+                                 new int[] { 0, 13, 23 },
+                                 new int[] { 6, 12, 20 },
+                                 new int[] { 7, 15, 19 },
+                                 new int[] { 3, 9, 17 },
+                                 new int[] { 2, 8, 22 },
+                                 new int[] { 4, 10, 21 },
+                                 new int[] { 5, 11, 18 }
+                                };
     }
     // Use this for initialization
     void Start()

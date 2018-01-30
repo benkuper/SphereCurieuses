@@ -83,11 +83,11 @@ public class SwarmScenario : MonoBehaviour, IDroneLocker {
 
     //Interaction
 
-    public virtual void buttonStateUpdate(DroneController controller, int buttonID, bool value) { }
+    public virtual void buttonStateUpdate(DroneController controller, int buttonID, bool value, DroneController.ButtonState state) { }
 
-    public virtual void triggerShortPress(DroneController controller, int buttonID) { }
+    public virtual void triggerShortPress(DroneController controller, int buttonID, DroneController.ButtonState state) { }
 
-    public virtual void triggerLongPress(DroneController controller, int buttonID) { }
+    public virtual void triggerLongPress(DroneController controller, int buttonID, DroneController.ButtonState state) { }
 
     public virtual void overDroneUpdate(DroneController controller, Drone d) { }
 }

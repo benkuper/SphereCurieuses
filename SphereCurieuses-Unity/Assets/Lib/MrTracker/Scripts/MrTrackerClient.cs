@@ -50,15 +50,17 @@ public class MrTrackerClient : MonoBehaviour
         instance = this;
 
         IsConnected = false;
-        localPort = PlayerPrefs.GetInt("MrTracker_Port", 9000);
+        //localPort = PlayerPrefs.GetInt("MrTracker_Port", 9000);
         Connect();
 
-        server = new UdpClient();
-        server.Connect(new IPEndPoint(IPAddress.Loopback, remotePort));
 
         trackablesToAdd = new List<Trackable>();
         trackables = new Dictionary<int, Trackable>();
         trackablesToRemove = new List<Trackable>();
+
+        server = new UdpClient();
+        server.Connect(new IPEndPoint(IPAddress.Loopback, remotePort));
+
     }
 
     public void Connect()
@@ -236,12 +238,29 @@ public class MrTrackerClient : MonoBehaviour
 
     public void sendVibrate(int controllerID, float strength, float time)
     {
+        //Debug.Log("Vibrate : " + strength + " for " + time + " seconds");
         List<byte> msg = new List<byte>() { (byte)'v', (byte)controllerID };
         msg.AddRange(BitConverter.GetBytes(strength));
         msg.AddRange(BitConverter.GetBytes(time));
         msg.Add(255);
         server.Send(msg.ToArray(), msg.Count);
 
+    }
+
+    public void sendMultiVibrate(int controllerID, int numVibrations, float intervals, float strength, float timeOn)
+    {
+        timeOn = Mathf.Min(timeOn, intervals - 0.02f); //force less then intervals
+        StartCoroutine(vibrationCoroutine(controllerID, numVibrations, intervals, strength, timeOn));
+    }
+
+    public IEnumerator vibrationCoroutine(int controllerID, int numVibrations, float intervals, float strength, float timeOn)
+    {
+        sendVibrate(controllerID, strength, timeOn);
+        for (int i = 0; i < numVibrations-1; i++)
+        {
+            yield return new WaitForSeconds(intervals);
+            sendVibrate(controllerID, strength, timeOn);
+        }
     }
 
 

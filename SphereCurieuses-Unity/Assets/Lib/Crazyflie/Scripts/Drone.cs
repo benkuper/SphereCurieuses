@@ -172,7 +172,7 @@ public class Drone : OSCControllable {
             transform.Rotate(0, -90, 0);
 
             yaw = (-(transform.rotation.eulerAngles.y % 360) + 360) % 360;
-
+            if (stoppingLowBattery) yaw = 0;
 
             if (lastYaw != yaw)
             {
@@ -235,6 +235,8 @@ public class Drone : OSCControllable {
     {
         if (isLocked()) locker.releaseDrone(this);
         if (transform.position.y <= 0) return;
+        yaw = 0;
+        stoppingLowBattery = true;
         List<KeyValuePair<Vector3, float>> pList = new List<KeyValuePair<Vector3, float>>();
         pList.Add(new KeyValuePair<Vector3, float>(new Vector3(realPosition.x, .3f, realPosition.z), 3));
         pList.Add(new KeyValuePair<Vector3, float>(new Vector3(realPosition.x, 0, realPosition.z), 2));
@@ -379,9 +381,12 @@ public class Drone : OSCControllable {
         Gizmos.color = c;
         Gizmos.DrawWireSphere(transform.position, radius);
         
-        Gizmos.color = new Color(1, 1, 1, .4f);
-        Handles.DrawLine(transform.position, realPosition);
-        Gizmos.DrawWireSphere(realPosition, .1f);
+        if(!DroneManager.instance.testMode)
+        {
+            Gizmos.color = new Color(1, 1, 1, .4f);
+            Handles.DrawLine(transform.position, realPosition);
+            Gizmos.DrawWireSphere(realPosition, .1f);
+        }
 
         Gizmos.color = color;
         Gizmos.DrawCube(transform.position+Vector3.down* radius, new Vector3(radius,.1f, radius));

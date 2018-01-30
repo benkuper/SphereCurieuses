@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwarmMaster : MonoBehaviour {
+public class SwarmMaster : OSCControllable {
 
     public static SwarmMaster instance;
 
     public SwarmScenario currentScenario;
     public List<SwarmScenario> scenarios;
 
-    //Helper to know which controller is over which drone
     public Dictionary<DroneController, Drone> overDrones;
 
     void Awake()
@@ -36,6 +35,13 @@ public class SwarmMaster : MonoBehaviour {
 
     void Update () {
         
+    }
+
+    [OSCMethod("setScenario")]
+    public void setScenarioIndex(int index)
+    {
+        if (index < 0 || index >= scenarios.Count) return;
+        setCurrentScenario(scenarios[index]);
     }
 
     public void setCurrentScenario(SwarmScenario s)
@@ -76,9 +82,23 @@ public class SwarmMaster : MonoBehaviour {
 
     //Global functions
 
+    public List<Drone> getZOrderedAvailableDrones(bool includeFlying, bool includeOnGround)
+    {
+        List<Drone> dList = getAvailableDrones(includeFlying, includeOnGround, DroneManager.instance.drones.Count);
+        dList.Sort(SortByPositionZ);
+        return dList;
+    }
+
+    public int SortByPositionZ(Drone d1, Drone d2)
+    {
+        return d1.realPosition.z.CompareTo(d2.realPosition.z);
+    }
+
     public List<Drone> getAvailableDrones(bool includeFlying, bool includeOnGround) {
         return getAvailableDrones(includeFlying, includeOnGround, DroneManager.instance.drones.Count);
+
     }
+
     public List<Drone> getAvailableDrones(bool includeFlying, bool includeOnGround, int maxNum)
     {
         List<Drone> result = new List<Drone>();
@@ -129,20 +149,20 @@ public class SwarmMaster : MonoBehaviour {
     }
 
 
-    public void buttonStateUpdate(DroneController controller, int buttonID, bool value)
+    public void buttonStateUpdate(DroneController controller, int buttonID, bool value, DroneController.ButtonState state)
     {
-        if (currentScenario != null) currentScenario.buttonStateUpdate(controller, buttonID, value);
+        if (currentScenario != null) currentScenario.buttonStateUpdate(controller, buttonID, value,state);
 
     }
 
-    public void triggerShortPress(DroneController controller, int buttonID)
+    public void triggerShortPress(DroneController controller, int buttonID, DroneController.ButtonState state)
     {
-        if (currentScenario != null) currentScenario.triggerShortPress(controller, buttonID);
+        if (currentScenario != null) currentScenario.triggerShortPress(controller, buttonID, state);
     }
 
-    public void triggerLongPress(DroneController controller, int buttonID)
+    public void triggerLongPress(DroneController controller, int buttonID,DroneController.ButtonState state)
     {
-        if (currentScenario != null) currentScenario.triggerLongPress(controller, buttonID);
+        if (currentScenario != null) currentScenario.triggerLongPress(controller, buttonID, state);
     }
 
 }

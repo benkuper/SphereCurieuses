@@ -124,8 +124,8 @@ GameObject:
   - component: {fileID: 67448824}
   - component: {fileID: 67448829}
   - component: {fileID: 67448828}
-  - component: {fileID: 67448830}
   - component: {fileID: 67448827}
+  - component: {fileID: 67448830}
   - component: {fileID: 67448826}
   m_Layer: 0
   m_Name: Swarm
@@ -145,12 +145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab56d4a9f216c347b218e6e579eb013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScenario: {fileID: 67448829}
+  oscName: swarm
+  currentScenario: {fileID: 0}
   scenarios:
   - {fileID: 67448829}
   - {fileID: 67448828}
-  - {fileID: 67448829}
-  - {fileID: 67448826}
+  - {fileID: 67448830}
+  - {fileID: 67448827}
   - {fileID: 67448826}
 --- !u!4 &67448825
 Transform:
@@ -164,6 +165,7 @@ Transform:
   m_Children:
   - {fileID: 1376978558}
   - {fileID: 1257523510}
+  - {fileID: 832002186}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -205,6 +207,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
+  zOrderedPositions: []
   drones: []
 --- !u!114 &67448828
 MonoBehaviour:
@@ -222,13 +225,14 @@ MonoBehaviour:
   startTime: 2
   endTime: 0
   target: {fileID: 1376978558}
-  showGizmo: 0
+  showGizmo: 1
   positions:
   - {x: -1, y: -0.6, z: -1}
   - {x: -1, y: -0.6, z: 1}
   - {x: 1, y: -0.6, z: 1}
   - {x: 1, y: -0.6, z: -1}
   - {x: 0, y: 1, z: 0}
+  zOrderedPositions: []
   drones: []
 --- !u!114 &67448829
 MonoBehaviour:
@@ -242,10 +246,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenarioName: Trail
-  isCurrent: 1
+  isCurrent: 0
   startTime: 0
   endTime: 0
-  selectionMode: 1
+  selectionMode: 0
   clearSelectionOnTouch: 0
   idleGroundColor: {r: 0.08823532, g: 0.08823532, b: 0.08823532, a: 1}
   idleFlyingColor: {r: 0.25735295, g: 0.25735295, b: 0.25735295, a: 1}
@@ -276,8 +280,8 @@ MonoBehaviour:
   isCurrent: 0
   startTime: 2
   endTime: 0
-  target: {fileID: 1376978558}
-  showGizmo: 1
+  target: {fileID: 832002186}
+  showGizmo: 0
   positions:
   - {x: -0.5, y: -0.5, z: -0.5}
   - {x: 0.5, y: -0.5, z: -0.5}
@@ -287,6 +291,7 @@ MonoBehaviour:
   - {x: 0.5, y: 0.5, z: -0.5}
   - {x: -0.5, y: 0.5, z: 0.5}
   - {x: 0.5, y: 0.5, z: 0.5}
+  zOrderedPositions: []
   drones: []
 --- !u!1 &85097639
 GameObject:
@@ -530,35 +535,51 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4643363446455384, guid: 5c6d18f090c621d42ba0d700ba0aa5b5, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4643363446455384, guid: 5c6d18f090c621d42ba0d700ba0aa5b5, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 2.347
-      objectReference: {fileID: 0}
-    - target: {fileID: 114750422844441852, guid: 5c6d18f090c621d42ba0d700ba0aa5b5,
-        type: 2}
-      propertyPath: specktrHand
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114623489950036302, guid: 5c6d18f090c621d42ba0d700ba0aa5b5,
-        type: 2}
-      propertyPath: specktrHand
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502584756277642, guid: 5c6d18f090c621d42ba0d700ba0aa5b5, type: 2}
-      propertyPath: m_Name
-      value: Controller1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1089806302512072, guid: 5c6d18f090c621d42ba0d700ba0aa5b5, type: 2}
-      propertyPath: m_Name
-      value: Controller2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c6d18f090c621d42ba0d700ba0aa5b5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &832002185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 832002186}
+  - component: {fileID: 832002187}
+  m_Layer: 0
+  m_Name: MovingShapeTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &832002186
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832002185}
+  m_LocalRotation: {x: -0, y: 0.7215218, z: -0, w: 0.6923917}
+  m_LocalPosition: {x: 2.2, y: 1.53, z: 2.59}
+  m_LocalScale: {x: 1.8390858, y: 1.8390872, z: 1.839087}
+  m_Children: []
+  m_Father: {fileID: 67448825}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 92.36101, z: 0}
+--- !u!114 &832002187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 832002185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e059502ede9816546abe31a794f87467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.28
+  seed: 0
 --- !u!1 &858754250
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,13 +761,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1376978557}
-  m_LocalRotation: {x: -0, y: 0.7215218, z: -0, w: 0.6923917}
+  m_LocalRotation: {x: -0, y: 0.76914924, z: -0, w: 0.63906926}
   m_LocalPosition: {x: 2.2, y: 1.53, z: 2.59}
   m_LocalScale: {x: 0.644342, y: 0.644342, z: 0.644342}
   m_Children: []
   m_Father: {fileID: 67448825}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 92.36101, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 100.55501, z: 0}
 --- !u!1 &1398854132
 GameObject:
   m_ObjectHideFlags: 0

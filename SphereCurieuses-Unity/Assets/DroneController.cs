@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DroneController : MonoBehaviour
 {
-    public int id;
 
+    public enum ButtonState { Up, Side, Down, Off }
+
+    public int id;
     public int numButtons;
 
     public bool[] buttonStates;
@@ -48,19 +51,22 @@ public class DroneController : MonoBehaviour
             }
         }
 
-        Debug.DrawRay(r.origin, r.direction * 10, c);
+       /// Debug.DrawRay(r.origin, r.direction * 10, c);
+        if (SwarmMaster.instance == null) return;
         if (!found) SwarmMaster.instance.setOverDrone(this, null);
     }
 
-    public void setButtonState(int buttonID, bool value)
+    public void setButtonState(int buttonID, bool value, ButtonState buttonState)
     {
+
         if (buttonStates[buttonID] == value) return;
         buttonStates[buttonID] = value;
 
+        //Debug.Log("Set button state " + buttonID + " : " + value);
         if(value)
         {
             buttonTouchTimes[buttonID] = Time.time;
-            longPressChecks[buttonID] = StartCoroutine(checkLongPress(buttonID));             
+            longPressChecks[buttonID] = StartCoroutine(checkLongPress(buttonID, buttonState));             
         }
         else
         {
@@ -70,25 +76,25 @@ public class DroneController : MonoBehaviour
                 longPressChecks[buttonID] = null;
             }
 
-            if (Time.time - buttonTouchTimes[buttonID] < longPressTime) triggerShortPress(buttonID);
+            if (Time.time - buttonTouchTimes[buttonID] < longPressTime) triggerShortPress(buttonID, buttonState);
         }
 
-        SwarmMaster.instance.buttonStateUpdate(this, buttonID, value);
+        SwarmMaster.instance.buttonStateUpdate(this, buttonID, value, buttonState);
     }
 
-    IEnumerator checkLongPress(int buttonID)
+    IEnumerator checkLongPress(int buttonID, ButtonState state)
     {
         yield return new WaitForSeconds(longPressTime);
-        triggerLongPress(buttonID);
+        triggerLongPress(buttonID,state);
     }
 
-    void triggerShortPress(int buttonID)
+    void triggerShortPress(int buttonID, ButtonState state)
     {
-        SwarmMaster.instance.triggerShortPress(this, buttonID);
+        SwarmMaster.instance.triggerShortPress(this, buttonID, state);
     }
 
-    void triggerLongPress(int buttonID)
+    void triggerLongPress(int buttonID, ButtonState state)
     {
-        SwarmMaster.instance.triggerLongPress(this, buttonID);
+        SwarmMaster.instance.triggerLongPress(this, buttonID, state);
     }
 }

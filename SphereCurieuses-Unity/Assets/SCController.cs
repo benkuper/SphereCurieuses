@@ -8,7 +8,8 @@ public class SCController : ViveControllerObject {
     public DroneController dc;
     public SpecktrOSC.Hand specktrHand;
 
-    public SpecktrOSC.ButtonState[] touchStates;
+    public bool[] touchPressed;
+    public DroneController.ButtonState[] touchStates;
 
     public bool disableViveButtons;
 
@@ -17,8 +18,9 @@ public class SCController : ViveControllerObject {
         dc = GetComponent<DroneController>();
 
         SpecktrOSC.buttonUpdate += specktrButtonUpdate;
-        touchStates = new SpecktrOSC.ButtonState[8];
-        for (int i = 0; i < touchStates.Length; i++) touchStates[i] = SpecktrOSC.ButtonState.Off;
+        touchStates = new DroneController.ButtonState[8];
+        touchPressed = new bool[8];
+        for (int i = 0; i < touchStates.Length; i++) touchStates[i] = DroneController.ButtonState.Off;
 	}
 
     public override void Update()
@@ -29,15 +31,15 @@ public class SCController : ViveControllerObject {
     }
 
     // Events
-    private void specktrButtonUpdate(SpecktrOSC.Hand hand, int buttonID, SpecktrOSC.ButtonState buttonState)
+    private void specktrButtonUpdate(SpecktrOSC.Hand hand, int buttonID, bool pressed, DroneController.ButtonState buttonState)
     {
+       // Debug.Log("Spekctr Button update in SC Controller " + hand+" > "+buttonID + " > " + pressed + " > buttonState : " + buttonState);
         if (hand != specktrHand) return;
-        if (touchStates[buttonID] == buttonState) return;
+        if (touchStates[buttonID] == buttonState && touchPressed[buttonID] == pressed) return;
         touchStates[buttonID] = buttonState;
+        touchPressed[buttonID] = pressed;
 
-        bool pressed = touchStates[buttonID] != SpecktrOSC.ButtonState.Off;
-        dc.setButtonState(buttonID, pressed);
-        
+        dc.setButtonState(buttonID, pressed, buttonState);
     }
     
 
@@ -79,19 +81,19 @@ public class SCController : ViveControllerObject {
         {
 
             case TOUCHPAD_BT:
-                dc.setButtonState(0, value);
+                dc.setButtonState(0, value,DroneController.ButtonState.Up);
                 break;
 
             case TRIGGER_BT:
-                dc.setButtonState(1, value);
+                dc.setButtonState(1, value, DroneController.ButtonState.Up);
                 break;
 
             case SIDE_BT:
-                dc.setButtonState(2, value);
+                dc.setButtonState(2, value,DroneController.ButtonState.Up);
                 break;
 
             case MENU_BT:
-                dc.setButtonState(3, value);
+                dc.setButtonState(3, value,DroneController.ButtonState.Up);
                 break;
         }
     }

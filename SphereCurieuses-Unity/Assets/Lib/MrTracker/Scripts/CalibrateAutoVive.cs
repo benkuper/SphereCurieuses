@@ -33,6 +33,8 @@ public class CalibrateAutoVive : OSCControllable {
         if(trackable == null)
         {
             Debug.LogWarning("Trackable null, not calibrating");
+            SCController[] controllers = GetComponentsInChildren<SCController>();
+            foreach (SCController sc in controllers) if (sc.specktrHand == SpecktrOSC.Hand.Right) trackable = sc.transform;
             return;
         }
 

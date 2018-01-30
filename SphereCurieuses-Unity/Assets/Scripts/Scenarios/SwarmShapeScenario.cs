@@ -10,21 +10,41 @@ public class SwarmShapeScenario : SwarmScenario {
     public Transform target;
     public bool showGizmo;
     public Vector3[] positions;
+    public List<Vector3> zOrderedPositions;
 
     public List<Drone> drones;
 
 
     override public void Start()
     {
-        
+        base.Start();
+
+        zOrderedPositions = new List<Vector3>();
+        foreach (Vector3 p in positions) zOrderedPositions.Add(p);
     }
 
     public override void startScenario()
     {
-        drones = SwarmMaster.instance.getAvailableDrones(true, false, positions.Length);
-        if(drones.Count < positions.Length) drones = SwarmMaster.instance.getAvailableDrones(true, true, positions.Length);
+        zOrderedPositions.Sort(sortPositionByZ);
+
+        drones = SwarmMaster.instance.getZOrderedAvailableDrones(true, false);
+        if(drones.Count < positions.Length) drones = SwarmMaster.instance.getZOrderedAvailableDrones(true, true);
+
+        //FLy off all unnecessary drones
+        while (drones.Count > zOrderedPositions.Count)
+        {
+            Drone d = drones[drones.Count - 1];
+            d.stop();
+            drones.Remove(d);
+        }
+
         updateDronesPositions(2);
         foreach(Drone d in drones) lockDrone(d);
+    }
+
+    public int sortPositionByZ(Vector3 p1, Vector3 p2)
+    {
+        return p1.z.CompareTo(p2.z);
     }
 
     override public void updateScenario()
@@ -49,7 +69,7 @@ public class SwarmShapeScenario : SwarmScenario {
     {
         if (index < 0 || index > positions.Length) return Vector3.zero;
         if (target == null) return Vector3.zero;
-        return getPosition(positions[index]);
+        return getPosition(zOrderedPositions[index]);
     }
 
     public Vector3 getPosition(Vector3 relativePos)
@@ -64,7 +84,7 @@ public class SwarmShapeScenario : SwarmScenario {
         Gizmos.color = Selection.activeGameObject == gameObject ? Color.yellow : Color.grey;
 
         Gizmos.DrawWireSphere(target.position, .2f);
-        for (int i = 0; i < positions.Length; i++)
+        for (int i = 0; i < zOrderedPositions.Count; i++)
         {
             Vector3 p = getPosition(i);
             Gizmos.DrawLine(target.position, p);
