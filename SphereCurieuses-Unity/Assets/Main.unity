@@ -251,7 +251,7 @@ MonoBehaviour:
   endTime: 0
   selectionMode: 0
   clearSelectionOnTouch: 0
-  idleGroundColor: {r: 0.08823532, g: 0.08823532, b: 0.08823532, a: 1}
+  idleGroundColor: {r: 0.015686275, g: 0.015686275, b: 0.015686275, a: 1}
   idleFlyingColor: {r: 0.25735295, g: 0.25735295, b: 0.25735295, a: 1}
   selectedColor: {r: 0, g: 0.53676474, b: 0.20360044, a: 1}
   movingColor: {r: 0.6643001, g: 0, b: 0.7352941, a: 1}
@@ -562,7 +562,7 @@ Transform:
   m_GameObject: {fileID: 832002185}
   m_LocalRotation: {x: -0, y: 0.7215218, z: -0, w: 0.6923917}
   m_LocalPosition: {x: 2.2, y: 1.53, z: 2.59}
-  m_LocalScale: {x: 1.8390858, y: 1.8390872, z: 1.839087}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children: []
   m_Father: {fileID: 67448825}
   m_RootOrder: 2

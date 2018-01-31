@@ -8,11 +8,13 @@ public class ViveConfigData
 {
     public Vector3 position;
     public Quaternion rotation;
+    public int rightControllerID;
 }
 
 public class CalibrateAutoVive : OSCControllable {
 
     public bool loadAtStart;
+    public int rightHandID;
 
     public Transform trackable;
     public Transform calibTransform; 
@@ -52,7 +54,8 @@ public class CalibrateAutoVive : OSCControllable {
         ViveConfigData vc = JsonUtility.FromJson<ViveConfigData>(s);
         transform.position = vc.position;
         transform.rotation = vc.rotation;
-
+        rightHandID = vc.rightControllerID;
+        
     }
 
     public void saveConfig()
@@ -60,7 +63,8 @@ public class CalibrateAutoVive : OSCControllable {
         ViveConfigData vc = new ViveConfigData();
         vc.position = transform.position;
         vc.rotation = transform.rotation;
-        
+        if (trackable != null) vc.rightControllerID = trackable.GetComponent<SCController>().trackableID;
+
 
         string s = JsonUtility.ToJson(vc);
         string path = Application.dataPath + "/viveConfig.json";

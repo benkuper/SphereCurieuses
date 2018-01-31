@@ -12,6 +12,9 @@ public class SwarmMaster : OSCControllable {
 
     public Dictionary<DroneController, Drone> overDrones;
 
+    const int SHAPE_BT = 6;
+    const int TRAIL_BT = 7;
+
     void Awake()
     {
         overDrones = new Dictionary<DroneController, Drone>();
@@ -157,12 +160,44 @@ public class SwarmMaster : OSCControllable {
 
     public void triggerShortPress(DroneController controller, int buttonID, DroneController.ButtonState state)
     {
-        if (currentScenario != null) currentScenario.triggerShortPress(controller, buttonID, state);
+        switch (buttonID)
+        {
+            case SHAPE_BT:
+                if (state != DroneController.ButtonState.Off)
+                {
+                    int offset = 1 + (int)state;
+                    setCurrentScenario(scenarios[offset]);
+                }
+                break;
+
+            case TRAIL_BT:
+                setCurrentScenario(scenarios[0]);
+                break;
+
+            default:
+                if (currentScenario != null) currentScenario.triggerShortPress(controller, buttonID, state);
+                break;
+
+        }
+
+        
     }
 
     public void triggerLongPress(DroneController controller, int buttonID,DroneController.ButtonState state)
     {
-        if (currentScenario != null) currentScenario.triggerLongPress(controller, buttonID, state);
+        switch(buttonID)
+        {
+            case TRAIL_BT:
+                setCurrentScenario(scenarios[scenarios.Count-1]);
+                break;
+
+            default:
+                if (currentScenario != null) currentScenario.triggerLongPress(controller, buttonID, state);
+                break;
+
+        }
+
+        
     }
 
 }

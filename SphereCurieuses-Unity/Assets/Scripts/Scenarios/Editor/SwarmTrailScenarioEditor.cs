@@ -12,5 +12,6 @@ public class SwarmTrailScenarioEditor : Editor {
         base.DrawDefaultInspector();
         if (GUILayout.Button("Clear loops and selection")) ((SwarmTrailScenario)target).clearLoopsAndSelection();
         if (GUILayout.Button("Clear and stop drones")) ((SwarmTrailScenario)target).clearAndStopDrones();
+        if (GUILayout.Button("Select all drones")) ((SwarmTrailScenario)target).selectAllDrones();
     }
 }

@@ -93,6 +93,14 @@ public class SwarmTrailScenario : SwarmScenario
 
     override public void updateScenario()
     {
+        //Check for non ready drone and clean the selection
+        List<KeyValuePair<DroneController,Drone>> dronesToDeselect = new List<KeyValuePair<DroneController,Drone>>();
+        foreach (var ds in droneSelection) // Check all controllers for selected drones
+        {
+            foreach (var d in ds.Value) if (d.state != Drone.DroneState.Ready) dronesToDeselect.Add(new KeyValuePair<DroneController,Drone>(ds.Key,d));
+        }
+        foreach (KeyValuePair<DroneController,Drone> ds in dronesToDeselect) deselectDrone(ds.Key, ds.Value);
+
 
 
 
@@ -163,8 +171,7 @@ public class SwarmTrailScenario : SwarmScenario
     public override void triggerShortPress(DroneController dc, int buttonID, DroneController.ButtonState state)
     {
         //Debug.Log("Trigger Short press : " + state);
-        bool isRightHand = dc.GetComponent<SCController>().specktrHand == SpecktrOSC.Hand.Right;
-
+        
         if (buttonID == MOVE && state == DroneController.ButtonState.Down) //Palm facing upwards
         {
             Debug.Log("Launch All Selected (Both controllers)");
@@ -418,8 +425,13 @@ public class SwarmTrailScenario : SwarmScenario
                 MrTrackerClient.instance.sendMultiVibrate(dc.id, 2, .3f, .5f, .2f);
             }
         }
+    }
 
-        
+    public void selectAllDrones()
+    {
+        List<Drone> drones = SwarmMaster.instance.getAvailableDrones(true, true);
+        DroneController dc = controllers[0];
+        foreach (Drone d in drones) selectDrone(dc, d);
     }
 
     void selectDrone(DroneController dc, Drone d, bool autoDeselectFlyingDronesIfOnGround = true)
@@ -450,6 +462,8 @@ public class SwarmTrailScenario : SwarmScenario
             updateColorForDrone(d);
         }
     }
+
+
 
     void setMovingDrones(DroneController dc, bool value, bool trailMode = false)
     {
@@ -534,6 +548,8 @@ public class SwarmTrailScenario : SwarmScenario
         clearLoops();
         clearSelection();
     }
+
+    
 
     public void clearAndStopDrones()
     {

@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO;
 
 public class SCController : ViveControllerObject {
 
@@ -28,6 +30,19 @@ public class SCController : ViveControllerObject {
         base.Update();
         dc.id = trackableID;
         //disableViveButtons = specktrHand == SpecktrOSC.Hand.Left;
+    }
+
+    public override void setTrackable(Trackable t)
+    {
+        base.setTrackable(t);
+
+        CalibrateAutoVive[] cav = FindObjectsOfType<CalibrateAutoVive>();
+        if(cav[0].rightHandID == trackableID)
+        {
+            SCController[] controllers = FindObjectsOfType<SCController>();
+            foreach (SCController c in controllers) c.specktrHand = c == this ? SpecktrOSC.Hand.Right : SpecktrOSC.Hand.Left;
+        }
+       
     }
 
     // Events
@@ -59,42 +74,62 @@ public class SCController : ViveControllerObject {
             switch (buttonID)
             {
                 case MENU_BT:
-                    /*
-                    CalibrateAutoVive[] cav = FindObjectsOfType<CalibrateAutoVive>();
-                    if (cav.Length > 0) cav[0].trackable = transform;
-                    cav[0].calibrate();
-                    cav[0].saveConfig();
-                    */
+                   
                     break;
 
                 case SIDE_BT:
                     SCController[] controllers = FindObjectsOfType<SCController>();
-                    foreach (SCController c in controllers) c.specktrHand = c == this ? SpecktrOSC.Hand.Right : SpecktrOSC.Hand.Left;
+                    foreach (SCController c in controllers)
+                    {
+                        c.specktrHand = c == this ? SpecktrOSC.Hand.Right : SpecktrOSC.Hand.Left;
+                        if (c.specktrHand == SpecktrOSC.Hand.Right)
+                        {
+                            if (value) Invoke("calibrateVive", .5f);
+                            else CancelInvoke("calibrateVive");
+                        }
+
+                        
+                    }
+
                     break;
                     
             }
 
             return;
         }
-
-        switch(buttonID)
+        else
         {
+            switch (buttonID)
+            {
 
-            case TOUCHPAD_BT:
-                dc.setButtonState(0, value,DroneController.ButtonState.Up);
-                break;
+                case TOUCHPAD_BT:
+                    dc.setButtonState(0, value, DroneController.ButtonState.Up);
+                    break;
 
-            case TRIGGER_BT:
-                dc.setButtonState(1, value, DroneController.ButtonState.Up);
-                break;
+                case TRIGGER_BT:
+                    dc.setButtonState(1, value, DroneController.ButtonState.Up);
+                    break;
 
-            case SIDE_BT:
-                dc.setButtonState(2, value,DroneController.ButtonState.Up);
-                break;
+                case SIDE_BT:
+                    dc.setButtonState(2, value, DroneController.ButtonState.Up);
+                    break;
 
-            case MENU_BT:
-                dc.setButtonState(3, value,DroneController.ButtonState.Up);
-                break;
+                case MENU_BT:
+                    dc.setButtonState(3, value, DroneController.ButtonState.Up);
+                    break;
+            }
         }
+
+        
+    }
+
+   
+
+    void calibrateVive()
+    {
+        CalibrateAutoVive[] cav = FindObjectsOfType<CalibrateAutoVive>();
+        if (cav.Length > 0) cav[0].trackable = transform;
+        cav[0].calibrate();
+        cav[0].saveConfig();
     }
 }
