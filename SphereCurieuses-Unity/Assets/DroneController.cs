@@ -34,22 +34,54 @@ public class DroneController : MonoBehaviour
     {
         Color c = Color.grey;
 
-        Ray r = new Ray(transform.position, transform.TransformDirection(aimDirection));
-        RaycastHit hit;
-
         bool found = false;
-        if (Physics.Raycast(r, out hit, 100f))
-        {
-            Drone d = hit.collider.GetComponent<Drone>();
-            //Debug.Log("Hit ! " + (d != null ? d.droneName : hit.collider.gameObject.name));
-            if (d != null)
-            {
-                SwarmMaster.instance.setOverDrone(this, d);
-                found = true;
 
-                c = Color.green;
+        Ray r = new Ray(transform.position, transform.TransformDirection(aimDirection));
+
+        if (SwarmMaster.instance.hitMode == SwarmMaster.HitMode.COLLIDER)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(r, out hit, 100f))
+            {
+                Drone d = hit.collider.GetComponent<Drone>();
+                //Debug.Log("Hit ! " + (d != null ? d.droneName : hit.collider.gameObject.name));
+                if (d != null)
+                {
+                    SwarmMaster.instance.setOverDrone(this, d);
+                    found = true;
+
+                    c = Color.green;
+                }
+            }
+        }else
+        {
+            List<Drone> drones = SwarmMaster.instance.getAvailableDrones(true, true);
+            float minDist = 10;
+            Drone minDrone = null;
+            //if (GetComponent<SCController>().specktrHand == SpecktrOSC.Hand.Right) Debug.Log("Search for closest drone");
+            foreach (Drone d in drones)
+            {
+                
+                float dist = Vector3.Cross(r.direction, d.transform.position - r.origin).magnitude;
+
+                //if (GetComponent<SCController>().specktrHand == SpecktrOSC.Hand.Right) Debug.Log(d.droneName + " > " + dist);
+                
+               if(dist < minDist)
+                {
+                    minDist = dist;
+                    minDrone = d;
+                }
+            }
+            
+            if (minDist < SwarmMaster.instance.maxSelectionDistance)
+            {
+                //if (GetComponent<SCController>().specktrHand == SpecktrOSC.Hand.Right) Debug.Log("found : " + minDrone);
+                SwarmMaster.instance.setOverDrone(this, minDrone);
+                found = true;
             }
         }
+            
 
        /// Debug.DrawRay(r.origin, r.direction * 10, c);
         if (SwarmMaster.instance == null) return;

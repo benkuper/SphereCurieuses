@@ -218,7 +218,7 @@ public class Drone : OSCControllable {
 
     public void launch()
     {
-        moveToPosition(realPosition + Vector3.up,2);
+        moveToPosition(new Vector3(realPosition.x, 1, realPosition.z),2);
     }
 
     public void goHome()

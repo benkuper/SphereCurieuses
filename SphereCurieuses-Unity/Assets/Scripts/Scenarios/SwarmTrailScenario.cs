@@ -120,11 +120,15 @@ public class SwarmTrailScenario : SwarmScenario
                 {
                     foreach (var d in drones)
                     {
-                        droneManipulationOffsets[dc][d] *= 1 + (zoomFactors[dc] * zoomSpeed) * Time.deltaTime; //
+                        if(droneManipulationOffsets[dc].ContainsKey(d))
+                        {
+                            droneManipulationOffsets[dc][d] *= 1 + (zoomFactors[dc] * zoomSpeed) * Time.deltaTime; //
 
-                        Vector3 target = dc.transform.TransformPoint(droneManipulationOffsets[dc][d]);
-                        //Debug.Log("Moving drone :"+d.droneName+" > "+target);
-                        d.moveToPosition(target);
+                            Vector3 target = dc.transform.TransformPoint(droneManipulationOffsets[dc][d]);
+                            //Debug.Log("Moving drone :"+d.droneName+" > "+target);
+                            d.moveToPosition(target);
+                        }
+                       
                     }
                 }
                 else //moving with trail mode
@@ -389,8 +393,10 @@ public class SwarmTrailScenario : SwarmScenario
                 Destroy(dl.Value);
 
             }
+
+            loops.Clear();
         }
-        loops.Clear();
+
         foreach (Drone d in drones) updateColorForDrone(d);
     }
 

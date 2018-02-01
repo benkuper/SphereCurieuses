@@ -75,9 +75,11 @@ public class TrackableAutoManager : MonoBehaviour
             }
         }
 
-        if(!dynamicTrackerMode) Debug.Log("Set Trackable "+t.id);
-        o.setTrackable(t);
-
+        if(!dynamicTrackerMode)
+        {
+            //Debug.Log("Set Trackable "+t.id);
+            o.setTrackable(t);
+        }
         //currentTrackIndex++;
         //objects.Add(t, o);
     }

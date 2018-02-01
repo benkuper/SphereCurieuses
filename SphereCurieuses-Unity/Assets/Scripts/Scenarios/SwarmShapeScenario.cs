@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-#if UNITY_EDITOR
+
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
 #endif
 
 public class SwarmShapeScenario : SwarmScenario {
@@ -19,13 +20,12 @@ public class SwarmShapeScenario : SwarmScenario {
     {
         base.Start();
 
-        zOrderedPositions = new List<Vector3>();
-        foreach (Vector3 p in positions) zOrderedPositions.Add(p);
+       
     }
 
     public override void startScenario()
     {
-        zOrderedPositions.Sort(sortPositionByZ);
+        orderPositions();
 
         drones = SwarmMaster.instance.getZOrderedAvailableDrones(true, false);
         if(drones.Count < positions.Length) drones = SwarmMaster.instance.getZOrderedAvailableDrones(true, true);
@@ -42,9 +42,17 @@ public class SwarmShapeScenario : SwarmScenario {
         foreach(Drone d in drones) lockDrone(d);
     }
 
+    public void orderPositions()
+    {
+        zOrderedPositions = new List<Vector3>();
+        foreach (Vector3 p in positions) zOrderedPositions.Add(p);
+        zOrderedPositions.Sort(sortPositionByZ);
+
+    }
+
     public int sortPositionByZ(Vector3 p1, Vector3 p2)
     {
-        return p1.z.CompareTo(p2.z);
+        return getPosition(p1).z.CompareTo(getPosition(p2).z);
     }
 
     override public void updateScenario()
@@ -84,12 +92,17 @@ public class SwarmShapeScenario : SwarmScenario {
         Gizmos.color = Selection.activeGameObject == gameObject ? Color.yellow : Color.grey;
 
         Gizmos.DrawWireSphere(target.position, .2f);
+
+        if(!Application.isPlaying)  orderPositions();
+
         for (int i = 0; i < zOrderedPositions.Count; i++)
         {
             Vector3 p = getPosition(i);
             Gizmos.DrawLine(target.position, p);
+            Handles.Label(p+Vector3.down*.4f, i.ToString());
             Gizmos.DrawWireCube(p, Vector3.one * .2f);
         }
+        
     }
 #endif
 }

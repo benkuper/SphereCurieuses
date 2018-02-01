@@ -15,6 +15,10 @@ public class SwarmMaster : OSCControllable {
     const int SHAPE_BT = 6;
     const int TRAIL_BT = 7;
 
+    public enum HitMode { COLLIDER, SHORTEST_DISTANCE }
+    public HitMode hitMode;
+    public float maxSelectionDistance;
+
     void Awake()
     {
         overDrones = new Dictionary<DroneController, Drone>();
@@ -32,12 +36,11 @@ public class SwarmMaster : OSCControllable {
     void Start () {
         DroneManager.instance.droneSetup += droneSetupCallback;
         scenarios = new List<SwarmScenario>(GetComponents<SwarmScenario>());
-        setCurrentScenario(null);
-       // setCurrentScenario(scenarios[0]);
+        //setCurrentScenario(null);
+        setCurrentScenario(scenarios[0]);
     }
 
     void Update () {
-        
     }
 
     [OSCMethod("setScenario")]
@@ -92,14 +95,25 @@ public class SwarmMaster : OSCControllable {
         return dList;
     }
 
+    public List<Drone> getXOrderedAvailableDrones(bool includeFlying, bool includeOnGround)
+    {
+        List<Drone> dList = getAvailableDrones(includeFlying, includeOnGround, DroneManager.instance.drones.Count);
+        dList.Sort(SortByPositionX);
+        return dList;
+    }
+
     public int SortByPositionZ(Drone d1, Drone d2)
     {
         return d1.realPosition.z.CompareTo(d2.realPosition.z);
     }
 
+    public int SortByPositionX(Drone d1, Drone d2)
+    {
+        return d2.realPosition.x.CompareTo(d1.realPosition.x); //Inverse order, first in list will be the greatest X
+    }
+
     public List<Drone> getAvailableDrones(bool includeFlying, bool includeOnGround) {
         return getAvailableDrones(includeFlying, includeOnGround, DroneManager.instance.drones.Count);
-
     }
 
     public List<Drone> getAvailableDrones(bool includeFlying, bool includeOnGround, int maxNum)
@@ -163,7 +177,7 @@ public class SwarmMaster : OSCControllable {
         switch (buttonID)
         {
             case SHAPE_BT:
-                if (state != DroneController.ButtonState.Off)
+                if (state != DroneController.ButtonState.Off && currentScenario != scenarios[scenarios.Count-1]) //Only if not the last scenario
                 {
                     int offset = 1 + (int)state;
                     setCurrentScenario(scenarios[offset]);
@@ -187,7 +201,7 @@ public class SwarmMaster : OSCControllable {
     {
         switch(buttonID)
         {
-            case TRAIL_BT:
+            case SHAPE_BT:
                 setCurrentScenario(scenarios[scenarios.Count-1]);
                 break;
 

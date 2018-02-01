@@ -113,6 +113,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &2484094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1561499315304840, guid: 5c6d18f090c621d42ba0d700ba0aa5b5,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2484095}
+  m_Layer: 0
+  m_Name: Drop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2484095
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4643363446455384, guid: 5c6d18f090c621d42ba0d700ba0aa5b5,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2484094}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.237, y: 1.399, z: 2.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &67448823
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,13 +176,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oscName: swarm
-  currentScenario: {fileID: 0}
+  currentScenario: {fileID: 67448829}
   scenarios:
   - {fileID: 67448829}
   - {fileID: 67448828}
   - {fileID: 67448830}
   - {fileID: 67448827}
-  - {fileID: 67448826}
+  - {fileID: 67448829}
+  hitMode: 1
+  maxSelectionDistance: 1
 --- !u!4 &67448825
 Transform:
   m_ObjectHideFlags: 0
@@ -177,13 +209,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 67448823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddf01cc03f42b8e4ab9434c39b53663e, type: 3}
+  m_Script: {fileID: 11500000, guid: bb483cbe1c924de4480f5577286ff21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenarioName: Emergency
+  scenarioName: Box
   isCurrent: 0
   startTime: 0
   endTime: 0
+  dropTransform: {fileID: 2484095}
+  stagger: 3
 --- !u!114 &67448827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca4de5833ea9dc46808ec760cde5c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenarioName: Line3
+  scenarioName: Line5
   isCurrent: 0
   startTime: 2
   endTime: 0
@@ -207,7 +241,12 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 1, y: 0, z: 0}
   - {x: 2, y: 0, z: 0}
-  zOrderedPositions: []
+  zOrderedPositions:
+  - {x: 1, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: -2, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
   drones: []
 --- !u!114 &67448828
 MonoBehaviour:
@@ -221,18 +260,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenarioName: Pyramid
-  isCurrent: 0
+  isCurrent: 1
   startTime: 2
   endTime: 0
   target: {fileID: 1376978558}
-  showGizmo: 1
+  showGizmo: 0
   positions:
   - {x: -1, y: -0.6, z: -1}
   - {x: -1, y: -0.6, z: 1}
   - {x: 1, y: -0.6, z: 1}
   - {x: 1, y: -0.6, z: -1}
   - {x: 0, y: 1, z: 0}
-  zOrderedPositions: []
+  zOrderedPositions:
+  - {x: -1, y: -0.6, z: 1}
+  - {x: -1, y: -0.6, z: -1}
+  - {x: 0, y: 1, z: 0}
+  - {x: 1, y: -0.6, z: 1}
+  - {x: 1, y: -0.6, z: -1}
   drones: []
 --- !u!114 &67448829
 MonoBehaviour:
@@ -246,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenarioName: Trail
-  isCurrent: 0
+  isCurrent: 1
   startTime: 0
   endTime: 0
   selectionMode: 0
@@ -276,22 +320,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ca4de5833ea9dc46808ec760cde5c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenarioName: Cube
+  scenarioName: V
   isCurrent: 0
   startTime: 2
   endTime: 0
   target: {fileID: 832002186}
-  showGizmo: 0
+  showGizmo: 1
   positions:
-  - {x: -0.5, y: -0.5, z: -0.5}
-  - {x: 0.5, y: -0.5, z: -0.5}
-  - {x: -0.5, y: -0.5, z: 0.5}
-  - {x: 0.5, y: -0.5, z: 0.5}
-  - {x: -0.5, y: 0.5, z: -0.5}
-  - {x: 0.5, y: 0.5, z: -0.5}
-  - {x: -0.5, y: 0.5, z: 0.5}
-  - {x: 0.5, y: 0.5, z: 0.5}
-  zOrderedPositions: []
+  - {x: 0, y: 0.3, z: -0.5}
+  - {x: 0, y: 0, z: -0.25}
+  - {x: 0, y: -0.3, z: 0}
+  - {x: 0, y: 0, z: 0.25}
+  - {x: 0, y: 0.3, z: 0.5}
+  zOrderedPositions:
+  - {x: 0, y: 0.3, z: -0.5}
+  - {x: 0, y: 0, z: -0.25}
+  - {x: 0, y: -0.3, z: 0}
+  - {x: 0, y: 0, z: 0.25}
+  - {x: 0, y: 0.3, z: 0.5}
   drones: []
 --- !u!1 &85097639
 GameObject:
@@ -560,13 +606,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832002185}
-  m_LocalRotation: {x: -0, y: 0.7215218, z: -0, w: 0.6923917}
-  m_LocalPosition: {x: 2.2, y: 1.53, z: 2.59}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.65, y: 1.49, z: 2.59}
+  m_LocalScale: {x: 1.500853, y: 1.5008531, z: 1.5008531}
   m_Children: []
   m_Father: {fileID: 67448825}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 92.36101, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &832002187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,7 +624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e059502ede9816546abe31a794f87467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.28
+  speed: {x: 0.13, y: -0.2, z: 0.17}
+  random: 1
   seed: 0
 --- !u!1 &858754250
 GameObject:
@@ -761,13 +808,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1376978557}
-  m_LocalRotation: {x: -0, y: 0.76914924, z: -0, w: 0.63906926}
-  m_LocalPosition: {x: 2.2, y: 1.53, z: 2.59}
+  m_LocalRotation: {x: -0, y: -0.71512234, z: -0, w: 0.69899935}
+  m_LocalPosition: {x: 1.79, y: 1.53, z: 2.58}
   m_LocalScale: {x: 0.644342, y: 0.644342, z: 0.644342}
   m_Children: []
   m_Father: {fileID: 67448825}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 100.55501, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -91.30601, z: 0}
 --- !u!1 &1398854132
 GameObject:
   m_ObjectHideFlags: 0

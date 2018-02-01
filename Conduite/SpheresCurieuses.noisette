@@ -1,7 +1,7 @@
 {
   "metaData": {
-    "version": "1.2.13",
-    "versionNumber": 66061
+    "version": "1.2.14",
+    "versionNumber": 66062
   },
   "moduleManager": {
     "items": [
@@ -660,7 +660,7 @@
               "feedbackOnly": false
             },
             {
-              "value": 127,
+              "value": 0,
               "controlMode": 0,
               "minValue": 0,
               "maxValue": 127,
@@ -783,11 +783,6 @@
             ],
             "controlMode": 0,
             "controlAddress": "/size"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/logOutgoing"
           }
         ],
         "niceName": "Unity",
@@ -2814,8 +2809,8 @@
           },
           {
             "value": [
-              194,
-              151
+              207,
+              354
             ],
             "controlMode": 0,
             "controlAddress": "/size"
@@ -3331,11 +3326,6 @@
                             "value": 2,
                             "controlMode": 0,
                             "controlAddress": "/touchID"
-                          },
-                          {
-                            "value": 127,
-                            "controlMode": 0,
-                            "controlAddress": "/touched"
                           }
                         ]
                       }
@@ -4551,19 +4541,24 @@
         "parameters": [
           {
             "value": [
-              -506,
-              -524
+              -452,
+              -569
             ],
             "controlMode": 0,
             "controlAddress": "/viewUIPosition"
           },
           {
             "value": [
-              194,
-              151
+              201,
+              265
             ],
             "controlMode": 0,
             "controlAddress": "/size"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/active"
           }
         ],
         "niceName": "State",
@@ -4572,6 +4567,11 @@
           "items": [
             {
               "parameters": [
+                {
+                  "value": false,
+                  "controlMode": 0,
+                  "controlAddress": "/enabled"
+                },
                 {
                   "value": [
                     200,
@@ -4662,6 +4662,11 @@
             {
               "parameters": [
                 {
+                  "value": false,
+                  "controlMode": 0,
+                  "controlAddress": "/enabled"
+                },
+                {
                   "value": [
                     200,
                     200
@@ -4675,6 +4680,11 @@
               "type": "Action",
               "conditions": {
                 "parameters": [
+                  {
+                    "value": true,
+                    "controlMode": 0,
+                    "controlAddress": "/isValid"
+                  },
                   {
                     "value": "AND",
                     "controlMode": 0,
@@ -4745,6 +4755,11 @@
             },
             {
               "parameters": [
+                {
+                  "value": false,
+                  "controlMode": 0,
+                  "controlAddress": "/enabled"
+                },
                 {
                   "value": [
                     200,
@@ -4835,6 +4850,11 @@
             {
               "parameters": [
                 {
+                  "value": false,
+                  "controlMode": 0,
+                  "controlAddress": "/enabled"
+                },
+                {
                   "value": [
                     200,
                     200
@@ -4848,6 +4868,11 @@
               "type": "Action",
               "conditions": {
                 "parameters": [
+                  {
+                    "value": true,
+                    "controlMode": 0,
+                    "controlAddress": "/isValid"
+                  },
                   {
                     "value": "AND",
                     "controlMode": 0,
@@ -4907,6 +4932,228 @@
                       "parameters": [
                         {
                           "value": "/sequences/sequenceRight",
+                          "controlMode": 0,
+                          "controlAddress": "/target"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    200,
+                    200
+                  ],
+                  "controlMode": 0,
+                  "controlAddress": "/size"
+                },
+                {
+                  "value": true,
+                  "controlMode": 0,
+                  "controlAddress": "/continuous"
+                }
+              ],
+              "niceName": "Fade Left",
+              "editorIsCollapsed": true,
+              "type": "Mapping",
+              "input": {
+                "parameters": [
+                  {
+                    "value": "/modules/specktrLeft/scripts/gloveTest/params/isTouched",
+                    "controlMode": 0,
+                    "controlAddress": "/inputValue"
+                  }
+                ]
+              },
+              "conditions": {
+                "parameters": [
+                  {
+                    "value": "AND",
+                    "controlMode": 0,
+                    "controlAddress": "/operator"
+                  }
+                ]
+              },
+              "filters": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          200,
+                          200
+                        ],
+                        "controlMode": 0,
+                        "controlAddress": "/size"
+                      }
+                    ],
+                    "niceName": "Smooth",
+                    "type": "Smooth",
+                    "filterParams": {
+                      "parameters": [
+                        {
+                          "value": 0.80737704038619995117,
+                          "controlMode": 0,
+                          "controlAddress": "/smoothing"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          200,
+                          200
+                        ],
+                        "controlMode": 0,
+                        "controlAddress": "/size"
+                      }
+                    ],
+                    "niceName": "Remap",
+                    "type": "Remap",
+                    "filterParams": {
+                    }
+                  }
+                ]
+              },
+              "outputs": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          200,
+                          200
+                        ],
+                        "controlMode": 0,
+                        "controlAddress": "/size"
+                      }
+                    ],
+                    "niceName": "MappingOutput",
+                    "type": "BaseItem",
+                    "commandModule": "generic",
+                    "commandPath": "",
+                    "commandType": "Set Parameter Value",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": "/sequences/sequenceLeft/newAudioLayer/volume",
+                          "controlMode": 0,
+                          "controlAddress": "/target"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": [
+                    200,
+                    200
+                  ],
+                  "controlMode": 0,
+                  "controlAddress": "/size"
+                },
+                {
+                  "value": true,
+                  "controlMode": 0,
+                  "controlAddress": "/continuous"
+                }
+              ],
+              "niceName": "Fade Right",
+              "editorIsCollapsed": true,
+              "type": "Mapping",
+              "input": {
+                "parameters": [
+                  {
+                    "value": "/modules/specktrRight/scripts/gloveTest/params/isTouched",
+                    "controlMode": 0,
+                    "controlAddress": "/inputValue"
+                  }
+                ]
+              },
+              "conditions": {
+                "parameters": [
+                  {
+                    "value": "AND",
+                    "controlMode": 0,
+                    "controlAddress": "/operator"
+                  }
+                ]
+              },
+              "filters": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          200,
+                          200
+                        ],
+                        "controlMode": 0,
+                        "controlAddress": "/size"
+                      }
+                    ],
+                    "niceName": "Smooth",
+                    "type": "Smooth",
+                    "filterParams": {
+                      "parameters": [
+                        {
+                          "value": 0.80737704038619995117,
+                          "controlMode": 0,
+                          "controlAddress": "/smoothing"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          200,
+                          200
+                        ],
+                        "controlMode": 0,
+                        "controlAddress": "/size"
+                      }
+                    ],
+                    "niceName": "Remap",
+                    "type": "Remap",
+                    "filterParams": {
+                    }
+                  }
+                ]
+              },
+              "outputs": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": [
+                          200,
+                          200
+                        ],
+                        "controlMode": 0,
+                        "controlAddress": "/size"
+                      }
+                    ],
+                    "niceName": "MappingOutput",
+                    "type": "BaseItem",
+                    "commandModule": "generic",
+                    "commandPath": "",
+                    "commandType": "Set Parameter Value",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": "/sequences/sequenceRight/newAudioLayer/volume",
                           "controlMode": 0,
                           "controlAddress": "/target"
                         }
@@ -4984,9 +5231,9 @@
                   "controlAddress": "/layerColor"
                 },
                 {
-                  "value": 0.2896963953971862793,
+                  "value": 2.8025969286496341418e-45,
                   "controlMode": 0,
-                  "controlAddress": "/enveloppe"
+                  "controlAddress": "/volume"
                 }
               ],
               "niceName": "New Audio Layer",
@@ -5087,9 +5334,9 @@
                   "controlAddress": "/layerColor"
                 },
                 {
-                  "value": 0.12540978193283081055,
+                  "value": 2.8025969286496341418e-45,
                   "controlMode": 0,
-                  "controlAddress": "/enveloppe"
+                  "controlAddress": "/volume"
                 }
               ],
               "niceName": "New Audio Layer",
