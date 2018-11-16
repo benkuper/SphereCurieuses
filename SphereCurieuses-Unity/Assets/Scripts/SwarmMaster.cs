@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwarmMaster : OSCControllable {
+public class SwarmMaster : Controllable {
 
     public static SwarmMaster instance;
 
@@ -14,15 +14,18 @@ public class SwarmMaster : OSCControllable {
 
     const int SHAPE_BT = 6;
     const int TRAIL_BT = 7;
+    const int BOX_BT = 5;
 
     public enum HitMode { COLLIDER, SHORTEST_DISTANCE }
     public HitMode hitMode;
     public float maxSelectionDistance;
 
-    void Awake()
+    override public void Awake()
     {
         overDrones = new Dictionary<DroneController, Drone>();
         instance = this;
+        TargetScript = this;
+        base.Awake();
     }
 
     private void droneSetupCallback()
@@ -40,11 +43,8 @@ public class SwarmMaster : OSCControllable {
         setCurrentScenario(scenarios[0]);
     }
 
-    void Update () {
-    }
-
-    [OSCMethod("setScenario")]
-    public void setScenarioIndex(int index)
+   
+    public void setScenario(int index)
     {
         if (index < 0 || index >= scenarios.Count) return;
         setCurrentScenario(scenarios[index]);
@@ -63,6 +63,8 @@ public class SwarmMaster : OSCControllable {
         if (currentScenario != null)
         {
             currentScenario.setCurrent(true);
+            DroneController[] controllers = FindObjectsOfType<DroneController>();
+            foreach(DroneController dc in controllers) MrTrackerClient.instance.sendMultiVibrate(dc.id, 5, .1f, .4f, 0.05f);
         }else
         {
             foreach (Drone d in DroneManager.instance.drones) d.colorTo(Color.black, 0);
@@ -85,6 +87,37 @@ public class SwarmMaster : OSCControllable {
         else setCurrentScenario(scenarios[(scenarios.IndexOf(currentScenario) + scenarios.Count - 1) % scenarios.Count]);
     }
 
+    [OSCMethod]
+    public void stopScenario()
+    {
+        setCurrentScenario(null);
+    }
+
+    [OSCMethod]
+    public void setTrailScenario()
+    {
+        foreach (SwarmScenario s in scenarios)
+        {
+            if (s is SwarmTrailScenario)
+            {
+                setCurrentScenario(s);
+                return;
+            }
+        }
+    }
+
+    [OSCMethod]
+    public void setBoxScenario()
+    {
+        foreach (SwarmScenario s in scenarios)
+        {
+            if (s is SwarmEndBoxScenario)
+            {
+                setCurrentScenario(s);
+                return;
+            }
+        }
+    }
 
     //Global functions
 
@@ -122,12 +155,16 @@ public class SwarmMaster : OSCControllable {
         for(int i=0; i< DroneManager.instance.drones.Count && result.Count < maxNum; i++)
         {
             Drone d = DroneManager.instance.drones[i];
-            if(d.canFly(true))
-            {
-                if (d.isFlying()) { if (includeFlying) result.Add(d); }
-                else if (includeOnGround) result.Add(d);
 
-            }
+            if (d.lowBattery) continue;
+
+            //Debug.Log(" Check drone : " + d.droneName + " " + d.isReady() + " / " + d.isFlying());
+
+            bool good = false;
+            if(includeOnGround) good |= d.isReady();
+            if (includeFlying) good |= d.isFlying();
+            if(good) result.Add(d);
+            
         }
         return result;
     }
@@ -137,9 +174,9 @@ public class SwarmMaster : OSCControllable {
         foreach (Drone d in DroneManager.instance.drones) d.stop();
     }
 
-    public void homeAllDrones()
+    public void landAllDrones()
     {
-        foreach (Drone d in DroneManager.instance.drones) d.goHome();
+        foreach (Drone d in DroneManager.instance.drones) d.land();
     }
 
 
@@ -176,14 +213,7 @@ public class SwarmMaster : OSCControllable {
     {
         switch (buttonID)
         {
-            case SHAPE_BT:
-                if (state != DroneController.ButtonState.Off && currentScenario != scenarios[scenarios.Count-1]) //Only if not the last scenario
-                {
-                    int offset = 1 + (int)state;
-                    setCurrentScenario(scenarios[offset]);
-                }
-                break;
-
+           
             case TRAIL_BT:
                 setCurrentScenario(scenarios[0]);
                 break;
@@ -199,10 +229,27 @@ public class SwarmMaster : OSCControllable {
 
     public void triggerLongPress(DroneController controller, int buttonID,DroneController.ButtonState state)
     {
+        
+        if(buttonID == BOX_BT && state == DroneController.ButtonState.Down)
+        {
+             setCurrentScenario(scenarios[scenarios.Count-1]);
+            return;
+        }
+               
+        if(buttonID == 3 && state == DroneController.ButtonState.Down)
+        {
+            DroneManager.instance.calibrateAll(true);
+            return;
+        }
+
         switch(buttonID)
         {
-            case SHAPE_BT:
-                setCurrentScenario(scenarios[scenarios.Count-1]);
+             case SHAPE_BT:
+                if (state != DroneController.ButtonState.Off && currentScenario != scenarios[scenarios.Count-1]) //Only if not the last scenario
+                {
+                    int offset = 1 + (int)state;
+                    setCurrentScenario(scenarios[offset]);
+                }
                 break;
 
             default:

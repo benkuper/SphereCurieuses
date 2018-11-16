@@ -8,6 +8,7 @@ public class TrackableObject : MonoBehaviour
     public int trackableID;
     public Trackable trackable;
 
+    public bool alwaysUpdate;
 
 	// Update is called once per frame
 	public virtual void Update () {
@@ -17,8 +18,12 @@ public class TrackableObject : MonoBehaviour
         if (float.IsInfinity(trackable.rotation.x) || float.IsNaN(trackable.rotation.x)) return;
 
 
-        transform.localPosition = new Vector3(trackable.position.x, trackable.position.y, trackable.position.z);
-        transform.localRotation = trackable.rotation;
+        if(alwaysUpdate)
+        {
+            transform.localPosition = new Vector3(trackable.position.x, trackable.position.y, trackable.position.z);
+            transform.localRotation = trackable.rotation;
+        }
+        
         if(trackable.sourceType == 1) //1 == MrTrackerClient.SourceType.AUGMENTA
             transform.localScale = trackable.size;
 	}
@@ -28,6 +33,11 @@ public class TrackableObject : MonoBehaviour
         trackable = t;
         trackableID = t.id;
         gameObject.name = "Trackable " + t.id;
+
+
+        //Tmp
+        transform.localPosition = new Vector3(trackable.position.x, trackable.position.y, trackable.position.z);
+        transform.localRotation = trackable.rotation;
     }
 
     public virtual void OnDrawGizmos()

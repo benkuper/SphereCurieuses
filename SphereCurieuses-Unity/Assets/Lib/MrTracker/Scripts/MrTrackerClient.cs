@@ -37,6 +37,7 @@ public class MrTrackerClient : MonoBehaviour
     public float offsetYaw;
     public bool IsConnected, IsProcessing;
 
+
     public delegate void TrackableAddedEvent(Trackable t);
     public event TrackableAddedEvent trackableAdded;
     public delegate void TrackableRemoveEvent(Trackable t);
@@ -256,7 +257,7 @@ public class MrTrackerClient : MonoBehaviour
     public IEnumerator vibrationCoroutine(int controllerID, int numVibrations, float intervals, float strength, float timeOn)
     {
         sendVibrate(controllerID, strength, timeOn);
-        for (int i = 0; i < numVibrations-1; i++)
+        for (int i = 0; i < numVibrations; i++)
         {
             yield return new WaitForSeconds(intervals);
             sendVibrate(controllerID, strength, timeOn);

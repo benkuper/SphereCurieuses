@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class TrackableAutoManager : MonoBehaviour
+public class TrackableAutoManager : Controllable
 {
     public MrTrackerClient client;
     public MrTrackerClient.ViveTypeFilter filter;
@@ -12,6 +12,10 @@ public class TrackableAutoManager : MonoBehaviour
     public GameObject trackableObjectPrefab;
     public List<TrackableObject> trackableObjects;
 
+
+    public bool vibrateOnAdded;
+    public bool vibrateOnLost;
+    public int numVibrations = 6;
 
     public bool dynamicTrackerMode;
 
@@ -23,12 +27,7 @@ public class TrackableAutoManager : MonoBehaviour
         client.trackableAdded += trackableAdded;
         client.trackableRemoved += trackableRemoved;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-   
-    }
+    
 
     void trackableAdded(Trackable t)
     {
@@ -75,10 +74,19 @@ public class TrackableAutoManager : MonoBehaviour
             }
         }
 
-        if(!dynamicTrackerMode)
+        if(o != null)
         {
-            //Debug.Log("Set Trackable "+t.id);
+            Debug.Log("Set Trackable "+t.id);
             o.setTrackable(t);
+            if(vibrateOnAdded)
+            {
+                TrackableObject[] tos = GetComponentsInChildren<TrackableObject>();
+                foreach (TrackableObject to in tos)
+                {
+                    if (to.trackable == null) continue;
+                    if (to.trackable.type == (int)MrTrackerClient.ViveTypeFilter.CONTROLLER) MrTrackerClient.instance.sendMultiVibrate(to.trackableID, numVibrations, .5f, 1, .25f);
+                }
+            }
         }
         //currentTrackIndex++;
         //objects.Add(t, o);
@@ -88,17 +96,27 @@ public class TrackableAutoManager : MonoBehaviour
     {
         if (!dynamicTrackerMode) return;
         
-        TrackableObject to = getObjectForTrackable(t.id);
-        if (to != null)
+        TrackableObject o = getObjectForTrackable(t.id);
+        if (o != null)
         {
-            trackableObjects.Remove(to);
-            Destroy(to.gameObject);
+            trackableObjects.Remove(o);
+            Destroy(o.gameObject);
            // Debug.Log("Remove trackable object " + t.id);
         }else
         {
           //  Debug.Log("Remove trackable not found : " + t.id);
         }
-        
+
+        if (vibrateOnLost)
+        {
+            TrackableObject[] tos = GetComponentsInChildren<TrackableObject>();
+            foreach (TrackableObject to in tos)
+            {
+                if (to.trackable == null) continue;
+                if(to.trackable.type == (int)MrTrackerClient.ViveTypeFilter.CONTROLLER) MrTrackerClient.instance.sendMultiVibrate(to.trackableID, numVibrations, .5f,1,.25f);
+            }
+        }
+
         /*
         if (currentTrackIndex > 0)
         {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecktrOSC : OSCControllable {
+public class SpecktrOSC : Controllable {
 
     public enum Hand { Left, Right }
     
@@ -11,14 +11,19 @@ public class SpecktrOSC : OSCControllable {
 
     public float doubleTouchParasiteThreshold;
     bool touchLocked;
-    public bool debug;
+    public bool debugTouch;
 
 
-
-    [OSCMethod("touchUpdate")]
-    public void handleButtonUpdate(int handID, int buttonID, int side, bool value)
+    public override void Awake()
     {
-        if(debug) Debug.Log("touchUpdate : " + handID + "," + buttonID + "," + side + "," + value);
+        TargetScript = this;
+        base.Awake();
+    }
+
+    [OSCMethod]
+    public void touch(int handID, int buttonID, int side, bool value)
+    {
+        if(debugTouch) Debug.Log("touchUpdate : " + handID + "," + buttonID + "," + side + "," + value);
 
         if (value)
         {
@@ -28,20 +33,19 @@ public class SpecktrOSC : OSCControllable {
                 return;
             }
 
-            touchLocked = true;
+            //touchLocked = true;
             //Debug.Log("accept touch, lock");
             Invoke("unlockTouch", doubleTouchParasiteThreshold);
         }
 
-       if(debug) Debug.Log(" > Accepted");
+       if(debugTouch) Debug.Log(" > Accepted");
 
         DroneController.ButtonState state = (DroneController.ButtonState)side;
         if (buttonUpdate != null) buttonUpdate((Hand)handID, buttonID, value, state);
         
     }
 
-    [OSCMethod("pitchUpdate")]
-    public void handlePitchUpdate(int handID, int pitch)
+    public void pitchUpdate(int handID, int pitch)
     {
        // if(debug) Debug.Log("Pitch update");
     }

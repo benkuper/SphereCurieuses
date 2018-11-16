@@ -25,6 +25,8 @@ public class SwarmShapeScenario : SwarmScenario {
 
     public override void startScenario()
     {
+        base.startScenario();
+        
         orderPositions();
 
         drones = SwarmMaster.instance.getZOrderedAvailableDrones(true, false);
@@ -36,7 +38,10 @@ public class SwarmShapeScenario : SwarmScenario {
             Drone d = drones[drones.Count - 1];
             d.stop();
             drones.Remove(d);
+            d.colorTo(Color.black, 0);
         }
+
+        foreach (Drone d in drones) d.colorTo(Color.cyan, 0);
 
         updateDronesPositions(2);
         foreach(Drone d in drones) lockDrone(d);
@@ -62,7 +67,8 @@ public class SwarmShapeScenario : SwarmScenario {
 
     public override void endScenario()
     {
-        foreach (Drone d in drones) releaseDrone(d);
+       base.endScenario();
+        foreach (Drone d in drones) d.colorTo(Color.black, 0);
     }
 
     public void updateDronesPositions(float time)

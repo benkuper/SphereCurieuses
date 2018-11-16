@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwarmScenario : MonoBehaviour, IDroneLocker {
+public class SwarmScenario : Controllable, IDroneLocker {
 
     
     public string scenarioName;
@@ -17,24 +17,33 @@ public class SwarmScenario : MonoBehaviour, IDroneLocker {
 
     public Dictionary<Drone, bool> droneLocks;
 
-    public virtual void Awake()
+    public override void Awake()
     {
+        TargetScript = this;
+        
         isCurrent = false;
         droneLocks = new Dictionary<Drone, bool>();
-        
+
+        base.Awake();
     }
 
     public virtual void Start() {
 
     }
     
-    public virtual void Update() {
+    public override void Update() {
         if (isCurrent && !isStarting && !isEnding) updateScenario();
+
+        base.Update();
     }
 
     public virtual void startScenario() { }
     public virtual void updateScenario() { }
-    public virtual void endScenario() { }
+    public virtual void endScenario() {
+        List<Drone> dList = new List<Drone>();
+        foreach(KeyValuePair<Drone, bool> dl in droneLocks) dList.Add(dl.Key);
+        foreach(Drone d in dList) if(d != null) releaseDrone(d);
+     }
 
     public void setCurrent(bool value)
     {
@@ -69,7 +78,12 @@ public class SwarmScenario : MonoBehaviour, IDroneLocker {
 
     public void releaseDrone(Drone d)
     {
-        if ((Object)d.locker != this) return;
+        Debug.Log("Release drone for scenario : " + scenarioName + " > " + d.droneName);
+        if ((Object)d.locker != this)
+        {
+            Debug.LogWarning("Not this locker");
+            return;
+        }
 
         d.setLocker(null);
 
