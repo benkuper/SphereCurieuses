@@ -4,3 +4,15 @@ legacy/
 SphereCurieuses-Unity/Library/
 
 SphereCurieuses-Unity/\.vs/
+
+*.wav
+
+Conduite/SpheresCurieuses_autosave/
+
+Conduite/SpheresCurieusesESP_autosave/
+
+Resources/
+
+Notes pour marseille\.txt
+
+*.meta

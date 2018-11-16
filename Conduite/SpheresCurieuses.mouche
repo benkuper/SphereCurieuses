@@ -1,1054 +1,556 @@
 {
   "metaData": {
-    "version": "1.1.1",
-    "versionNumber": 65793
+    "version": "2.0.0a",
+    "versionNumber": 131072
+  },
+  "projectSettings": {
+    "containers": {
+      "crazyflieSettings": {
+        "parameters": [
+          {
+            "value": [
+              4.0,
+              3.0,
+              4.0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/lpsboxSize"
+          },
+          {
+            "value": 0.0,
+            "controlMode": 0,
+            "controlAddress": "/lpsverticalOffset"
+          }
+        ],
+        "containers": {
+          "setup": {
+            "parameters": [
+              {
+                "value": "TDoA 3",
+                "controlMode": 0,
+                "controlAddress": "/lpsmode"
+              },
+              {
+                "value": true,
+                "controlMode": 0,
+                "controlAddress": "/autoConnect"
+              },
+              {
+                "value": false,
+                "controlMode": 0,
+                "controlAddress": "/calibrateAfterConnect"
+              },
+              {
+                "value": 3.29999995231628417969,
+                "controlMode": 0,
+                "controlAddress": "/minBattery"
+              },
+              {
+                "value": 2.0,
+                "controlMode": 0,
+                "controlAddress": "/lowBatteryThreshold"
+              }
+            ]
+          },
+          "flight": {
+            "parameters": [
+              {
+                "value": false,
+                "controlMode": 0,
+                "controlAddress": "/useThrustCommand"
+              },
+              {
+                "value": 1.5,
+                "controlMode": 0,
+                "controlAddress": "/takeoffTime"
+              },
+              {
+                "value": 1.0,
+                "controlMode": 0,
+                "controlAddress": "/takeoffMaxSpeed"
+              },
+              {
+                "value": 0.0,
+                "controlMode": 0,
+                "controlAddress": "/takeoffMinSpeed"
+              },
+              {
+                "value": true,
+                "controlMode": 0,
+                "controlAddress": "/disableYawCommands"
+              }
+            ],
+            "containers": {
+              "physics": {
+                "parameters": [
+                  {
+                    "value": "Spring",
+                    "controlMode": 0,
+                    "controlAddress": "/mode"
+                  },
+                  {
+                    "value": 8.2364826202392578125,
+                    "controlMode": 0,
+                    "controlAddress": "/frottements"
+                  }
+                ],
+                "containers": {
+                  "testMotion": {
+                    "parameters": [
+                      {
+                        "value": 0.0,
+                        "controlMode": 0,
+                        "controlAddress": "/value"
+                      }
+                    ],
+                    "items": [
+                      {
+                        "parameters": [
+                          {
+                            "value": "Hold",
+                            "controlMode": 0,
+                            "controlAddress": "/easingType"
+                          }
+                        ],
+                        "niceName": "Key",
+                        "type": "BaseItem",
+                        "easing": {
+                        }
+                      },
+                      {
+                        "parameters": [
+                          {
+                            "value": 0.09523809701204299927,
+                            "controlMode": 0,
+                            "controlAddress": "/position"
+                          },
+                          {
+                            "value": 0.44594591856002807617,
+                            "controlMode": 0,
+                            "controlAddress": "/value"
+                          },
+                          {
+                            "value": "Bezier",
+                            "controlMode": 0,
+                            "controlAddress": "/easingType"
+                          }
+                        ],
+                        "niceName": "Key 1",
+                        "type": "BaseItem",
+                        "easing": {
+                          "parameters": [
+                            {
+                              "value": [
+                                0.60000002384185791016,
+                                0.0
+                              ],
+                              "controlMode": 0,
+                              "controlAddress": "/anchor1"
+                            },
+                            {
+                              "value": [
+                                0.69999998807907104492,
+                                1.0
+                              ],
+                              "controlMode": 0,
+                              "controlAddress": "/anchor2"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "parameters": [
+                          {
+                            "value": 0.25274726748466491699,
+                            "controlMode": 0,
+                            "controlAddress": "/position"
+                          },
+                          {
+                            "value": 0.0,
+                            "controlMode": 0,
+                            "controlAddress": "/value"
+                          }
+                        ],
+                        "niceName": "Key 4",
+                        "type": "BaseItem",
+                        "easing": {
+                        }
+                      },
+                      {
+                        "parameters": [
+                          {
+                            "value": 0.50183153152465820313,
+                            "controlMode": 0,
+                            "controlAddress": "/position"
+                          },
+                          {
+                            "value": 1.0,
+                            "controlMode": 0,
+                            "controlAddress": "/value"
+                          },
+                          {
+                            "value": "Bezier",
+                            "controlMode": 0,
+                            "controlAddress": "/easingType"
+                          }
+                        ],
+                        "niceName": "Key 2",
+                        "type": "BaseItem",
+                        "easing": {
+                          "parameters": [
+                            {
+                              "value": [
+                                0.60000002384185791016,
+                                0.0
+                              ],
+                              "controlMode": 0,
+                              "controlAddress": "/anchor1"
+                            },
+                            {
+                              "value": [
+                                0.69999998807907104492,
+                                1.0
+                              ],
+                              "controlMode": 0,
+                              "controlAddress": "/anchor2"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "parameters": [
+                          {
+                            "value": 0.60989010334014892578,
+                            "controlMode": 0,
+                            "controlAddress": "/position"
+                          },
+                          {
+                            "value": 0.0,
+                            "controlMode": 0,
+                            "controlAddress": "/value"
+                          }
+                        ],
+                        "niceName": "Key 3",
+                        "type": "BaseItem",
+                        "easing": {
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "automation": {
+            "parameters": [
+              {
+                "value": 0.0,
+                "controlMode": 0,
+                "controlAddress": "/value"
+              }
+            ],
+            "items": [
+              {
+                "parameters": [
+                  {
+                    "value": 0.0,
+                    "controlMode": 0,
+                    "controlAddress": "/position"
+                  },
+                  {
+                    "value": 0.0,
+                    "controlMode": 0,
+                    "controlAddress": "/value"
+                  },
+                  {
+                    "value": "Bezier",
+                    "controlMode": 0,
+                    "controlAddress": "/easingType"
+                  }
+                ],
+                "niceName": "Key 2",
+                "type": "BaseItem",
+                "easing": {
+                  "parameters": [
+                    {
+                      "value": [
+                        0.60000002384185791016,
+                        0.0
+                      ],
+                      "controlMode": 0,
+                      "controlAddress": "/anchor1"
+                    },
+                    {
+                      "value": [
+                        0.69999998807907104492,
+                        1.0
+                      ],
+                      "controlMode": 0,
+                      "controlAddress": "/anchor2"
+                    }
+                  ]
+                }
+              },
+              {
+                "parameters": [
+                  {
+                    "value": 0.5128205418586730957,
+                    "controlMode": 0,
+                    "controlAddress": "/position"
+                  },
+                  {
+                    "value": 1.0,
+                    "controlMode": 0,
+                    "controlAddress": "/value"
+                  },
+                  {
+                    "value": "Bezier",
+                    "controlMode": 0,
+                    "controlAddress": "/easingType"
+                  }
+                ],
+                "niceName": "Key",
+                "type": "BaseItem",
+                "easing": {
+                  "parameters": [
+                    {
+                      "value": [
+                        0.60000002384185791016,
+                        0.0
+                      ],
+                      "controlMode": 0,
+                      "controlAddress": "/anchor1"
+                    },
+                    {
+                      "value": [
+                        0.69999998807907104492,
+                        1.0
+                      ],
+                      "controlMode": 0,
+                      "controlAddress": "/anchor2"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "miscellaneous": {
+          }
+        }
+      }
+    }
   },
   "droneManager": {
-    "parameters": [
-      {
-        "value": 3.0999999046325683594,
-        "controlMode": 0,
-        "controlAddress": "/flyLowBatteryThreshold"
-      },
-      {
-        "value": 3.2418918609619140625,
-        "controlMode": 0,
-        "controlAddress": "/onGroundBatteryThreshold"
-      },
-      {
-        "value": 2.0360360145568847656,
-        "controlMode": 0,
-        "controlAddress": "/lowBatteryTimeCheck"
-      }
-    ],
     "items": [
       {
         "parameters": [
           {
-            "value": false,
+            "value": true,
             "controlMode": 0,
             "controlAddress": "/enabled"
           },
           {
-            "value": [
-              200,
-              200
-            ],
+            "value": 0,
             "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 100,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7A1",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0,
-              0,
-              0,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
+            "controlAddress": "/id"
           }
         ],
-        "niceName": "A1 (Anaelle)",
-        "type": "Drone"
+        "niceName": "0",
+        "type": "BaseItem"
       },
       {
         "parameters": [
           {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 100,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7A2",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
             "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              1,
-              0.51764708757400512695,
-              0.0039215688593685626984,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          }
-        ],
-        "niceName": "A2 (Anisette)",
-        "type": "Drone"
-      },
-      {
-        "parameters": [
-          {
-            "value": false,
             "controlMode": 0,
             "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 100,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7A3",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.011764706112444400787,
-              0.015686275437474250793,
-              0.011764706112444400787,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          }
-        ],
-        "niceName": "A3 (Articule)",
-        "editorIsCollapsed": true,
-        "type": "Drone"
-      },
-      {
-        "parameters": [
-          {
-            "value": false,
-            "controlMode": 0,
-            "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
           },
           {
             "value": 1,
             "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 110,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7B1",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.015686275437474250793,
-              0.015686275437474250793,
-              0.015686275437474250793,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
+            "controlAddress": "/id"
           }
         ],
-        "niceName": "B1 (Balayette)",
+        "niceName": "1",
         "editorIsCollapsed": true,
-        "type": "Drone"
+        "type": "BaseItem"
       },
       {
         "parameters": [
           {
-            "value": false,
+            "value": true,
             "controlMode": 0,
             "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 1,
-            "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 110,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7B2",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              1,
-              1,
-              1,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          }
-        ],
-        "niceName": "B2 (Bidule)",
-        "editorIsCollapsed": true,
-        "type": "Drone"
-      },
-      {
-        "parameters": [
-          {
-            "value": false,
-            "controlMode": 0,
-            "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 1,
-            "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 110,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7B3",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.086274512112140655518,
-              0.086274512112140655518,
-              0.086274512112140655518,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          }
-        ],
-        "niceName": "B3 (Bouclette)",
-        "editorIsCollapsed": true,
-        "type": "Drone"
-      },
-      {
-        "parameters": [
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
           },
           {
             "value": 2,
             "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 120,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7C1",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.66274511814117431641,
-              0,
-              0.73333334922790527344,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/headlight"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
+            "controlAddress": "/id"
           }
         ],
-        "niceName": "C1 (Chopinette)",
+        "niceName": "2",
         "editorIsCollapsed": true,
-        "type": "Drone"
+        "type": "BaseItem"
       },
       {
         "parameters": [
           {
-            "value": false,
+            "value": true,
             "controlMode": 0,
             "controlAddress": "/enabled"
           },
           {
-            "value": [
-              200,
-              200
-            ],
+            "value": 3,
             "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 2,
-            "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 120,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7C2",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.011764706112444400787,
-              0.011764706112444400787,
-              0.015686275437474250793,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
+            "controlAddress": "/id"
           }
         ],
-        "niceName": "C2 (Claquette)",
+        "niceName": "3",
         "editorIsCollapsed": true,
-        "type": "Drone"
+        "type": "BaseItem"
       },
       {
         "parameters": [
           {
-            "value": false,
+            "value": true,
             "controlMode": 0,
             "controlAddress": "/enabled"
           },
           {
-            "value": [
-              200,
-              200
-            ],
+            "value": 4,
             "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 2,
-            "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 120,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7C3",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.015686275437474250793,
-              0.011764706112444400787,
-              0.011764706112444400787,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
+            "controlAddress": "/id"
           }
         ],
-        "niceName": "C3 (Clavicule)",
+        "niceName": "4",
         "editorIsCollapsed": true,
-        "type": "Drone"
+        "type": "BaseItem"
       },
       {
         "parameters": [
           {
-            "value": false,
+            "value": true,
             "controlMode": 0,
             "controlAddress": "/enabled"
           },
           {
-            "value": [
-              200,
-              200
-            ],
+            "value": 5,
             "controlMode": 0,
-            "controlAddress": "/size"
+            "controlAddress": "/id"
+          }
+        ],
+        "niceName": "5",
+        "editorIsCollapsed": true,
+        "type": "BaseItem"
+      },
+      {
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
           },
           {
-            "value": 2,
+            "value": 6,
             "controlMode": 0,
-            "controlAddress": "/radio"
+            "controlAddress": "/id"
+          }
+        ],
+        "niceName": "6",
+        "editorIsCollapsed": true,
+        "type": "BaseItem"
+      },
+      {
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": 7,
+            "controlMode": 0,
+            "controlAddress": "/id"
+          }
+        ],
+        "niceName": "7",
+        "editorIsCollapsed": true,
+        "type": "BaseItem"
+      },
+      {
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": 8,
+            "controlMode": 0,
+            "controlAddress": "/id"
+          }
+        ],
+        "niceName": "8",
+        "editorIsCollapsed": true,
+        "type": "BaseItem"
+      },
+      {
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
+          },
+          {
+            "value": 9,
+            "controlMode": 0,
+            "controlAddress": "/id"
+          }
+        ],
+        "niceName": "9",
+        "editorIsCollapsed": true,
+        "type": "BaseItem"
+      },
+      {
+        "parameters": [
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/enabled"
           },
           {
             "value": 10,
             "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7D1",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.086274512112140655518,
-              0.086274512112140655518,
-              0.086274512112140655518,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
+            "controlAddress": "/id"
           }
         ],
-        "niceName": "D1 (Dardielle)",
+        "niceName": "10",
         "editorIsCollapsed": true,
-        "type": "Drone"
+        "type": "BaseItem"
       },
       {
         "parameters": [
           {
-            "value": false,
+            "value": 11,
             "controlMode": 0,
-            "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 2,
-            "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 10,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7D2",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.015686275437474250793,
-              0.015686275437474250793,
-              0.015686275437474250793,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
+            "controlAddress": "/id"
           }
         ],
-        "niceName": "D2 (Darwin)",
+        "niceName": "11",
         "editorIsCollapsed": true,
-        "type": "Drone"
+        "type": "BaseItem"
       },
       {
         "parameters": [
           {
-            "value": false,
+            "value": 12,
             "controlMode": 0,
-            "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 2,
-            "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 10,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E7D3",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": [
-              0.011764706112444400787,
-              0.011764706112444400787,
-              0.011764706112444400787,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          }
-        ],
-        "niceName": "D3 (Denis)",
-        "editorIsCollapsed": true,
-        "type": "Drone"
-      },
-      {
-        "parameters": [
-          {
-            "value": false,
-            "controlMode": 0,
-            "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E701",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              1,
-              1,
-              1,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          }
-        ],
-        "niceName": "01",
-        "type": "Drone"
-      },
-      {
-        "parameters": [
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 50,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E712",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.011764706112444400787,
-              0.011764706112444400787,
-              0.011764706112444400787,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/enableLogConsole"
+            "controlAddress": "/id"
           }
         ],
         "niceName": "12",
-        "type": "Drone"
-      },
-      {
-        "parameters": [
-          {
-            "value": false,
-            "controlMode": 0,
-            "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 1,
-            "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 60,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E721",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.011764706112444400787,
-              0.015686275437474250793,
-              0.011764706112444400787,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          }
-        ],
-        "niceName": "21",
         "editorIsCollapsed": true,
-        "type": "Drone"
-      },
-      {
-        "parameters": [
-          {
-            "value": false,
-            "controlMode": 0,
-            "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 60,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E722",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.015686275437474250793,
-              0.015686275437474250793,
-              0.015686275437474250793,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          }
-        ],
-        "niceName": "22",
-        "type": "Drone"
-      },
-      {
-        "parameters": [
-          {
-            "value": false,
-            "controlMode": 0,
-            "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 1,
-            "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 60,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E723",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.086274512112140655518,
-              0.086274512112140655518,
-              0.086274512112140655518,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          }
-        ],
-        "niceName": "23",
-        "type": "Drone"
-      },
-      {
-        "parameters": [
-          {
-            "value": false,
-            "controlMode": 0,
-            "controlAddress": "/enabled"
-          },
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 2,
-            "controlMode": 0,
-            "controlAddress": "/radio"
-          },
-          {
-            "value": 70,
-            "controlMode": 0,
-            "controlAddress": "/channel"
-          },
-          {
-            "value": "2M",
-            "controlMode": 0,
-            "controlAddress": "/baudrate"
-          },
-          {
-            "value": "E7E7E7E731",
-            "controlMode": 0,
-            "controlAddress": "/address"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/absoluteMode"
-          },
-          {
-            "value": [
-              0.015686275437474250793,
-              0.015686275437474250793,
-              0.015686275437474250793,
-              1
-            ],
-            "controlMode": 0,
-            "controlAddress": "/lightColor"
-          },
-          {
-            "value": true,
-            "controlMode": 0,
-            "controlAddress": "/autoReconnect"
-          }
-        ],
-        "niceName": "31",
-        "type": "Drone"
+        "type": "BaseItem"
       }
     ]
   },
@@ -1057,240 +559,16 @@
       {
         "parameters": [
           {
-            "value": [
-              200,
-              200
-            ],
+            "value": false,
             "controlMode": 0,
-            "controlAddress": "/size"
+            "controlAddress": "/logIncoming"
           }
         ],
-        "niceName": "Unity",
+        "niceName": "OSC",
         "type": "OSC"
       }
     ]
   },
   "nodeManager": {
-    "items": [
-      {
-        "parameters": [
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": [
-              0,
-              0.15000000596046447754,
-              5
-            ],
-            "controlMode": 0,
-            "controlAddress": "/position"
-          }
-        ],
-        "niceName": "node 0",
-        "type": "Node"
-      },
-      {
-        "parameters": [
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 1,
-            "controlMode": 0,
-            "controlAddress": "/nodeid"
-          },
-          {
-            "value": [
-              4,
-              0.15000000596046447754,
-              5
-            ],
-            "controlMode": 0,
-            "controlAddress": "/position"
-          }
-        ],
-        "niceName": "node 1",
-        "type": "Node"
-      },
-      {
-        "parameters": [
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 2,
-            "controlMode": 0,
-            "controlAddress": "/nodeid"
-          },
-          {
-            "value": [
-              4,
-              0.15000000596046447754,
-              0
-            ],
-            "controlMode": 0,
-            "controlAddress": "/position"
-          }
-        ],
-        "niceName": "node 2",
-        "type": "Node"
-      },
-      {
-        "parameters": [
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 3,
-            "controlMode": 0,
-            "controlAddress": "/nodeid"
-          },
-          {
-            "value": [
-              0,
-              0.15000000596046447754,
-              0
-            ],
-            "controlMode": 0,
-            "controlAddress": "/position"
-          }
-        ],
-        "niceName": "node 3",
-        "type": "Node"
-      },
-      {
-        "parameters": [
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 4,
-            "controlMode": 0,
-            "controlAddress": "/nodeid"
-          },
-          {
-            "value": [
-              0,
-              3,
-              5
-            ],
-            "controlMode": 0,
-            "controlAddress": "/position"
-          }
-        ],
-        "niceName": "node 4",
-        "type": "Node"
-      },
-      {
-        "parameters": [
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 5,
-            "controlMode": 0,
-            "controlAddress": "/nodeid"
-          },
-          {
-            "value": [
-              4,
-              3,
-              5
-            ],
-            "controlMode": 0,
-            "controlAddress": "/position"
-          }
-        ],
-        "niceName": "node 5",
-        "type": "Node"
-      },
-      {
-        "parameters": [
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 6,
-            "controlMode": 0,
-            "controlAddress": "/nodeid"
-          },
-          {
-            "value": [
-              4,
-              3,
-              0
-            ],
-            "controlMode": 0,
-            "controlAddress": "/position"
-          }
-        ],
-        "niceName": "node 6",
-        "type": "Node"
-      },
-      {
-        "parameters": [
-          {
-            "value": [
-              200,
-              200
-            ],
-            "controlMode": 0,
-            "controlAddress": "/size"
-          },
-          {
-            "value": 7,
-            "controlMode": 0,
-            "controlAddress": "/nodeid"
-          },
-          {
-            "value": [
-              0,
-              3,
-              0
-            ],
-            "controlMode": 0,
-            "controlAddress": "/position"
-          }
-        ],
-        "niceName": "node 7",
-        "type": "Node"
-      }
-    ]
   }
 }

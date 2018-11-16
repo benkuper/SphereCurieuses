@@ -1,0 +1,1138 @@
+{
+  "metaData": {
+    "version": "1.4.13",
+    "versionNumber": 66573
+  },
+  "moduleManager": {
+    "items": [
+      {
+        "parameters": [
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/logIncoming"
+          }
+        ],
+        "niceName": "Left",
+        "type": "Specktr",
+        "scripts": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": "D:\\Documents\\Chataigne\\modules\\Specktr\\Specktr.js",
+                  "controlMode": 0,
+                  "controlAddress": "/filePath"
+                }
+              ],
+              "niceName": "Specktr",
+              "type": "BaseItem",
+              "scriptParams": {
+              }
+            }
+          ]
+        },
+        "params": {
+          "parameters": [
+            {
+              "value": "Data255",
+              "controlMode": 0,
+              "controlAddress": "/protocol"
+            },
+            {
+              "value": "Silicon Labs CP210x USB to UART Bridge (COM11)",
+              "controlMode": 0,
+              "controlAddress": "/port"
+            }
+          ]
+        }
+      },
+      {
+        "parameters": [
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/logIncoming"
+          }
+        ],
+        "niceName": "Right",
+        "type": "Specktr",
+        "scripts": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": "D:\\Documents\\Chataigne\\modules\\Specktr/Specktr.js",
+                  "controlMode": 0,
+                  "controlAddress": "/filePath"
+                }
+              ],
+              "niceName": "Specktr",
+              "type": "BaseItem",
+              "scriptParams": {
+              }
+            }
+          ]
+        },
+        "params": {
+          "parameters": [
+            {
+              "value": "Data255",
+              "controlMode": 0,
+              "controlAddress": "/protocol"
+            },
+            {
+              "value": "Silicon Labs CP210x USB to UART Bridge (COM9)",
+              "controlMode": 0,
+              "controlAddress": "/port"
+            }
+          ]
+        }
+      },
+      {
+        "parameters": [
+          {
+            "value": false,
+            "controlMode": 0,
+            "controlAddress": "/logOutgoing"
+          }
+        ],
+        "niceName": "Unity",
+        "type": "OSC",
+        "scripts": {
+        },
+        "params": {
+          "containers": {
+            "oscinput": {
+              "parameters": [
+                {
+                  "value": false,
+                  "controlMode": 0,
+                  "controlAddress": "/enabled"
+                }
+              ],
+              "editorIsCollapsed": true
+            },
+            "oscoutputs": {
+              "items": [
+                {
+                  "parameters": [
+                    {
+                      "value": 13001,
+                      "controlMode": 0,
+                      "controlAddress": "/remotePort"
+                    }
+                  ],
+                  "niceName": "OSC Output",
+                  "type": "BaseItem"
+                }
+              ]
+            }
+          }
+        },
+        "input": {
+          "parameters": [
+            {
+              "value": false,
+              "controlMode": 0,
+              "controlAddress": "/enabled"
+            }
+          ],
+          "editorIsCollapsed": true
+        },
+        "outputs": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": 13001,
+                  "controlMode": 0,
+                  "controlAddress": "/remotePort"
+                }
+              ],
+              "niceName": "OSC Output",
+              "type": "BaseItem"
+            }
+          ]
+        },
+        "values": {
+        }
+      },
+      {
+        "niceName": "Sound Card",
+        "type": "Sound Card",
+        "scripts": {
+        },
+        "params": {
+          "containers": {
+            "monitor": {
+            }
+          }
+        },
+        "audioSettings": "<DEVICESETUP deviceType=\"Windows Audio\" audioOutputDeviceName=\"Speakers (Realtek High Definition Audio)\" audioInputDeviceName=\"\" audioDeviceRate=\"48000.0\"/>"
+      }
+    ]
+  },
+  "stateManager": {
+    "items": [
+      {
+        "parameters": [
+          {
+            "value": [
+              -459.0,
+              -914.0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/active"
+          }
+        ],
+        "niceName": "State",
+        "type": "State",
+        "processors": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": false,
+                  "controlMode": 0,
+                  "controlAddress": "/outValue"
+                }
+              ],
+              "niceName": "Touch Left",
+              "editorIsCollapsed": true,
+              "type": "Mapping",
+              "input": {
+                "parameters": [
+                  {
+                    "value": "/modules/left/values/pressed",
+                    "controlMode": 0,
+                    "controlAddress": "/inputValue"
+                  }
+                ]
+              },
+              "filters": {
+              },
+              "outputs": {
+                "items": [
+                  {
+                    "niceName": "MappingOutput",
+                    "type": "BaseItem",
+                    "commandModule": "unity",
+                    "commandPath": "",
+                    "commandType": "Custom Message",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": "/specktr/touch",
+                          "controlMode": 0,
+                          "controlAddress": "/address"
+                        }
+                      ],
+                      "arguments": {
+                      },
+                      "argManager": {
+                        "items": [
+                          {
+                            "parameters": [
+                              {
+                                "value": 0,
+                                "controlMode": 0,
+                                "controlAddress": "/newIntParameter"
+                              },
+                              {
+                                "value": false,
+                                "controlMode": 0,
+                                "controlAddress": "/useForMapping"
+                              }
+                            ],
+                            "niceName": "#1",
+                            "type": "Integer",
+                            "param": {
+                              "value": 0,
+                              "controlMode": 0,
+                              "controlAddress": "/states/state/processors/touchLeft/outputs/mappingOutput/command/arguments/_1/newIntParameter"
+                            }
+                          },
+                          {
+                            "parameters": [
+                              {
+                                "value": 5,
+                                "controlMode": 2,
+                                "reference": {
+                                  "value": "/modules/left/values/lastTouch",
+                                  "controlMode": 0,
+                                  "controlAddress": "/reference"
+                                },
+                                "controlAddress": "/newIntParameter"
+                              },
+                              {
+                                "value": false,
+                                "controlMode": 0,
+                                "controlAddress": "/useForMapping"
+                              }
+                            ],
+                            "niceName": "#2",
+                            "type": "Integer",
+                            "param": {
+                              "value": 5,
+                              "controlMode": 2,
+                              "reference": {
+                                "value": "/modules/left/values/lastTouch",
+                                "controlMode": 0,
+                                "controlAddress": "/reference"
+                              },
+                              "controlAddress": "/states/state/processors/touchLeft/outputs/mappingOutput/command/arguments/_2/newIntParameter"
+                            }
+                          },
+                          {
+                            "parameters": [
+                              {
+                                "value": 0,
+                                "controlMode": 2,
+                                "reference": {
+                                  "value": "/modules/left/values/side",
+                                  "controlMode": 0,
+                                  "controlAddress": "/reference"
+                                },
+                                "controlAddress": "/newIntParameter"
+                              },
+                              {
+                                "value": false,
+                                "controlMode": 0,
+                                "controlAddress": "/useForMapping"
+                              }
+                            ],
+                            "niceName": "#3",
+                            "type": "Integer",
+                            "param": {
+                              "value": 0,
+                              "controlMode": 2,
+                              "reference": {
+                                "value": "/modules/left/values/side",
+                                "controlMode": 0,
+                                "controlAddress": "/reference"
+                              },
+                              "controlAddress": "/states/state/processors/touchLeft/outputs/mappingOutput/command/arguments/_3/newIntParameter"
+                            }
+                          },
+                          {
+                            "parameters": [
+                              {
+                                "value": false,
+                                "controlMode": 0,
+                                "controlAddress": "/newBoolParameter"
+                              },
+                              {
+                                "value": true,
+                                "controlMode": 0,
+                                "controlAddress": "/useForMapping"
+                              }
+                            ],
+                            "niceName": "#4",
+                            "type": "Boolean",
+                            "param": {
+                              "value": false,
+                              "controlMode": 0,
+                              "controlAddress": "/states/state/processors/touchLeft/outputs/mappingOutput/command/arguments/_4/newBoolParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": false,
+                  "controlMode": 0,
+                  "controlAddress": "/outValue"
+                }
+              ],
+              "niceName": "Touch Right",
+              "editorIsCollapsed": true,
+              "type": "Mapping",
+              "input": {
+                "parameters": [
+                  {
+                    "value": "/modules/right/values/pressed",
+                    "controlMode": 0,
+                    "controlAddress": "/inputValue"
+                  }
+                ]
+              },
+              "filters": {
+              },
+              "outputs": {
+                "items": [
+                  {
+                    "niceName": "MappingOutput",
+                    "type": "BaseItem",
+                    "commandModule": "unity",
+                    "commandPath": "",
+                    "commandType": "Custom Message",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": "/specktr/touch",
+                          "controlMode": 0,
+                          "controlAddress": "/address"
+                        }
+                      ],
+                      "arguments": {
+                      },
+                      "argManager": {
+                        "items": [
+                          {
+                            "parameters": [
+                              {
+                                "value": 1,
+                                "controlMode": 0,
+                                "controlAddress": "/newIntParameter"
+                              },
+                              {
+                                "value": false,
+                                "controlMode": 0,
+                                "controlAddress": "/useForMapping"
+                              }
+                            ],
+                            "niceName": "#1",
+                            "type": "Integer",
+                            "param": {
+                              "value": 1,
+                              "controlMode": 0,
+                              "controlAddress": "/states/state/processors/touchRight/outputs/mappingOutput/command/arguments/_1/newIntParameter"
+                            }
+                          },
+                          {
+                            "parameters": [
+                              {
+                                "value": 0,
+                                "controlMode": 2,
+                                "reference": {
+                                  "value": "/modules/right/values/lastTouch",
+                                  "controlMode": 0,
+                                  "controlAddress": "/reference"
+                                },
+                                "controlAddress": "/newIntParameter"
+                              },
+                              {
+                                "value": false,
+                                "controlMode": 0,
+                                "controlAddress": "/useForMapping"
+                              }
+                            ],
+                            "niceName": "#2",
+                            "type": "Integer",
+                            "param": {
+                              "value": 0,
+                              "controlMode": 2,
+                              "reference": {
+                                "value": "/modules/right/values/lastTouch",
+                                "controlMode": 0,
+                                "controlAddress": "/reference"
+                              },
+                              "controlAddress": "/states/state/processors/touchRight/outputs/mappingOutput/command/arguments/_2/newIntParameter"
+                            }
+                          },
+                          {
+                            "parameters": [
+                              {
+                                "value": 0,
+                                "controlMode": 2,
+                                "reference": {
+                                  "value": "/modules/right/values/side",
+                                  "controlMode": 0,
+                                  "controlAddress": "/reference"
+                                },
+                                "controlAddress": "/newIntParameter"
+                              },
+                              {
+                                "value": false,
+                                "controlMode": 0,
+                                "controlAddress": "/useForMapping"
+                              }
+                            ],
+                            "niceName": "#3",
+                            "type": "Integer",
+                            "param": {
+                              "value": 0,
+                              "controlMode": 2,
+                              "reference": {
+                                "value": "/modules/right/values/side",
+                                "controlMode": 0,
+                                "controlAddress": "/reference"
+                              },
+                              "controlAddress": "/states/state/processors/touchRight/outputs/mappingOutput/command/arguments/_3/newIntParameter"
+                            }
+                          },
+                          {
+                            "parameters": [
+                              {
+                                "value": false,
+                                "controlMode": 0,
+                                "controlAddress": "/newBoolParameter"
+                              },
+                              {
+                                "value": true,
+                                "controlMode": 0,
+                                "controlAddress": "/useForMapping"
+                              }
+                            ],
+                            "niceName": "#4",
+                            "type": "Boolean",
+                            "param": {
+                              "value": false,
+                              "controlMode": 0,
+                              "controlAddress": "/states/state/processors/touchRight/outputs/mappingOutput/command/arguments/_4/newBoolParameter"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "parameters": [
+          {
+            "value": [
+              -699.0,
+              -855.5
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUIPosition"
+          },
+          {
+            "value": [
+              216.0,
+              227.0
+            ],
+            "controlMode": 0,
+            "controlAddress": "/viewUISize"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/active"
+          }
+        ],
+        "niceName": "State 1",
+        "type": "State",
+        "processors": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": false,
+                  "controlMode": 0,
+                  "controlAddress": "/enabled"
+                }
+              ],
+              "niceName": "Left Touch",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+                "parameters": [
+                  {
+                    "value": false,
+                    "controlMode": 0,
+                    "controlAddress": "/isValid"
+                  },
+                  {
+                    "value": "AND",
+                    "controlMode": 0,
+                    "controlAddress": "/operator"
+                  },
+                  {
+                    "value": 0.0,
+                    "controlMode": 0,
+                    "controlAddress": "/progress"
+                  }
+                ],
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlMode": 0,
+                        "controlAddress": "/isValid"
+                      },
+                      {
+                        "value": "/modules/specktrLeft/scripts/gloveTest/params/isTouched",
+                        "controlMode": 0,
+                        "controlAddress": "/inputValue"
+                      }
+                    ],
+                    "niceName": "From Input Value",
+                    "type": "From Input Value"
+                  }
+                ]
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "sequences",
+                    "commandPath": "Playback",
+                    "commandType": "Play Sequence",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": "/sequences/sequenceLeft",
+                          "controlMode": 0,
+                          "controlAddress": "/target"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "sequences",
+                    "commandPath": "Playback",
+                    "commandType": "Pause Sequence",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": "/sequences/sequenceLeft",
+                          "controlMode": 0,
+                          "controlAddress": "/target"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": false,
+                  "controlMode": 0,
+                  "controlAddress": "/enabled"
+                }
+              ],
+              "niceName": "Right Touch",
+              "editorIsCollapsed": true,
+              "type": "Action",
+              "conditions": {
+                "parameters": [
+                  {
+                    "value": false,
+                    "controlMode": 0,
+                    "controlAddress": "/isValid"
+                  },
+                  {
+                    "value": "AND",
+                    "controlMode": 0,
+                    "controlAddress": "/operator"
+                  },
+                  {
+                    "value": 0.0,
+                    "controlMode": 0,
+                    "controlAddress": "/progress"
+                  }
+                ],
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": false,
+                        "controlMode": 0,
+                        "controlAddress": "/isValid"
+                      },
+                      {
+                        "value": "/modules/specktrRight/scripts/gloveTest/params/isTouched",
+                        "controlMode": 0,
+                        "controlAddress": "/inputValue"
+                      }
+                    ],
+                    "niceName": "From Input Value",
+                    "type": "From Input Value"
+                  }
+                ]
+              },
+              "consequences": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "sequences",
+                    "commandPath": "Playback",
+                    "commandType": "Play Sequence",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": "/sequences/sequenceRight",
+                          "controlMode": 0,
+                          "controlAddress": "/target"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "consequencesOff": {
+                "items": [
+                  {
+                    "niceName": "Consequence",
+                    "type": "BaseItem",
+                    "commandModule": "sequences",
+                    "commandPath": "Playback",
+                    "commandType": "Pause Sequence",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": "/sequences/sequenceRight",
+                          "controlMode": 0,
+                          "controlAddress": "/target"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": true,
+                  "controlMode": 0,
+                  "controlAddress": "/enabled"
+                },
+                {
+                  "value": true,
+                  "controlMode": 0,
+                  "controlAddress": "/continuous"
+                },
+                {
+                  "value": 0.0,
+                  "controlMode": 0,
+                  "controlAddress": "/outValue"
+                }
+              ],
+              "niceName": "Fade Left",
+              "editorIsCollapsed": true,
+              "type": "Mapping",
+              "input": {
+                "parameters": [
+                  {
+                    "value": "/modules/left/values/pressed",
+                    "controlMode": 0,
+                    "controlAddress": "/inputValue"
+                  }
+                ]
+              },
+              "filters": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": 0.0,
+                        "controlMode": 0,
+                        "controlAddress": "/out"
+                      }
+                    ],
+                    "niceName": "Smooth",
+                    "type": "Smooth",
+                    "filterParams": {
+                      "parameters": [
+                        {
+                          "value": 0.82504487037658691406,
+                          "controlMode": 0,
+                          "controlAddress": "/smoothing"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": 0.0,
+                        "controlMode": 0,
+                        "controlAddress": "/out"
+                      }
+                    ],
+                    "niceName": "Remap",
+                    "type": "Remap",
+                    "filterParams": {
+                      "parameters": [
+                        {
+                          "value": [
+                            0.0,
+                            1.0
+                          ],
+                          "controlMode": 0,
+                          "controlAddress": "/inputMin_Max"
+                        },
+                        {
+                          "value": [
+                            0.0,
+                            1.0
+                          ],
+                          "controlMode": 0,
+                          "controlAddress": "/targetMin_Max"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "outputs": {
+                "items": [
+                  {
+                    "niceName": "MappingOutput",
+                    "type": "BaseItem",
+                    "commandModule": "generic",
+                    "commandPath": "",
+                    "commandType": "Set Parameter Value",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": "/sequences/sequenceLeft/newAudioLayer/volume",
+                          "controlMode": 0,
+                          "controlAddress": "/target"
+                        },
+                        {
+                          "value": 0.0,
+                          "controlMode": 0,
+                          "controlAddress": "/value"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "parameters": [
+                {
+                  "value": true,
+                  "controlMode": 0,
+                  "controlAddress": "/continuous"
+                },
+                {
+                  "value": 0.0,
+                  "controlMode": 0,
+                  "controlAddress": "/outValue"
+                }
+              ],
+              "niceName": "Fade Right",
+              "editorIsCollapsed": true,
+              "type": "Mapping",
+              "input": {
+                "parameters": [
+                  {
+                    "value": "/modules/right/values/pressed",
+                    "controlMode": 0,
+                    "controlAddress": "/inputValue"
+                  }
+                ]
+              },
+              "filters": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": 0.0,
+                        "controlMode": 0,
+                        "controlAddress": "/out"
+                      }
+                    ],
+                    "niceName": "Smooth",
+                    "type": "Smooth",
+                    "filterParams": {
+                      "parameters": [
+                        {
+                          "value": 0.86744767427444458008,
+                          "controlMode": 0,
+                          "controlAddress": "/smoothing"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "parameters": [
+                      {
+                        "value": 0.0,
+                        "controlMode": 0,
+                        "controlAddress": "/out"
+                      }
+                    ],
+                    "niceName": "Remap",
+                    "type": "Remap",
+                    "filterParams": {
+                      "parameters": [
+                        {
+                          "value": [
+                            0.0,
+                            1.0
+                          ],
+                          "controlMode": 0,
+                          "controlAddress": "/inputMin_Max"
+                        },
+                        {
+                          "value": [
+                            0.0,
+                            1.0
+                          ],
+                          "controlMode": 0,
+                          "controlAddress": "/targetMin_Max"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "outputs": {
+                "items": [
+                  {
+                    "niceName": "MappingOutput",
+                    "type": "BaseItem",
+                    "commandModule": "generic",
+                    "commandPath": "",
+                    "commandType": "Set Parameter Value",
+                    "command": {
+                      "parameters": [
+                        {
+                          "value": "/sequences/sequenceRight/newAudioLayer/volume",
+                          "controlMode": 0,
+                          "controlAddress": "/target"
+                        },
+                        {
+                          "value": 0.0,
+                          "controlMode": 0,
+                          "controlAddress": "/value"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "sequenceManager": {
+    "items": [
+      {
+        "parameters": [
+          {
+            "value": 5.0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/playAtLoad"
+          },
+          {
+            "value": 6.3990001678466796875,
+            "controlMode": 0,
+            "controlAddress": "/totalTime"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/loop"
+          },
+          {
+            "value": 6.3990001678466796875,
+            "controlMode": 0,
+            "controlAddress": "/viewEndTime"
+          }
+        ],
+        "niceName": "Sequence Left",
+        "type": "BaseItem",
+        "layerManager": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": 32.0,
+                  "controlMode": 0,
+                  "controlAddress": "/listSize"
+                },
+                {
+                  "value": [
+                    0.50196081399918002219,
+                    0.50196081399918002219,
+                    0.50196081399918002219,
+                    1
+                  ],
+                  "controlMode": 0,
+                  "controlAddress": "/layerColor"
+                },
+                {
+                  "value": 0.0,
+                  "controlMode": 0,
+                  "controlAddress": "/volume"
+                },
+                {
+                  "value": 0.0,
+                  "controlMode": 0,
+                  "controlAddress": "/enveloppe"
+                }
+              ],
+              "niceName": "New Audio Layer",
+              "type": "Audio",
+              "clipManager": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": "UI 6.wav",
+                        "controlMode": 0,
+                        "controlAddress": "/filePath"
+                      },
+                      {
+                        "value": 0.0,
+                        "controlMode": 0,
+                        "controlAddress": "/startTime"
+                      },
+                      {
+                        "value": 6.39918375015258789063,
+                        "controlMode": 0,
+                        "controlAddress": "/length"
+                      },
+                      {
+                        "value": 2.33644866943359375,
+                        "controlMode": 0,
+                        "controlAddress": "/volume"
+                      }
+                    ],
+                    "niceName": "Clip 4",
+                    "type": "BaseItem"
+                  }
+                ]
+              },
+              "audioModule": "soundCard"
+            }
+          ]
+        },
+        "cueManager": {
+        }
+      },
+      {
+        "parameters": [
+          {
+            "value": 5.0,
+            "controlMode": 0,
+            "controlAddress": "/listSize"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/playAtLoad"
+          },
+          {
+            "value": 5.86199998855590820313,
+            "controlMode": 0,
+            "controlAddress": "/totalTime"
+          },
+          {
+            "value": true,
+            "controlMode": 0,
+            "controlAddress": "/loop"
+          },
+          {
+            "value": 5.86199998855590820313,
+            "controlMode": 0,
+            "controlAddress": "/viewEndTime"
+          }
+        ],
+        "niceName": "Sequence Right",
+        "type": "BaseItem",
+        "layerManager": {
+          "items": [
+            {
+              "parameters": [
+                {
+                  "value": 32.0,
+                  "controlMode": 0,
+                  "controlAddress": "/listSize"
+                },
+                {
+                  "value": [
+                    0.50196081399918002219,
+                    0.50196081399918002219,
+                    0.50196081399918002219,
+                    1
+                  ],
+                  "controlMode": 0,
+                  "controlAddress": "/layerColor"
+                },
+                {
+                  "value": 0.0,
+                  "controlMode": 0,
+                  "controlAddress": "/volume"
+                },
+                {
+                  "value": 0.0,
+                  "controlMode": 0,
+                  "controlAddress": "/enveloppe"
+                }
+              ],
+              "niceName": "New Audio Layer",
+              "type": "Audio",
+              "clipManager": {
+                "items": [
+                  {
+                    "parameters": [
+                      {
+                        "value": "UI 7.wav",
+                        "controlMode": 0,
+                        "controlAddress": "/filePath"
+                      },
+                      {
+                        "value": 0.0,
+                        "controlMode": 0,
+                        "controlAddress": "/startTime"
+                      },
+                      {
+                        "value": 5.86247158050537109375,
+                        "controlMode": 0,
+                        "controlAddress": "/length"
+                      },
+                      {
+                        "value": 2.10280370712280273438,
+                        "controlMode": 0,
+                        "controlAddress": "/volume"
+                      }
+                    ],
+                    "niceName": "Clip",
+                    "type": "BaseItem"
+                  }
+                ]
+              },
+              "audioModule": "soundCard"
+            }
+          ]
+        },
+        "cueManager": {
+        },
+        "editing": true
+      }
+    ]
+  }
+}

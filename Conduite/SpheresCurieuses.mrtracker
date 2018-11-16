@@ -1,7 +1,7 @@
 {
   "metaData": {
-    "version": "1.0.0",
-    "versionNumber": 65536
+    "version": "1.0.1",
+    "versionNumber": 65537
   },
   "presetManager": {
     "presets": null
@@ -27,9 +27,9 @@
           },
           {
             "value": [
+              0.125,
               0,
-              0,
-              0
+              0.15625
             ],
             "controlAddress": "/origin"
           },
