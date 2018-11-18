@@ -7,6 +7,9 @@ public class SwarmMaster : Controllable {
 
     public static SwarmMaster instance;
 
+    [OSCProperty]
+    public string currentScenarioId; //for info only
+
     public SwarmScenario currentScenario;
     public List<SwarmScenario> scenarios;
 
@@ -19,6 +22,8 @@ public class SwarmMaster : Controllable {
     public enum HitMode { COLLIDER, SHORTEST_DISTANCE }
     public HitMode hitMode;
     public float maxSelectionDistance;
+
+    
 
     override public void Awake()
     {
@@ -65,9 +70,12 @@ public class SwarmMaster : Controllable {
             currentScenario.setCurrent(true);
             DroneController[] controllers = FindObjectsOfType<DroneController>();
             foreach(DroneController dc in controllers) MrTrackerClient.instance.sendMultiVibrate(dc.id, 5, .1f, .4f, 0.05f);
+            currentScenarioId = currentScenario.id;
+
         }else
         {
             foreach (Drone d in DroneManager.instance.drones) d.colorTo(Color.black, 0);
+            currentScenarioId = "NONE";
         }
     }
 
@@ -245,11 +253,16 @@ public class SwarmMaster : Controllable {
         switch(buttonID)
         {
              case SHAPE_BT:
+                if (state == DroneController.ButtonState.Down) setScenario(scenarios.Count - 1);
+                else setScenario(0);
+                
+                /*
                 if (state != DroneController.ButtonState.Off && currentScenario != scenarios[scenarios.Count-1]) //Only if not the last scenario
                 {
                     int offset = 1 + (int)state;
                     setCurrentScenario(scenarios[offset]);
                 }
+                */
                 break;
 
             default:

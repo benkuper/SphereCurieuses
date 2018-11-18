@@ -30,7 +30,7 @@ public class DroneLoop : MonoBehaviour, IDroneLocker
 
     ~DroneLoop()
     {
-        drone.setLocker(null);
+        if(drone != null) drone.setLocker(null);
     }
 
     private void Update()

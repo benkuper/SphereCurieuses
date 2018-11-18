@@ -415,6 +415,13 @@ public class SwarmTrailScenario : SwarmScenario
 
         switch (buttonID)
         {
+            case 3:
+                if (state == DroneController.ButtonState.Down)
+                {
+                    clearLoopsAndSelection();
+                }
+                break;
+
             case CLEAR:
                 MrTrackerClient.instance.sendVibrate(controller.id, .4f, 2);
                 clearAndLand();
@@ -489,7 +496,7 @@ public class SwarmTrailScenario : SwarmScenario
         //Debug.Log("Over Drone Update ! " +dc.id);
         if (d.isOver)
         {
-            MrTrackerClient.instance.sendVibrate(dc.id, .5f, .03f);
+            MrTrackerClient.instance.sendVibrate(dc.id, .8f, .05f);
         }
 
         updateColorForDrone(d);
@@ -785,9 +792,13 @@ public class SwarmTrailScenario : SwarmScenario
 
     public void landDrones(DroneController dc)
     {
+        clearLoops(dc);
+        setMovingDrones(dc, false);
+
         foreach (Drone d in droneSelection[dc])
         {
             //updateColorForDrone(d);
+            
             d.land();
         }
     }

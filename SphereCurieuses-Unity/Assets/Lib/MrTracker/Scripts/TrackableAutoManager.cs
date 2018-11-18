@@ -13,8 +13,11 @@ public class TrackableAutoManager : Controllable
     public List<TrackableObject> trackableObjects;
 
 
+    [OSCProperty]
     public bool vibrateOnAdded;
+    [OSCProperty]
     public bool vibrateOnLost;
+    [OSCProperty]
     public int numVibrations = 6;
 
     public bool dynamicTrackerMode;

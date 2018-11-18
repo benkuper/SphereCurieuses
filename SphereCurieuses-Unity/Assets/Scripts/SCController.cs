@@ -130,7 +130,7 @@ public class SCController : ViveControllerObject {
     void calibrateVive()
     {
         CalibrateAutoVive[] cav = FindObjectsOfType<CalibrateAutoVive>();
-        if (cav.Length > 0) cav[0].trackable = transform;
+        if (cav.Length > 0) cav[0].trackable = this;
         cav[0].calibrate();
         cav[0].saveConfig();
     }

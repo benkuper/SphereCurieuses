@@ -16,6 +16,21 @@ public class SwarmEndBoxScenario : SwarmScenario
     [OSCProperty]
     public float dropZ;
 
+    [OSCMethod]
+    public void savePosition()
+    {
+        currentPreset = "endBoxPositions";
+        Save();
+    }
+
+    public override void Start()
+    {
+        base.Start();
+
+        currentPreset = "endBoxPositions";
+        Load();
+    }
+
     public override void startScenario()
     {
         base.startScenario();
@@ -26,6 +41,12 @@ public class SwarmEndBoxScenario : SwarmScenario
             StartCoroutine(dropDrone(drones[i], (drones.Count-i-1)*stagger));
         }
 
+        
+    }
+
+    public override void Update()
+    {
+        base.Update();
         dropTransform.position = new Vector3(dropX, dropY, dropZ);
     }
 

@@ -16,7 +16,7 @@ public class CalibrateAutoVive : Controllable {
     public bool loadAtStart;
     public int rightHandID;
 
-    public Transform trackable;
+    public TrackableObject trackable;
     public Transform calibTransform;
 
     public int firstLHId;
@@ -55,15 +55,20 @@ public class CalibrateAutoVive : Controllable {
         {
             Debug.LogWarning("Trackable null, not calibrating");
             SCController[] controllers = GetComponentsInChildren<SCController>();
-            foreach (SCController sc in controllers) if (sc.specktrHand == SpecktrOSC.Hand.Right) trackable = sc.transform;
+            foreach (SCController sc in controllers) if (sc.specktrHand == SpecktrOSC.Hand.Right) trackable = sc;
             return;
         }
+
+        Transform tt = trackable.transform;
 
         transform.position = Vector3.up * transform.position.y;
         transform.rotation = Quaternion.identity;
 
-        transform.localRotation = Quaternion.Euler(0, -trackable.eulerAngles.y, 0) * calibTransform.localRotation;
-        transform.position = new Vector3(-trackable.position.x, -trackable.localPosition.y, -trackable.position.z) + calibTransform.transform.position;
+        transform.localRotation = Quaternion.Euler(0, -tt.eulerAngles.y, 0) * calibTransform.localRotation;
+        transform.position = new Vector3(-tt.position.x, -tt.localPosition.y, -tt.position.z) + calibTransform.transform.position;
+
+
+        MrTrackerClient.instance.sendMultiVibrate(trackable.trackableID, 3, .2f, .6f, .1f);
     }
 
     [OSCMethod]
