@@ -1,0 +1,25 @@
+Selection et decollage :
+
+ - Quand une main fait décoller un drone (pouce majeur main vers le haut) :
+ 	 - Si il y a des drones séléctionnés avec cette main, SEULEMENT les drones de cette main vont décoller (pas ceux de l'autre main)
+ 	 - Si il y n'y a AUCUN drone sélectionné avec cette main, alors tous les drones sélectionnés avec l'autre main vont décoller.
+
+/!\ Vu en répèt : Le vol du drone peut être fragilisé si il reste longtemps très près du sol, donc en faisant des manipulation de décollage / atterissage à répétition, il est possible que si un drone essaye de redécoller avant d'avoir complètement atteri, il se déstabilise pendant sa transition si elle se passe très près du sol.
+
+
+Manipulation "MOVE" :
+ - Le danger potentiel pendant une manipulation est d'oublier que les drones sont liés à la position et orientation de la main sur les 3 AXES. Ce qui veut dire que si on commence à bougerun drone relativement éloigné, et qu'on tourne la main, le drone aura des mouvement amplifiés et se verra potentiellement aller vers le sol si la main se penche. Il faut donc être parfaitement conscient de la position et orientation relative entre la main et chaque drone pendant le mouvement !
+
+ Manipulation "KILL LOOP" :
+ - Après avoir kill une loop avec un gant, les drones sélectionnés par ce gant sont déselectionnés
+
+
+ BON REFLEXES :
+  - Si il y a un problème de sélection / décollage, il est de bon ton de faire une DOUBLE DESELECTION, i.e. Index-paume (paume vers le bas) avec les 2 gants. Une procédure de calibration des drones aura également un effet de déselection générale.
+
+
+ENDBOX :
+ - Auriculaire-paume (paume vers le haut)
+ 
+REVENIR AU MODE MANIPULATION :
+ - Auticulaire-paume (paume vers le bas)

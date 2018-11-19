@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackableID: 1
+  alwaysUpdate: 1
   menuBT: 0
   sideBT: 0
   triggerTouch: 0
@@ -289,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackableID: 2
+  alwaysUpdate: 1
   menuBT: 0
   sideBT: 0
   triggerTouch: 0
@@ -655,6 +657,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926da85fb03695e4aa90af6302191dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
+  folder: 
+  debug: 0
+  targetDirectory: 
+  sourceScene: 
+  usePanel: 1
+  usePresets: 0
+  currentPreset: 
+  presetList: []
   client: {fileID: 114648078980405608}
   filter: 2
   trackableObjectPrefab: {fileID: 1961784215769654, guid: a5ac4f8a5ee6e0640a45b63dd2c5a18f,
@@ -662,6 +673,9 @@ MonoBehaviour:
   trackableObjects:
   - {fileID: 114111760363170372}
   - {fileID: 114029165024553384}
+  vibrateOnAdded: 0
+  vibrateOnLost: 0
+  numVibrations: 6
   dynamicTrackerMode: 0
 --- !u!114 &4856715973288121371
 MonoBehaviour:
@@ -675,11 +689,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926da85fb03695e4aa90af6302191dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 
+  folder: 
+  debug: 0
+  targetDirectory: 
+  sourceScene: 
+  usePanel: 1
+  usePresets: 0
+  currentPreset: 
+  presetList: []
   client: {fileID: 114648078980405608}
   filter: 3
   trackableObjectPrefab: {fileID: 4274582543139625657, guid: db4735d5496ee0e419e3fb48445a241f,
     type: 3}
   trackableObjects: []
+  vibrateOnAdded: 0
+  vibrateOnLost: 0
+  numVibrations: 6
   dynamicTrackerMode: 0
 --- !u!114 &114004694296734588
 MonoBehaviour:
@@ -706,3 +732,5 @@ MonoBehaviour:
   rightHandID: 0
   trackable: {fileID: 0}
   calibTransform: {fileID: 4643363446455384}
+  firstLHId: 0
+  originLHAbsolutePos: {x: 0, y: 0, z: 0}

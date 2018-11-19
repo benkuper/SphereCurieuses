@@ -16,19 +16,36 @@ public class SwarmEndBoxScenario : SwarmScenario
     [OSCProperty]
     public float dropZ;
 
-    [OSCMethod]
-    public void savePosition()
-    {
-        currentPreset = "endBoxPositions";
-        Save();
-    }
 
     public override void Start()
     {
         base.Start();
 
-        currentPreset = "endBoxPositions";
-        Load();
+        loadPositions();
+    }
+
+    [OSCMethod]
+    public void savePositions()
+    {
+        SaveData data = new SaveData();
+        data["x"] = dropX;
+        data["y"] = dropY;
+        data["z"] = dropZ;
+        //Save the data
+        data.Save(Application.dataPath + "/endBoxPositions.uml");
+
+    }
+
+    [OSCMethod]
+    public void loadPositions()
+    {
+
+        SaveData data = SaveData.Load(Application.dataPath + "/endBoxPositions.uml");
+        if (data == null) return;
+        dropX = data.GetValue<float>("x");
+        dropY = data.GetValue<float>("y");
+        dropZ = data.GetValue<float>("z");
+
     }
 
     public override void startScenario()

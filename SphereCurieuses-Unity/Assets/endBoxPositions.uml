@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SaveData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <fileName>SavedData</fileName>
+  <serializedTypes />
+  <serializedData>
+    <DataContainer>
+      <key>x</key>
+      <value xsi:type="xsd:float">2</value>
+    </DataContainer>
+    <DataContainer>
+      <key>y</key>
+      <value xsi:type="xsd:float">2</value>
+    </DataContainer>
+    <DataContainer>
+      <key>z</key>
+      <value xsi:type="xsd:float">2</value>
+    </DataContainer>
+  </serializedData>
+</SaveData>

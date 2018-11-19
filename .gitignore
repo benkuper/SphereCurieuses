@@ -18,3 +18,9 @@ Notes pour marseille\.txt
 *.meta
 
 SphereCurieuses-Unity/Assets/Lib/GenUI/
+
+SphereCurieuses-Unity/Export/
+
+SphereCurieuses-Unity/Export\.zip
+
+*.rar
